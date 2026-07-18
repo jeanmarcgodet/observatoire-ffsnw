@@ -5,30 +5,42 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "observatoire-ffsnw"
 version = "0.1.0"
-description = "Observatoire de la pratique compétitive du ski nautique français"
+description = "Observatoire de la pratique compétitive du ski nautique et du wakeboard français"
 readme = "README.md"
 requires-python = ">=3.11"
-license = "MIT"
-
+license = { file = "LICENSE" }
+authors = [
+    { name = "Jean-Marc Godet" }
+]
 dependencies = [
-    "beautifulsoup4>=4.12",
-    "certifi>=2026.6",
-    "lxml>=5.0"
+    "beautifulsoup4>=4.13",
+    "lxml>=6.0",
+    "requests>=2.32",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=8.0",
-    "ruff>=0.5"
+    "pytest>=8.4",
+    "ruff>=0.12",
 ]
 
 [tool.setuptools]
-packages = ["observatoire"]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["observatoire*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["."]
 
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+]
