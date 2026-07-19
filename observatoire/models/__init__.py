@@ -1,5 +1,9 @@
-"""Modèles métier."""
+﻿"""Modèles métier."""
 
-from .rider import Rider
+from observatoire.models.competition import Competition
+from observatoire.models.rider import Rider
 
-__all__ = ["Rider"]
+__all__ = [
+    "Competition",
+    "Rider",
+]
