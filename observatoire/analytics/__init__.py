@@ -1,5 +1,13 @@
-﻿"""Outils d'analyse de l'Observatoire FFSNW."""
+﻿"""Outils d'analyse métier."""
 
-from observatoire.analytics.rider_statistics import RiderStatistics
+from observatoire.analytics.competition_statistics import (
+    CompetitionStatistics,
+)
+from observatoire.analytics.rider_statistics import (
+    RiderStatistics,
+)
 
-__all__ = ["RiderStatistics"]
+__all__ = [
+    "CompetitionStatistics",
+    "RiderStatistics",
+]

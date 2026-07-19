@@ -1,8 +1,13 @@
-﻿"""Service d'accès aux données historiques de l'Observatoire."""
+﻿"""Services de consultation de l'historique sportif."""
 
 from __future__ import annotations
 
-from observatoire.models import Competition, Rider, RiderCareer
+from observatoire.models import (
+    Competition,
+    CompetitionReport,
+    Rider,
+    RiderCareer,
+)
 from observatoire.repositories import (
     CompetitionRepository,
     ResultRepository,
@@ -11,65 +16,85 @@ from observatoire.repositories import (
 
 
 class HistoryService:
-    """Coordonne les repositories des consultations historiques."""
+    """Service regroupant les consultations historiques."""
 
-    def __init__(
+    def __init__(self) -> None:
+        self.rider_repository = RiderRepository()
+        self.competition_repository = CompetitionRepository()
+        self.result_repository = ResultRepository()
+
+    def get_rider(
         self,
-        rider_repository: RiderRepository | None = None,
-        competition_repository: CompetitionRepository | None = None,
-        result_repository: ResultRepository | None = None,
-    ) -> None:
-        self.riders = rider_repository or RiderRepository()
-        self.competitions = (
-            competition_repository or CompetitionRepository()
-        )
-        self.results = result_repository or ResultRepository()
+        iwwf_id: str,
+    ) -> Rider | None:
+        """Recherche un rider par son identifiant IWWF."""
+        return self.rider_repository.get_by_iwwf_id(iwwf_id)
 
-    def get_rider(self, iwwf_id: str) -> Rider | None:
-        """Retourne un rider à partir de son identifiant IWWF."""
-        return self.riders.get_by_iwwf_id(iwwf_id)
-
-    def get_rider_by_id(self, rider_id: int) -> Rider | None:
-        """Retourne un rider à partir de son identifiant interne."""
-        return self.riders.get_by_id(rider_id)
-
-    def search_riders(self, query: str, limit: int = 20) -> list[Rider]:
-        """Recherche des riders."""
-        return self.riders.search(query, limit=limit)
-
-    def get_competition(self, iwwf_id: str) -> Competition | None:
-        """Retourne une compétition à partir de son identifiant IWWF."""
-        return self.competitions.get_by_iwwf_id(iwwf_id)
-
-    def get_competition_by_id(
+    def get_rider_by_id(
         self,
-        competition_id: int,
-    ) -> Competition | None:
-        """Retourne une compétition à partir de son identifiant interne."""
-        return self.competitions.get_by_id(competition_id)
+        rider_id: int,
+    ) -> Rider | None:
+        """Recherche un rider par son identifiant interne."""
+        return self.rider_repository.get_by_id(rider_id)
 
-    def search_competitions(
+    def search_riders(
         self,
         query: str,
-        limit: int = 20,
-    ) -> list[Competition]:
-        """Recherche des compétitions."""
-        return self.competitions.search(query, limit=limit)
+    ) -> list[Rider]:
+        """Recherche des riders par leur nom ou leur prénom."""
+        return self.rider_repository.search(query)
 
-    def list_competitions(self, limit: int = 100) -> list[Competition]:
-        """Retourne les compétitions enregistrées."""
-        return self.competitions.list_all(limit=limit)
+    def get_competition(
+        self,
+        iwwf_id: str,
+    ) -> Competition | None:
+        """Recherche une compétition par son identifiant IWWF."""
+        return self.competition_repository.get_by_iwwf_id(
+            iwwf_id
+        )
 
-    def get_rider_career(self, iwwf_id: str) -> RiderCareer | None:
-        """Construit la carrière connue d'un rider."""
-        rider = self.riders.get_by_iwwf_id(iwwf_id)
+    def list_competitions(self) -> list[Competition]:
+        """Retourne toutes les compétitions."""
+        return self.competition_repository.list_all()
+
+    def get_rider_career(
+        self,
+        iwwf_id: str,
+    ) -> RiderCareer | None:
+        """Retourne un rider accompagné de ses résultats."""
+        rider = self.rider_repository.get_by_iwwf_id(iwwf_id)
 
         if rider is None:
             return None
 
-        results = self.results.list_by_rider_id(rider.id)
+        results = self.result_repository.list_by_rider_id(
+            rider.id
+        )
 
         return RiderCareer(
             rider=rider,
+            results=results,
+        )
+
+    def get_competition_report(
+        self,
+        iwwf_id: str,
+    ) -> CompetitionReport | None:
+        """Retourne une compétition accompagnée de ses résultats."""
+        competition = (
+            self.competition_repository.get_by_iwwf_id(iwwf_id)
+        )
+
+        if competition is None:
+            return None
+
+        results = (
+            self.result_repository.list_by_competition_id(
+                competition.id
+            )
+        )
+
+        return CompetitionReport(
+            competition=competition,
             results=results,
         )

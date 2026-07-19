@@ -5,29 +5,17 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from observatoire.models.competition import Competition
+from observatoire.models.rider import Rider
 
 
 @dataclass(slots=True)
 class Result:
-    """Résultat obtenu par un rider lors d'un tour de compétition."""
+    """Résultat obtenu par un rider lors d'une compétition."""
 
     id: int
-    rider_id: int
     competition: Competition
+    rider: Rider
     discipline: str
     tour: str
     score: str
     document_url: str | None = None
-
-    @property
-    def competition_id(self) -> int:
-        """Retourne l'identifiant interne de la compétition."""
-        return self.competition.id
-
-    def __str__(self) -> str:
-        return (
-            f"{self.competition.nom} — "
-            f"{self.discipline} — "
-            f"{self.tour} — "
-            f"{self.score}"
-        )

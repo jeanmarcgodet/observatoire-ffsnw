@@ -7,17 +7,22 @@ from dataclasses import dataclass
 
 @dataclass(slots=True)
 class Rider:
-    """Représentation métier d'un sportif."""
+    """Rider enregistré dans l'observatoire."""
 
     id: int
     iwwf_id: str
     nom: str
     prenom: str
+    nation: str | None = None
+    annee_naissance: int | None = None
+    sexe: str | None = None
 
     @property
     def nom_complet(self) -> str:
-        """Retourne le prénom suivi du nom."""
+        """Retourne le prénom et le nom du rider."""
         return f"{self.prenom} {self.nom}".strip()
 
-    def __str__(self) -> str:
+    @property
+    def full_name(self) -> str:
+        """Alias anglophone de nom_complet."""
         return self.nom_complet
