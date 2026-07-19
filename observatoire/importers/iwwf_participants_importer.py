@@ -2,7 +2,10 @@ import sqlite3
 from pathlib import Path
 
 from observatoire.config import DATABASE_FILE
-from observatoire.importers.iwwf_participants import parse_participants
+from observatoire.importers.iwwf_participants import (
+    parse_competition_metadata,
+    parse_participants,
+)
 
 
 def import_participants(
@@ -10,7 +13,9 @@ def import_participants(
     html_file: Path,
 ) -> tuple[int, int]:
     participants = parse_participants(html_file)
-
+    metadata = parse_competition_metadata(
+        html_file.parent / "index.html"
+    )
     riders_imported = 0
     entries_imported = 0
 
@@ -22,17 +27,28 @@ def import_participants(
             INSERT INTO competitions (
                 iwwf_id,
                 nom,
+                date_debut,
+                date_fin,
+                ville,
                 discipline
             )
-            VALUES (?, ?, ?)
-            ON CONFLICT(iwwf_id) DO NOTHING
-            """,
-            (
-                competition_code,
-                competition_code,
-                "classic",
-            ),
-        )
+            VALUES (?, ?, ?, ?, ?, ?)
+            ON CONFLICT(iwwf_id) DO UPDATE SET
+                nom = excluded.nom,
+                date_debut = excluded.date_debut,
+                date_fin = excluded.date_fin,
+                ville = excluded.ville,
+                discipline = excluded.discipline
+        """,
+        (
+            competition_code,
+            metadata.nom,
+            metadata.date_debut,
+            metadata.date_fin,
+            metadata.lieu,
+            "classic",
+        ),
+    )
 
         competition_row = connection.execute(
             """
@@ -63,16 +79,18 @@ def import_participants(
                     nation,
                     annee_naissance
                 )
-                VALUES (?, ?, NULL, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?)
                 ON CONFLICT(iwwf_id) DO UPDATE SET
                     nom = excluded.nom,
+                    prenom = excluded.prenom,
                     sexe = excluded.sexe,
                     nation = excluded.nation,
                     annee_naissance = excluded.annee_naissance
                 """,
                 (
                     participant.iwwf_id,
-                    participant.nom_complet,
+                    participant.nom,
+                    participant.prenom,
                     participant.sexe,
                     participant.nation,
                     participant.annee_naissance,
