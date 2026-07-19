@@ -6,6 +6,7 @@ import sqlite3
 from pathlib import Path
 
 from observatoire.config import DATABASE_FILE
+from observatoire.models import Rider
 from observatoire.repositories.base import BaseRepository
 
 
@@ -22,8 +23,21 @@ class RiderRepository(BaseRepository):
             connection=connection,
         )
 
-    def get_by_id(self, rider_id: int) -> sqlite3.Row | None:
-        return self.fetch_one(
+    @staticmethod
+    def _to_model(row: sqlite3.Row | None) -> Rider | None:
+        """Convertit une ligne SQLite en objet Rider."""
+        if row is None:
+            return None
+
+        return Rider(
+            id=int(row["id"]),
+            iwwf_id=row["iwwf_id"] or "",
+            nom=row["nom"] or "",
+            prenom=row["prenom"] or "",
+        )
+
+    def get_by_id(self, rider_id: int) -> Rider | None:
+        row = self.fetch_one(
             """
             SELECT
                 id,
@@ -36,8 +50,10 @@ class RiderRepository(BaseRepository):
             (rider_id,),
         )
 
-    def get_by_iwwf_id(self, iwwf_id: str) -> sqlite3.Row | None:
-        return self.fetch_one(
+        return self._to_model(row)
+
+    def get_by_iwwf_id(self, iwwf_id: str) -> Rider | None:
+        row = self.fetch_one(
             """
             SELECT
                 id,
@@ -50,7 +66,9 @@ class RiderRepository(BaseRepository):
             (iwwf_id.strip(),),
         )
 
-    def search(self, query: str, limit: int = 20) -> list[sqlite3.Row]:
+        return self._to_model(row)
+
+    def search(self, query: str, limit: int = 20) -> list[Rider]:
         normalized_query = query.strip()
 
         if not normalized_query:
@@ -61,7 +79,7 @@ class RiderRepository(BaseRepository):
 
         pattern = f"%{normalized_query}%"
 
-        return self.fetch_all(
+        rows = self.fetch_all(
             """
             SELECT
                 id,
@@ -94,6 +112,16 @@ class RiderRepository(BaseRepository):
                 limit,
             ),
         )
+
+        riders: list[Rider] = []
+
+        for row in rows:
+            rider = self._to_model(row)
+
+            if rider is not None:
+                riders.append(rider)
+
+        return riders
 
     def count(self) -> int:
         row = self.fetch_one(
