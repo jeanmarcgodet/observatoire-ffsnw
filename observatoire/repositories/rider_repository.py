@@ -1,4 +1,4 @@
-"""Accès aux données des sportifs."""
+﻿"""Accès aux données des sportifs."""
 
 from __future__ import annotations
 
