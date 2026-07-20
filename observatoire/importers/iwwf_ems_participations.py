@@ -12,6 +12,17 @@ EMS_PARTICIPATIONS_URL = (
     "Competitions/GetCompetitionParticipations"
 )
 
+CATEGORY_NORMALIZATIONS = {
+    "Ope": "Open",
+    "OPEN": "Open",
+    "open": "Open",
+    "-21": "U21",
+    "u21": "U21",
+    "-18": "U18",
+    "u18": "U18",
+    "-14": "U14",
+    "u14": "U14",
+}
 
 @dataclass(frozen=True)
 class EmsDisciplineEntry:
@@ -73,6 +84,13 @@ def fetch_competition_participations(
 
     return payload
 
+def normalize_category(value: str) -> str:
+    cleaned = " ".join(value.strip().split())
+
+    return CATEGORY_NORMALIZATIONS.get(
+        cleaned,
+        cleaned,
+    )
 
 def parse_category(
     raw_category: str,
@@ -81,12 +99,14 @@ def parse_category(
     match = CATEGORY_PATTERN.match(value)
 
     if match is None:
-        return value, None, None
+        return normalize_category(value), None, None
 
     age_text = match.group("age")
 
     return (
-        match.group("categorie").strip(),
+        normalize_category(
+            match.group("categorie")
+        ),
         match.group("sexe"),
         int(age_text) if age_text else None,
     )
