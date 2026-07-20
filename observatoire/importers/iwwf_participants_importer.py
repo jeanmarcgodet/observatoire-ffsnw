@@ -124,12 +124,7 @@ def import_participants(
                 discipline
             )
             VALUES (?, ?, ?, ?, ?, ?)
-            ON CONFLICT(iwwf_id) DO UPDATE SET
-                nom = excluded.nom,
-                date_debut = excluded.date_debut,
-                date_fin = excluded.date_fin,
-                ville = excluded.ville,
-                discipline = excluded.discipline
+            ON CONFLICT(iwwf_id) DO NOTHING
             """,
             (
                 competition_code,
