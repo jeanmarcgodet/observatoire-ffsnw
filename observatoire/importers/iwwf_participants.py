@@ -173,18 +173,9 @@ def parse_startlist_participants(
     """
     Extrait les participants d'une page IWWF *_startlist.html.
 
-    Les startlists ont généralement les colonnes suivantes :
-
-        rang
-        ordre
-        ...
-        Name
-        League
-        Categ.
-        Score
-
-    Les indices peuvent varier. Les colonnes sont donc identifiées
-    à partir de la ligne d'en-tête.
+    Lorsque la page ne contient pas de colonne Categ.,
+    la cat?gorie et ?ventuellement le sexe sont d?duits
+    du nom du fichier.
     """
     html = html_file.read_text(
         encoding="utf-8",
@@ -193,13 +184,66 @@ def parse_startlist_participants(
 
     soup = BeautifulSoup(html, "html.parser")
 
+    category_prefixes = {
+        "10": "U10",
+        "12": "U12",
+        "14": "U14",
+        "17": "U17",
+        "18": "U18",
+        "21": "U21",
+        "35": "35+",
+        "45": "45+",
+        "55": "55+",
+        "65": "65+",
+        "70": "70+",
+        "75": "75+",
+        "80": "80+",
+        "85": "85+",
+    }
+
+    filename_parts = (
+        html_file.stem
+        .lower()
+        .split("_")
+    )
+
+    inferred_category: str | None = None
+    inferred_sex = ""
+
+    if filename_parts:
+        first = filename_parts[0]
+        second = (
+            filename_parts[1]
+            if len(filename_parts) > 1
+            else ""
+        )
+
+        # Les fichiers 65_70_75_* ou
+        # 35_45_55_* regroupent plusieurs cat?gories :
+        # aucune cat?gorie individuelle n'est alors d?duite.
+        categories_in_filename = {
+            part
+            for part in filename_parts
+            if part in category_prefixes
+        }
+
+        grouped_categories = (
+            len(categories_in_filename) > 1
+        )
+
+        if (
+            first in category_prefixes
+            and not grouped_categories
+        ):
+            inferred_category = category_prefixes[first]
+
+            if second in {"m", "f"}:
+                inferred_sex = second.upper()
+
     participant_table = None
     header_row = None
     headers: list[str] = []
 
-    # Il existe souvent une grande table enveloppe contenant la vraie
-    # table de départ. On ne considère que les lignes appartenant
-    # directement à chaque table.
     for table in soup.find_all("table"):
         direct_rows = [
             row
@@ -215,7 +259,10 @@ def parse_startlist_participants(
 
             row_headers = [
                 " ".join(
-                    cell.get_text(" ", strip=True).split()
+                    cell.get_text(
+                        " ",
+                        strip=True,
+                    ).split()
                 )
                 for cell in cells
             ]
@@ -236,7 +283,13 @@ def parse_startlist_participants(
                 for header in normalized_headers
             )
 
-            if has_name and has_category:
+            if (
+                has_name
+                and (
+                    has_category
+                    or inferred_category is not None
+                )
+            ):
                 participant_table = table
                 header_row = row
                 headers = row_headers
@@ -245,7 +298,10 @@ def parse_startlist_participants(
         if participant_table is not None:
             break
 
-    if participant_table is None or header_row is None:
+    if (
+        participant_table is None
+        or header_row is None
+    ):
         return []
 
     normalized_headers = [
@@ -256,23 +312,27 @@ def parse_startlist_participants(
     name_index = normalized_headers.index("name")
 
     category_index = next(
-        index
-        for index, header in enumerate(normalized_headers)
-        if header in {
-            "categ.",
-            "categ",
-            "category",
-        }
+        (
+            index
+            for index, header
+            in enumerate(normalized_headers)
+            if header in {
+                "categ.",
+                "categ",
+                "category",
+            }
+        ),
+        None,
     )
 
     rows = [
         row
         for row in participant_table.find_all("tr")
-        if row.find_parent("table") is participant_table
+        if row.find_parent("table")
+        is participant_table
     ]
 
     header_position = rows.index(header_row)
-
     participants: list[Participant] = []
 
     for row in rows[header_position + 1 :]:
@@ -281,7 +341,12 @@ def parse_startlist_participants(
             recursive=False,
         )
 
-        if len(cells) <= max(name_index, category_index):
+        required_indexes = [name_index]
+
+        if category_index is not None:
+            required_indexes.append(category_index)
+
+        if len(cells) <= max(required_indexes):
             continue
 
         name_cell = cells[name_index]
@@ -296,7 +361,10 @@ def parse_startlist_participants(
             continue
 
         nom_complet = " ".join(
-            link.get_text(" ", strip=True).split()
+            link.get_text(
+                " ",
+                strip=True,
+            ).split()
         )
 
         if not nom_complet:
@@ -306,25 +374,43 @@ def parse_startlist_participants(
             nom_complet
         )
 
-        categorie_sexe = " ".join(
-            cells[category_index]
-            .get_text(" ", strip=True)
-            .split()
-        )
+        if category_index is not None:
+            categorie_sexe = " ".join(
+                cells[category_index]
+                .get_text(
+                    " ",
+                    strip=True,
+                )
+                .split()
+            )
 
-        parts = categorie_sexe.rsplit(" ", 1)
+            parts = categorie_sexe.rsplit(
+                " ",
+                1,
+            )
 
-        if len(parts) == 2:
-            categorie, sexe = parts
+            if (
+                len(parts) == 2
+                and parts[1].strip().upper()
+                in {"M", "F"}
+            ):
+                categorie = parts[0]
+                sexe = parts[1]
+            else:
+                categorie = categorie_sexe
+                sexe = inferred_sex
         else:
-            categorie = categorie_sexe
-            sexe = ""
+            categorie = inferred_category or ""
+            sexe = inferred_sex
 
-        categorie = normalize_category(categorie)
+        categorie = normalize_category(
+            categorie
+        )
         sexe = sexe.strip().upper()
 
-        # La startlist indique la ligue mais pas nécessairement
-        # la nationalité. Elle est déduite de l'identifiant IWWF.
+        if not categorie:
+            continue
+
         nation = (
             iwwf_id[:3]
             if len(iwwf_id) >= 3
@@ -344,6 +430,7 @@ def parse_startlist_participants(
         )
 
     return participants
+
 
 def parse_competition_metadata(
     html_file: Path,

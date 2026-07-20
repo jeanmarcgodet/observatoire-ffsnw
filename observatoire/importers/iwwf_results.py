@@ -221,66 +221,56 @@ def find_category_cell_index(
 def is_results_header(
     headers: list[str],
 ) -> bool:
-    normalized = [
-        normalize_header(value)
-        for value in headers
+    """
+    Reconna?t une ligne d'en-t?te de r?sultats IWWF.
+
+    Certaines pages anciennes ne contiennent ni colonne
+    de cat?gorie ni colonne de ligue. La pr?sence de Name
+    et d'au moins une colonne de score suffit alors.
+    """
+    normalized_headers = [
+        " ".join(
+            header
+            .replace("\xa0", " ")
+            .strip()
+            .lower()
+            .split()
+        )
+        for header in headers
     ]
 
-    if "name" not in normalized:
-        return False
-
-    category_headers = {
-        "categ.",
-        "categ",
-        "category",
-    }
-
-    origin_headers = {
-        "league",
-        "federation",
-        "nation",
-        "country",
-    }
-
-    has_category = any(
-        header in category_headers
-        for header in normalized
-    )
-
-    has_origin = any(
-        header in origin_headers
-        for header in normalized
-    )
-
-    if not has_category and not has_origin:
+    if "name" not in normalized_headers:
         return False
 
     metadata_headers = {
         "",
+        "rank",
+        "ranking",
+        "place",
+        "position",
         "name",
         "league",
-        "federation",
+        "origin",
         "nation",
-        "country",
         "categ.",
         "categ",
         "category",
-        "rank",
-        "rang",
-        "place",
-        "points",
-        "total",
         "overall",
-        "remark",
-        "remarks",
-        "comment",
-        "comments",
+        "total",
+        "points",
     }
 
-    return any(
-        header not in metadata_headers
-        for header in normalized
-    )
+    score_headers = [
+        header
+        for header in normalized_headers
+        if (
+            header not in metadata_headers
+            and not header.startswith("overall")
+        )
+    ]
+
+    return bool(score_headers)
+
 
 
 

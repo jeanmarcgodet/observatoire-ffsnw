@@ -194,7 +194,7 @@ def import_participants(
                     participant.iwwf_id,
                     participant.nom,
                     participant.prenom,
-                    participant.sexe,
+                    participant.sexe or None,
                     participant.nation,
                     participant.annee_naissance,
                 ),
