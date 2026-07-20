@@ -248,6 +248,12 @@ def get_classement_from_filename(
     if stem == "all_slalom_results_45":
         return "45+/55+ Men"
 
+    if stem.startswith("21_m_men_"):
+        return "U21/Open Men"
+
+    if stem.startswith("21_f_women_"):
+        return "U21/Open Women"
+
     if stem.startswith("all_skiers_"):
         return "All Skiers"
 
