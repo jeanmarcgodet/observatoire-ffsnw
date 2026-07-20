@@ -245,6 +245,9 @@ def get_classement_from_filename(
         .removesuffix("_results")
     )
 
+    if stem == "all_slalom_results_45":
+        return "45+/55+ Men"
+
     if stem.startswith("all_skiers_"):
         return "All Skiers"
 
@@ -427,6 +430,21 @@ def find_result_files(
         *directory.glob("*_results_fra.html"),
         *directory.glob("*_results_gbr.html"),
     }
+
+    # Classement officiel Seniors 2026 dont le suffixe
+    # ne suit pas la convention habituelle *_results.html.
+    combined_senior_file = (
+        directory / "all_slalom_results_45.html"
+    )
+
+    if combined_senior_file.exists():
+        candidates.add(combined_senior_file)
+
+    # Le fichier *_hf correspond au classement
+    # hors Championnat de France et reste exclu.
+    candidates.discard(
+        directory / "all_slalom_results_hf.html"
+    )
 
     groups: dict[str, list[Path]] = {}
 

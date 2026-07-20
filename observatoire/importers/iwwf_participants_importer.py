@@ -37,6 +37,63 @@ def find_participant_files(
     return files
 
 
+
+def find_hors_championnat_only_iwwf_ids(
+    competition_directory: Path,
+) -> set[str]:
+    """
+    Identifie les riders pr?sents uniquement dans une page
+    de r?sultats ? hors Championnat de France ?.
+
+    Un rider ?galement pr?sent dans un classement officiel
+    reste conserv?.
+    """
+    import re
+
+    from observatoire.importers.iwwf_results_importer import (
+        find_result_files,
+    )
+
+    skier_pattern = re.compile(
+        r"[?&]skier=([A-Z]{3}\d+)",
+        re.IGNORECASE,
+    )
+
+    def extract_ids(html_file: Path) -> set[str]:
+        html = html_file.read_text(
+            encoding="utf-8",
+            errors="ignore",
+        )
+
+        return {
+            match.upper()
+            for match in skier_pattern.findall(html)
+        }
+
+    hors_files = sorted(
+        competition_directory.glob(
+            "*_results_hf.html"
+        )
+    )
+
+    if not hors_files:
+        return set()
+
+    hors_ids: set[str] = set()
+
+    for html_file in hors_files:
+        hors_ids.update(extract_ids(html_file))
+
+    official_ids: set[str] = set()
+
+    for html_file in find_result_files(
+        competition_directory
+    ):
+        official_ids.update(extract_ids(html_file))
+
+    return hors_ids - official_ids
+
+
 def merge_participants(
     participant_files: list[Path],
 ) -> list[Participant]:
@@ -103,6 +160,20 @@ def import_participants(
     )
 
     participants = merge_participants(participant_files)
+
+    hors_championnat_ids = (
+        find_hors_championnat_only_iwwf_ids(
+            competition_directory
+        )
+    )
+
+    if hors_championnat_ids:
+        participants = [
+            participant
+            for participant in participants
+            if participant.iwwf_id
+            not in hors_championnat_ids
+        ]
 
     metadata = parse_competition_metadata(
         competition_directory / "index.html"
