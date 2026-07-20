@@ -6,12 +6,15 @@ from urllib.parse import parse_qs, urlparse
 from bs4 import BeautifulSoup
 
 
-CATEGORY_MAP = {
-    "Ope": "Open",
-    "-21": "U21",
-    "-18": "U18",
-    "-14": "U14",
-}
+CATEGORY_MAP = {'Ope': 'Open',
+ '-21': 'U21',
+ '-18': 'U18',
+ '-14': 'U14',
+ 'OPEN': 'Open',
+ 'open': 'Open',
+ '-10': 'U10',
+ '-12': 'U12',
+ '-17': 'U17'}
 
 
 @dataclass
