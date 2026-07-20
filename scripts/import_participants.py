@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import argparse
 from pathlib import Path
@@ -42,7 +42,9 @@ def normalize_competition_code(value: str) -> str:
         competition_code = competition_code[2:]
 
     if not competition_code:
-        raise ValueError("Le code de compétition ne peut pas être vide.")
+        raise ValueError(
+            "Le code de compétition ne peut pas être vide."
+        )
 
     return competition_code
 
