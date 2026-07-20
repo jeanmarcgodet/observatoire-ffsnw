@@ -221,7 +221,19 @@ def find_category_cell_index(
 def is_results_header(
     headers: list[str],
 ) -> bool:
-    normalized = [normalize_header(value) for value in headers]
+    normalized = [
+        normalize_header(value)
+        for value in headers
+    ]
+
+    if "name" not in normalized:
+        return False
+
+    category_headers = {
+        "categ.",
+        "categ",
+        "category",
+    }
 
     origin_headers = {
         "league",
@@ -230,10 +242,17 @@ def is_results_header(
         "country",
     }
 
-    if "name" not in normalized:
-        return False
+    has_category = any(
+        header in category_headers
+        for header in normalized
+    )
 
-    if not any(header in origin_headers for header in normalized):
+    has_origin = any(
+        header in origin_headers
+        for header in normalized
+    )
+
+    if not has_category and not has_origin:
         return False
 
     metadata_headers = {
@@ -258,7 +277,11 @@ def is_results_header(
         "comments",
     }
 
-    return any(header not in metadata_headers for header in normalized)
+    return any(
+        header not in metadata_headers
+        for header in normalized
+    )
+
 
 
 def find_results_table(
@@ -370,7 +393,9 @@ def parse_results_file(
     path = Path(html_file)
 
     if not path.exists():
-        raise FileNotFoundError(f"Fichier introuvable : {path}")
+        raise FileNotFoundError(
+            f"Fichier introuvable : {path}"
+        )
 
     html = path.read_text(
         encoding="utf-8",
@@ -384,10 +409,12 @@ def parse_results_file(
     header_row, headers = find_header_row(table)
 
     name_index = find_column(headers, {"name"})
-    league_index = find_column(
+
+    league_index = find_optional_column(
         headers,
         {"league", "federation", "nation", "country"},
     )
+
     category_index = find_optional_column(
         headers,
         {"categ.", "categ", "category"},
@@ -396,7 +423,11 @@ def parse_results_file(
     data_start_index = (
         category_index
         if category_index is not None
-        else league_index
+        else (
+            league_index
+            if league_index is not None
+            else name_index
+        )
     )
 
     score_columns = [
@@ -407,19 +438,20 @@ def parse_results_file(
 
     if not score_columns:
         raise RuntimeError(
-            f"Aucune colonne de score détectée dans {path.name}. "
-            f"En-têtes : {headers}"
+            "Aucune colonne de score détectée "
+            f"dans {path.name}. En-têtes : {headers}"
         )
 
     all_rows = table.find_all("tr")
     header_position = all_rows.index(header_row)
-
     parsed: list[IWWFResult] = []
 
-    for row in all_rows[header_position + 1:]:
+    for row in all_rows[header_position + 1 :]:
         cells = get_direct_cells(row)
 
-        required_indexes = [name_index, league_index]
+        required_indexes = [name_index]
+        if league_index is not None:
+            required_indexes.append(league_index)
         if category_index is not None:
             required_indexes.append(category_index)
 
@@ -428,7 +460,6 @@ def parse_results_file(
 
         name_cell = cells[name_index]
         rider_link = name_cell.find("a", href=True)
-
         if rider_link is None:
             continue
 
@@ -442,11 +473,15 @@ def parse_results_file(
         if not nom_complet:
             continue
 
-        rank_text = get_cell_text(cells, 0)
-        rang_classement = parse_integer(rank_text)
+        rang_classement = parse_integer(
+            get_cell_text(cells, 0)
+        )
 
-        ligue_raw = get_cell_text(cells, league_index)
-        ligue = ligue_raw.lstrip("*").strip() or None
+        if league_index is not None:
+            ligue_raw = get_cell_text(cells, league_index)
+            ligue = ligue_raw.lstrip("*").strip() or None
+        else:
+            ligue = None
 
         categorie: str | None = None
         sexe: str | None = None
@@ -457,13 +492,17 @@ def parse_results_file(
                 cells,
                 category_index,
             )
-            category_raw = get_cell_text(cells, actual_category_index)
-            categorie, sexe = split_category_and_sex(category_raw)
+            category_raw = get_cell_text(
+                cells,
+                actual_category_index,
+            )
+            categorie, sexe = split_category_and_sex(
+                category_raw
+            )
             column_shift = actual_category_index - category_index
 
         for column_index, tour in score_columns:
             actual_column_index = column_index + column_shift
-
             if actual_column_index >= len(cells):
                 continue
 
@@ -471,7 +510,6 @@ def parse_results_file(
             score = normalize_score(
                 score_cell.get_text(" ", strip=True)
             )
-
             if not score:
                 continue
 
@@ -499,4 +537,5 @@ def parse_results_file(
             )
 
     return parsed
+
 

@@ -59,69 +59,110 @@ def normalize_category(category: str) -> str:
     return CATEGORY_MAP.get(normalized, normalized)
 
 
-def parse_participants(html_file: Path) -> list[Participant]:
+def parse_participants(
+    html_file: Path,
+) -> list[Participant]:
     html = html_file.read_text(
         encoding="utf-8",
         errors="ignore",
     )
 
     soup = BeautifulSoup(html, "html.parser")
-
     participants: list[Participant] = []
 
-    for row in soup.find_all("tr"):
-        cells = row.find_all("td")
+    category_aliases = {
+        "Ope": "Open",
+        "OPEN": "Open",
+        "open": "Open",
+        "-10": "U10",
+        "-12": "U12",
+        "-14": "U14",
+        "-17": "U17",
+        "-18": "U18",
+        "-21": "U21",
+    }
 
-        if len(cells) < 5:
+    dataclass_fields = set(Participant.__dataclass_fields__)
+
+    for row in soup.find_all("tr"):
+        cells = row.find_all("td", recursive=False)
+
+        if len(cells) < 2:
             continue
 
-        link = cells[0].find("a", href=True)
+        link = cells[0].find("a", href=True, recursive=False)
 
         if link is None:
             continue
 
-        iwwf_id = extract_iwwf_id(link["href"])
+        iwwf_id = extract_iwwf_id(link.get("href"))
 
         if iwwf_id is None:
             continue
 
-        nom_complet = link.get_text(" ", strip=True)
-        nom, prenom = split_participant_name(nom_complet)
+        full_name = " ".join(link.get_text(" ", strip=True).split())
 
-        nation = cells[1].get_text(" ", strip=True).lstrip("*")
+        if not full_name:
+            continue
 
-        categorie_sexe = cells[3].get_text(" ", strip=True)
-        parts = categorie_sexe.rsplit(" ", 1)
+        values = [" ".join(cell.get_text(" ", strip=True).split()) for cell in cells]
 
-        if len(parts) == 2:
-            categorie, sexe = parts
-        else:
-            categorie = categorie_sexe
-            sexe = ""
+        raw_category: str | None = None
+        sexe: str | None = None
 
-        categorie = normalize_category(categorie)
-        sexe = sexe.strip()
+        for value in values[1:6]:
+            parts = value.rsplit(" ", maxsplit=1)
 
-        annee_text = cells[4].get_text(" ", strip=True)
+            if len(parts) != 2:
+                continue
 
-        try:
-            annee_naissance = int(annee_text)
-        except ValueError:
-            annee_naissance = None
+            candidate_category = parts[0].strip()
+            candidate_sex = parts[1].strip().upper()
 
-        participants.append(
-            Participant(
-                iwwf_id=iwwf_id,
-                nom=nom,
-                prenom=prenom,
-                nation=nation,
-                categorie=categorie,
-                sexe=sexe,
-                annee_naissance=annee_naissance,
-            )
+            if candidate_category and candidate_sex in {"M", "F"}:
+                raw_category = candidate_category
+                sexe = candidate_sex
+                break
+
+        if raw_category is None:
+            continue
+
+        categorie = category_aliases.get(raw_category, raw_category)
+
+        annee_naissance: int | None = None
+
+        for value in values[1:7]:
+            if len(value) == 4 and value.isdigit():
+                year = int(value)
+                if 1900 <= year <= 2100:
+                    annee_naissance = year
+                    break
+
+        nation = (
+            iwwf_id[:3].upper()
+            if len(iwwf_id) >= 3 and iwwf_id[:3].isalpha()
+            else ""
         )
 
+        kwargs = {
+            "iwwf_id": iwwf_id,
+            "nation": nation,
+            "categorie": categorie,
+            "sexe": sexe,
+            "annee_naissance": annee_naissance,
+        }
+
+        if "nom_complet" in dataclass_fields:
+            kwargs["nom_complet"] = full_name
+        else:
+            nom, separator, prenom = full_name.partition(" ")
+            kwargs["nom"] = nom
+            kwargs["prenom"] = prenom if separator else ""
+
+        participants.append(Participant(**kwargs))
+
     return participants
+
 
 def parse_startlist_participants(
     html_file: Path,

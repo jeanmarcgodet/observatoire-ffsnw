@@ -245,6 +245,12 @@ def get_classement_from_filename(
         .removesuffix("_results")
     )
 
+    if stem.startswith("all_skiers_"):
+        return "All Skiers"
+
+    if stem.startswith("70_m_75_m_"):
+        return "70+/75+ Men"
+
     if stem.startswith(("allm_", "men_")):
         return "Open Men"
 
@@ -284,6 +290,7 @@ def get_classement_from_filename(
         return categorie
 
     return stem
+
 
 
 def get_or_create_result(
