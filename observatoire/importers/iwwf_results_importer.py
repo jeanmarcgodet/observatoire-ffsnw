@@ -121,6 +121,12 @@ def get_classement_from_filename(
     if stem.startswith("21_"):
         return "U21"
 
+    if stem.startswith("men_"):
+        return "Open Men"
+
+    if stem.startswith("women_"):
+        return "Open Women"
+    
     return stem.removesuffix("_results")
 
 def get_or_create_result(
