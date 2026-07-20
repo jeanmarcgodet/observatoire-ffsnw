@@ -1,8 +1,17 @@
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
-from datetime import datetime
+
 from bs4 import BeautifulSoup
+
+
+CATEGORY_MAP = {
+    "Ope": "Open",
+    "-21": "U21",
+    "-18": "U18",
+    "-14": "U14",
+}
 
 
 @dataclass
@@ -34,6 +43,7 @@ def extract_iwwf_id(href: str) -> str | None:
 
     return values[0].strip() or None
 
+
 def split_participant_name(full_name: str) -> tuple[str, str]:
     parts = full_name.strip().split(" ", maxsplit=1)
 
@@ -41,6 +51,13 @@ def split_participant_name(full_name: str) -> tuple[str, str]:
         return parts[0], ""
 
     return parts[0], parts[1]
+
+
+def normalize_category(category: str) -> str:
+    normalized = category.strip()
+
+    return CATEGORY_MAP.get(normalized, normalized)
+
 
 def parse_participants(html_file: Path) -> list[Participant]:
     html = html_file.read_text(
@@ -82,6 +99,9 @@ def parse_participants(html_file: Path) -> list[Participant]:
             categorie = categorie_sexe
             sexe = ""
 
+        categorie = normalize_category(categorie)
+        sexe = sexe.strip()
+
         annee_text = cells[4].get_text(" ", strip=True)
 
         try:
@@ -103,7 +123,187 @@ def parse_participants(html_file: Path) -> list[Participant]:
 
     return participants
 
-def parse_competition_metadata(html_file: Path) -> CompetitionMetadata:
+def parse_startlist_participants(
+    html_file: Path,
+) -> list[Participant]:
+    """
+    Extrait les participants d'une page IWWF *_startlist.html.
+
+    Les startlists ont généralement les colonnes suivantes :
+
+        rang
+        ordre
+        ...
+        Name
+        League
+        Categ.
+        Score
+
+    Les indices peuvent varier. Les colonnes sont donc identifiées
+    à partir de la ligne d'en-tête.
+    """
+    html = html_file.read_text(
+        encoding="utf-8",
+        errors="ignore",
+    )
+
+    soup = BeautifulSoup(html, "html.parser")
+
+    participant_table = None
+    header_row = None
+    headers: list[str] = []
+
+    # Il existe souvent une grande table enveloppe contenant la vraie
+    # table de départ. On ne considère que les lignes appartenant
+    # directement à chaque table.
+    for table in soup.find_all("table"):
+        direct_rows = [
+            row
+            for row in table.find_all("tr")
+            if row.find_parent("table") is table
+        ]
+
+        for row in direct_rows:
+            cells = row.find_all(
+                ["th", "td"],
+                recursive=False,
+            )
+
+            row_headers = [
+                " ".join(
+                    cell.get_text(" ", strip=True).split()
+                )
+                for cell in cells
+            ]
+
+            normalized_headers = [
+                header.strip().lower()
+                for header in row_headers
+            ]
+
+            has_name = "name" in normalized_headers
+
+            has_category = any(
+                header in {
+                    "categ.",
+                    "categ",
+                    "category",
+                }
+                for header in normalized_headers
+            )
+
+            if has_name and has_category:
+                participant_table = table
+                header_row = row
+                headers = row_headers
+                break
+
+        if participant_table is not None:
+            break
+
+    if participant_table is None or header_row is None:
+        return []
+
+    normalized_headers = [
+        header.strip().lower()
+        for header in headers
+    ]
+
+    name_index = normalized_headers.index("name")
+
+    category_index = next(
+        index
+        for index, header in enumerate(normalized_headers)
+        if header in {
+            "categ.",
+            "categ",
+            "category",
+        }
+    )
+
+    rows = [
+        row
+        for row in participant_table.find_all("tr")
+        if row.find_parent("table") is participant_table
+    ]
+
+    header_position = rows.index(header_row)
+
+    participants: list[Participant] = []
+
+    for row in rows[header_position + 1 :]:
+        cells = row.find_all(
+            ["th", "td"],
+            recursive=False,
+        )
+
+        if len(cells) <= max(name_index, category_index):
+            continue
+
+        name_cell = cells[name_index]
+        link = name_cell.find("a", href=True)
+
+        if link is None:
+            continue
+
+        iwwf_id = extract_iwwf_id(link["href"])
+
+        if iwwf_id is None:
+            continue
+
+        nom_complet = " ".join(
+            link.get_text(" ", strip=True).split()
+        )
+
+        if not nom_complet:
+            continue
+
+        nom, prenom = split_participant_name(
+            nom_complet
+        )
+
+        categorie_sexe = " ".join(
+            cells[category_index]
+            .get_text(" ", strip=True)
+            .split()
+        )
+
+        parts = categorie_sexe.rsplit(" ", 1)
+
+        if len(parts) == 2:
+            categorie, sexe = parts
+        else:
+            categorie = categorie_sexe
+            sexe = ""
+
+        categorie = normalize_category(categorie)
+        sexe = sexe.strip().upper()
+
+        # La startlist indique la ligue mais pas nécessairement
+        # la nationalité. Elle est déduite de l'identifiant IWWF.
+        nation = (
+            iwwf_id[:3]
+            if len(iwwf_id) >= 3
+            else ""
+        )
+
+        participants.append(
+            Participant(
+                iwwf_id=iwwf_id,
+                nom=nom,
+                prenom=prenom,
+                nation=nation,
+                categorie=categorie,
+                sexe=sexe,
+                annee_naissance=None,
+            )
+        )
+
+    return participants
+
+def parse_competition_metadata(
+    html_file: Path,
+) -> CompetitionMetadata:
     html = html_file.read_text(
         encoding="utf-8",
         errors="ignore",
@@ -115,14 +315,17 @@ def parse_competition_metadata(html_file: Path) -> CompetitionMetadata:
     subtitle_element = soup.find("span", class_="SubTitle")
 
     nom = (
-        " ".join(title_element.get_text(" ", strip=True).split())
+        " ".join(
+            title_element.get_text(" ", strip=True).split()
+        )
         if title_element
         else html_file.parent.name
     )
 
-
     sous_titre = (
-        " ".join(subtitle_element.get_text(" ", strip=True).split())
+        " ".join(
+            subtitle_element.get_text(" ", strip=True).split()
+        )
         if subtitle_element
         else None
     )
@@ -130,10 +333,11 @@ def parse_competition_metadata(html_file: Path) -> CompetitionMetadata:
     lieu = None
     date_debut = None
     date_fin = None
+    date_parts: list[str] = []
 
     if sous_titre and " - " in sous_titre:
         lieu, dates = sous_titre.rsplit(" - ", 1)
-
+        lieu = lieu.strip()
         date_parts = dates.split("/", 1)
 
     if len(date_parts) == 2:

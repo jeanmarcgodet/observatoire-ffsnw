@@ -1,22 +1,113 @@
+from __future__ import annotations
+
 import sqlite3
 from pathlib import Path
 
 from observatoire.config import DATABASE_FILE
 from observatoire.importers.iwwf_participants import (
+    Participant,
     parse_competition_metadata,
     parse_participants,
+    parse_startlist_participants,
 )
+
+
+def find_participant_files(
+    competition_directory: Path,
+    main_html_file: Path,
+) -> list[Path]:
+    """
+    Retourne toutes les sources permettant d'identifier les participants :
+
+    - la liste générale des skieurs ;
+    - les listes de départ.
+
+    Certaines compétitions IWWF ont une liste générale incomplète.
+    Les startlists permettent alors de récupérer les concurrents manquants.
+    """
+    files: list[Path] = []
+
+    if main_html_file.exists():
+        files.append(main_html_file)
+
+    for path in sorted(competition_directory.glob("*_startlist.html")):
+        if path not in files:
+            files.append(path)
+
+    return files
+
+
+def merge_participants(
+    participant_files: list[Path],
+) -> list[Participant]:
+    """
+    Fusionne les participants provenant de plusieurs fichiers.
+
+    Une participation est identifiée par :
+        identifiant IWWF
+        catégorie
+        sexe
+    """
+    merged: dict[tuple[str, str, str], Participant] = {}
+
+    for html_file in participant_files:
+        if html_file.name.lower().endswith(
+            "_startlist.html"
+        ):
+            parser = parse_startlist_participants
+        else:
+            parser = parse_participants
+
+        for participant in parser(html_file):
+            key = (
+                participant.iwwf_id,
+                participant.categorie,
+                participant.sexe,
+            )
+
+            existing = merged.get(key)
+
+            if existing is None:
+                merged[key] = participant
+                continue
+
+            merged[key] = Participant(
+                iwwf_id=participant.iwwf_id,
+                nom=participant.nom or existing.nom,
+                prenom=participant.prenom or existing.prenom,
+                nation=participant.nation or existing.nation,
+                categorie=(
+                    participant.categorie
+                    or existing.categorie
+                ),
+                sexe=participant.sexe or existing.sexe,
+                annee_naissance=(
+                    participant.annee_naissance
+                    if participant.annee_naissance is not None
+                    else existing.annee_naissance
+                ),
+            )
+
+    return list(merged.values())
 
 
 def import_participants(
     competition_code: str,
     html_file: Path,
 ) -> tuple[int, int]:
-    participants = parse_participants(html_file)
-    metadata = parse_competition_metadata(
-        html_file.parent / "index.html"
+    competition_directory = html_file.parent
+
+    participant_files = find_participant_files(
+        competition_directory=competition_directory,
+        main_html_file=html_file,
     )
-    riders_imported = 0
+
+    participants = merge_participants(participant_files)
+
+    metadata = parse_competition_metadata(
+        competition_directory / "index.html"
+    )
+
     entries_imported = 0
 
     with sqlite3.connect(DATABASE_FILE) as connection:
@@ -39,16 +130,16 @@ def import_participants(
                 date_fin = excluded.date_fin,
                 ville = excluded.ville,
                 discipline = excluded.discipline
-        """,
-        (
-            competition_code,
-            metadata.nom,
-            metadata.date_debut,
-            metadata.date_fin,
-            metadata.lieu,
-            "classic",
-        ),
-    )
+            """,
+            (
+                competition_code,
+                metadata.nom,
+                metadata.date_debut,
+                metadata.date_fin,
+                metadata.lieu,
+                "classic",
+            ),
+        )
 
         competition_row = connection.execute(
             """
@@ -64,11 +155,9 @@ def import_participants(
                 f"Compétition introuvable : {competition_code}"
             )
 
-        competition_id = competition_row[0]
+        competition_id = int(competition_row[0])
 
         for participant in participants:
-            # La page ne distingue pas sans ambiguïté nom et prénom.
-            # On conserve donc provisoirement le nom complet dans `nom`.
             connection.execute(
                 """
                 INSERT INTO riders (
@@ -81,11 +170,30 @@ def import_participants(
                 )
                 VALUES (?, ?, ?, ?, ?, ?)
                 ON CONFLICT(iwwf_id) DO UPDATE SET
-                    nom = excluded.nom,
-                    prenom = excluded.prenom,
-                    sexe = excluded.sexe,
-                    nation = excluded.nation,
-                    annee_naissance = excluded.annee_naissance
+                    nom = CASE
+                        WHEN excluded.nom <> ''
+                        THEN excluded.nom
+                        ELSE riders.nom
+                    END,
+                    prenom = CASE
+                        WHEN excluded.prenom <> ''
+                        THEN excluded.prenom
+                        ELSE riders.prenom
+                    END,
+                    sexe = CASE
+                        WHEN excluded.sexe <> ''
+                        THEN excluded.sexe
+                        ELSE riders.sexe
+                    END,
+                    nation = CASE
+                        WHEN excluded.nation <> ''
+                        THEN excluded.nation
+                        ELSE riders.nation
+                    END,
+                    annee_naissance = COALESCE(
+                        excluded.annee_naissance,
+                        riders.annee_naissance
+                    )
                 """,
                 (
                     participant.iwwf_id,
@@ -111,11 +219,9 @@ def import_participants(
                     f"Rider introuvable : {participant.iwwf_id}"
                 )
 
-            rider_id = rider_row[0]
+            rider_id = int(rider_row[0])
 
-            rider_changes_before = connection.total_changes
-
-            connection.execute(
+            cursor = connection.execute(
                 """
                 INSERT INTO entries (
                     competition_id,
@@ -136,16 +242,22 @@ def import_participants(
                 ),
             )
 
-            if connection.total_changes > rider_changes_before:
+            if cursor.rowcount == 1:
                 entries_imported += 1
 
-        riders_imported = connection.execute(
+        riders_imported_row = connection.execute(
             """
             SELECT COUNT(DISTINCT rider_id)
             FROM entries
             WHERE competition_id = ?
             """,
             (competition_id,),
-        ).fetchone()[0]
+        ).fetchone()
+
+        riders_imported = (
+            int(riders_imported_row[0])
+            if riders_imported_row is not None
+            else 0
+        )
 
     return riders_imported, entries_imported
