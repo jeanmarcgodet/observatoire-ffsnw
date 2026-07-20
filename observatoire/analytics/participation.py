@@ -16,13 +16,17 @@ class ParticipationSummary:
     competition_name: str
     competition_iwwf_id: str
 
-    registered_riders: int
+    local_registered_riders: int
+    confirmed_riders: int
+    unconfirmed_local_riders: int
+
     active_riders: int
     classified_riders: int
-    withdrawn_riders: int
+    withdrawn_confirmed_riders: int
 
-    participation_rate: float
+    effective_participation_rate: float
     classification_rate: float
+    local_confirmation_rate: float
 
     women: int
     men: int
@@ -41,6 +45,24 @@ class ParticipationSummary:
     average_disciplines: float
 
     @property
+    def registered_riders(self) -> int:
+        """
+        Alias conservé pour compatibilité.
+
+        La population statistique de référence est désormais constituée
+        des participants confirmés par l'EMS.
+        """
+        return self.confirmed_riders
+
+    @property
+    def withdrawn_riders(self) -> int:
+        return self.withdrawn_confirmed_riders
+
+    @property
+    def participation_rate(self) -> float:
+        return self.effective_participation_rate
+
+    @property
     def total_real_discipline_entries(self) -> int:
         return sum(self.disciplines.values())
 
@@ -49,8 +71,9 @@ class ParticipationAnalytics:
     """
     Indicateurs statistiques de participation.
 
-    Cette classe ne contient aucune requête SQL.
-    Toutes les données proviennent du repository.
+    Les indicateurs principaux portent sur les participants confirmés
+    par l'EMS. Les inscriptions locales non confirmées sont conservées
+    comme indicateur de qualité des données.
     """
 
     REAL_DISCIPLINES = {
@@ -85,88 +108,88 @@ class ParticipationAnalytics:
                 f"{competition_id}"
             )
 
-        riders = self.repository.riders_for_competition(
-            competition_id
+        local_riders = (
+            self.repository.riders_for_competition(
+                competition_id
+            )
         )
 
-        entries = self.repository.entries_for_competition(
-            competition_id
+        confirmed_riders = (
+            self.repository.confirmed_riders_for_competition(
+                competition_id
+            )
         )
 
-        active_ids = self.repository.active_rider_ids(
-            competition_id
+        unconfirmed_riders = (
+            self.repository.unconfirmed_local_riders(
+                competition_id
+            )
+        )
+
+        confirmed_ids = {
+            rider.id
+            for rider in confirmed_riders
+        }
+
+        active_ids = (
+            self.repository.active_rider_ids(
+                competition_id
+            )
+            & confirmed_ids
         )
 
         classified_ids = (
             self.repository.classified_rider_ids(
                 competition_id
             )
+            & confirmed_ids
         )
 
-        withdrawn = self.repository.withdrawn_riders(
-            competition_id
+        withdrawn_confirmed = [
+            rider
+            for rider in confirmed_riders
+            if rider.id not in active_ids
+        ]
+
+        category_counts = self._category_distribution(
+            competition_id,
+            confirmed_ids,
         )
 
-        category_counts = Counter(
-            self._normalized_category(
-                entry.categorie
-            )
-            for entry in entries
+        discipline_counts = self._discipline_distribution(
+            competition_id,
+            confirmed_ids,
         )
 
-        discipline_counts = Counter(
-            item.discipline
-            for item in (
-                self.repository
-                .entry_disciplines_for_competition(
-                    competition_id,
-                    include_overall=False,
-                )
-            )
-            if item.discipline in self.REAL_DISCIPLINES
-        )
-
-        multidiscipline_counts = Counter()
-
-        total_real_disciplines = 0
-
-        for _, disciplines in (
-            self.repository.iter_rider_disciplines(
+        multidiscipline_counts, total_real_disciplines = (
+            self._multidiscipline_distribution(
                 competition_id,
-                include_overall=False,
+                confirmed_riders,
             )
-        ):
-            real_disciplines = tuple(
-                discipline
-                for discipline in disciplines
-                if discipline in self.REAL_DISCIPLINES
-            )
+        )
 
-            discipline_count = len(real_disciplines)
+        sex_counts = self._sex_distribution(
+            confirmed_riders
+        )
 
-            multidiscipline_counts[
-                discipline_count
-            ] += 1
-
-            total_real_disciplines += (
-                discipline_count
-            )
-
-        sex_counts = self._sex_distribution(riders)
-
-        registered_count = len(riders)
+        local_count = len(local_riders)
+        confirmed_count = len(confirmed_riders)
         active_count = len(active_ids)
         classified_count = len(classified_ids)
-        withdrawn_count = len(withdrawn)
 
-        participation_rate = self._rate(
+        effective_participation_rate = self._rate(
             active_count,
-            registered_count,
+            confirmed_count,
         )
 
         classification_rate = self._rate(
             classified_count,
-            registered_count,
+            confirmed_count,
+        )
+
+        local_confirmation_rate = self._rate(
+            confirmed_count,
+            local_count,
         )
 
         women_count = sex_counts["F"]
@@ -182,7 +205,7 @@ class ParticipationAnalytics:
             reference_year = date.today().year
 
         ages, unknown_birth_year = self._ages(
-            riders,
+            confirmed_riders,
             reference_year,
         )
 
@@ -198,10 +221,10 @@ class ParticipationAnalytics:
         average_disciplines = (
             round(
                 total_real_disciplines
-                / registered_count,
+                / confirmed_count,
                 2,
             )
-            if registered_count
+            if confirmed_count
             else 0.0
         )
 
@@ -210,13 +233,25 @@ class ParticipationAnalytics:
             competition_name=competition.nom,
             competition_iwwf_id=competition.iwwf_id,
 
-            registered_riders=registered_count,
+            local_registered_riders=local_count,
+            confirmed_riders=confirmed_count,
+            unconfirmed_local_riders=len(
+                unconfirmed_riders
+            ),
+
             active_riders=active_count,
             classified_riders=classified_count,
-            withdrawn_riders=withdrawn_count,
+            withdrawn_confirmed_riders=len(
+                withdrawn_confirmed
+            ),
 
-            participation_rate=participation_rate,
+            effective_participation_rate=(
+                effective_participation_rate
+            ),
             classification_rate=classification_rate,
+            local_confirmation_rate=(
+                local_confirmation_rate
+            ),
 
             women=women_count,
             men=men_count,
@@ -231,15 +266,11 @@ class ParticipationAnalytics:
             categories=dict(
                 sorted(category_counts.items())
             ),
-
             disciplines=dict(
                 sorted(discipline_counts.items())
             ),
-
             multidiscipline=dict(
-                sorted(
-                    multidiscipline_counts.items()
-                )
+                sorted(multidiscipline_counts.items())
             ),
 
             average_disciplines=average_disciplines,
@@ -249,7 +280,27 @@ class ParticipationAnalytics:
         self,
         competition_id: int,
     ) -> list[RiderRecord]:
-        return self.repository.withdrawn_riders(
+        confirmed = (
+            self.repository.confirmed_riders_for_competition(
+                competition_id
+            )
+        )
+
+        active_ids = self.repository.active_rider_ids(
+            competition_id
+        )
+
+        return [
+            rider
+            for rider in confirmed
+            if rider.id not in active_ids
+        ]
+
+    def unconfirmed_local_riders(
+        self,
+        competition_id: int,
+    ) -> list[RiderRecord]:
+        return self.repository.unconfirmed_local_riders(
             competition_id
         )
 
@@ -257,18 +308,19 @@ class ParticipationAnalytics:
         self,
         competition_id: int,
     ) -> dict[str, int]:
-        entries = (
-            self.repository
-            .entries_for_competition(
-                competition_id
+        confirmed_ids = {
+            rider.id
+            for rider in (
+                self.repository
+                .confirmed_riders_for_competition(
+                    competition_id
+                )
             )
-        )
+        }
 
-        counts = Counter(
-            self._normalized_category(
-                entry.categorie
-            )
-            for entry in entries
+        counts = self._category_distribution(
+            competition_id,
+            confirmed_ids,
         )
 
         return dict(sorted(counts.items()))
@@ -279,6 +331,16 @@ class ParticipationAnalytics:
         *,
         include_overall: bool = False,
     ) -> dict[str, int]:
+        confirmed_ids = {
+            rider.id
+            for rider in (
+                self.repository
+                .confirmed_riders_for_competition(
+                    competition_id
+                )
+            )
+        }
+
         records = (
             self.repository
             .entry_disciplines_for_competition(
@@ -290,7 +352,8 @@ class ParticipationAnalytics:
         counts = Counter(
             record.discipline
             for record in records
-            if (
+            if record.rider_id in confirmed_ids
+            and (
                 include_overall
                 or record.discipline
                 in self.REAL_DISCIPLINES
@@ -303,23 +366,88 @@ class ParticipationAnalytics:
         self,
         competition_id: int,
     ) -> dict[int, int]:
-        counts: Counter[int] = Counter()
+        confirmed_riders = (
+            self.repository.confirmed_riders_for_competition(
+                competition_id
+            )
+        )
 
-        for _, disciplines in (
-            self.repository.iter_rider_disciplines(
+        counts, _ = self._multidiscipline_distribution(
+            competition_id,
+            confirmed_riders,
+        )
+
+        return dict(sorted(counts.items()))
+
+    def _category_distribution(
+        self,
+        competition_id: int,
+        confirmed_ids: set[int],
+    ) -> Counter[str]:
+        entries = self.repository.entries_for_competition(
+            competition_id
+        )
+
+        return Counter(
+            self._normalized_category(
+                entry.categorie
+            )
+            for entry in entries
+            if entry.rider_id in confirmed_ids
+        )
+
+    def _discipline_distribution(
+        self,
+        competition_id: int,
+        confirmed_ids: set[int],
+    ) -> Counter[str]:
+        records = (
+            self.repository
+            .entry_disciplines_for_competition(
                 competition_id,
                 include_overall=False,
             )
-        ):
+        )
+
+        return Counter(
+            record.discipline
+            for record in records
+            if record.rider_id in confirmed_ids
+            and record.discipline
+            in self.REAL_DISCIPLINES
+        )
+
+    def _multidiscipline_distribution(
+        self,
+        competition_id: int,
+        confirmed_riders: list[RiderRecord],
+    ) -> tuple[Counter[int], int]:
+        counts: Counter[int] = Counter()
+        total_real_disciplines = 0
+
+        for rider in confirmed_riders:
+            disciplines = (
+                self.repository.disciplines_for_rider(
+                    competition_id,
+                    rider.id,
+                    include_overall=False,
+                )
+            )
+
             real_disciplines = {
                 discipline
                 for discipline in disciplines
                 if discipline in self.REAL_DISCIPLINES
             }
 
-            counts[len(real_disciplines)] += 1
+            discipline_count = len(
+                real_disciplines
+            )
 
-        return dict(sorted(counts.items()))
+            counts[discipline_count] += 1
+            total_real_disciplines += discipline_count
+
+        return counts, total_real_disciplines
 
     @staticmethod
     def _sex_distribution(

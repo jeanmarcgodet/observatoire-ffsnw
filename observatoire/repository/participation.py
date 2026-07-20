@@ -203,6 +203,72 @@ class ParticipationRepository:
             for row in rows
         ]
 
+    def confirmed_riders_for_competition(
+        self,
+        competition_id: int,
+    ) -> list[RiderRecord]:
+        """
+        Retourne les sportifs dont la participation est confirmée
+        par les données EMS.
+
+        La présence d'au moins une ligne entry_disciplines de source
+        'ems' constitue la preuve de participation EMS.
+        """
+        with self.connect() as connection:
+            rows = connection.execute(
+                """
+                SELECT DISTINCT
+                    r.id,
+                    r.iwwf_id,
+                    r.ems_athlete_id,
+                    r.nom,
+                    r.prenom,
+                    r.sexe,
+                    r.nation,
+                    r.annee_naissance
+                FROM entry_disciplines ed
+                JOIN riders r
+                  ON r.id = ed.rider_id
+                WHERE ed.competition_id = ?
+                  AND ed.source = 'ems'
+                ORDER BY
+                    r.nom,
+                    r.prenom,
+                    r.id
+                """,
+                (competition_id,),
+            ).fetchall()
+
+        return [
+            self._rider_from_row(row)
+            for row in rows
+        ]
+
+    def unconfirmed_local_riders(
+        self,
+        competition_id: int,
+    ) -> list[RiderRecord]:
+        """
+        Retourne les sportifs présents dans entries mais absents
+        des participations EMS.
+        """
+        local_riders = self.riders_for_competition(
+            competition_id
+        )
+
+        confirmed_ids = {
+            rider.id
+            for rider in self.confirmed_riders_for_competition(
+                competition_id
+            )
+        }
+
+        return [
+            rider
+            for rider in local_riders
+            if rider.id not in confirmed_ids
+        ]
+
     def entries_for_competition(
         self,
         competition_id: int,
