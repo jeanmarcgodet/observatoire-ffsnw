@@ -248,6 +248,9 @@ def get_classement_from_filename(
     if stem.startswith("all_skiers_"):
         return "All Skiers"
 
+    if stem.startswith("65_m_70_m_75_m_"):
+        return "65+/70+/75+ Men"
+
     if stem.startswith("65_70_75_"):
         return "65+/70+/75+"
 
