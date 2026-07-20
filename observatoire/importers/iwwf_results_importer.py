@@ -268,7 +268,8 @@ def get_classement_from_filename(
     second = parts[1] if len(parts) > 1 else None
 
     categories = {
-        "10": "U10",
+        "8": "U8",
+            "10": "U10",
         "12": "U12",
         "14": "U14",
         "17": "U17",

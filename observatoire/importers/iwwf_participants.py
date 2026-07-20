@@ -6,15 +6,7 @@ from urllib.parse import parse_qs, urlparse
 from bs4 import BeautifulSoup
 
 
-CATEGORY_MAP = {'Ope': 'Open',
- '-21': 'U21',
- '-18': 'U18',
- '-14': 'U14',
- 'OPEN': 'Open',
- 'open': 'Open',
- '-10': 'U10',
- '-12': 'U12',
- '-17': 'U17'}
+CATEGORY_MAP = {'Ope': 'Open', '-21': 'U21', '-18': 'U18', '-14': 'U14', 'OPEN': 'Open', 'open': 'Open', '-10': 'U10', '-12': 'U12', '-17': 'U17', '-8': 'U8', '- 8': 'U8', '8': 'U8'}
 
 
 @dataclass
@@ -73,17 +65,18 @@ def parse_participants(
     soup = BeautifulSoup(html, "html.parser")
     participants: list[Participant] = []
 
-    category_aliases = {
-        "Ope": "Open",
-        "OPEN": "Open",
-        "open": "Open",
-        "-10": "U10",
-        "-12": "U12",
-        "-14": "U14",
-        "-17": "U17",
-        "-18": "U18",
-        "-21": "U21",
-    }
+    category_aliases = {'Ope': 'Open',
+     'OPEN': 'Open',
+     'open': 'Open',
+     '-10': 'U10',
+     '-12': 'U12',
+     '-14': 'U14',
+     '-17': 'U17',
+     '-18': 'U18',
+     '-21': 'U21',
+     '-8': 'U8',
+     '- 8': 'U8',
+     '8': 'U8'}
 
     dataclass_fields = set(Participant.__dataclass_fields__)
 
