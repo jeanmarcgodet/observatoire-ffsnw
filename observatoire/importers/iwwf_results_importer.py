@@ -83,6 +83,139 @@ def get_competition_id(
     return int(row[0])
 
 
+def normalize_category(
+    value: str | None,
+) -> str | None:
+    if value is None:
+        return None
+
+    normalized = value.strip()
+
+    if not normalized:
+        return None
+
+    aliases = {
+        "Ope": "Open",
+        "OPEN": "Open",
+        "open": "Open",
+        "-10": "U10",
+        "-12": "U12",
+        "-14": "U14",
+        "-17": "U17",
+        "-18": "U18",
+        "-21": "U21",
+        "u10": "U10",
+        "u12": "U12",
+        "u14": "U14",
+        "u17": "U17",
+        "u18": "U18",
+        "u21": "U21",
+    }
+
+    return aliases.get(
+        normalized,
+        aliases.get(
+            normalized.lower(),
+            normalized,
+        ),
+    )
+
+
+def get_entry_identity(
+    connection: sqlite3.Connection,
+    competition_id: int,
+    rider_id: int,
+) -> tuple[str | None, str | None]:
+    rows = connection.execute(
+        """
+        SELECT
+            e.categorie,
+            r.sexe
+        FROM entries e
+        JOIN riders r
+          ON r.id = e.rider_id
+        WHERE e.competition_id = ?
+          AND e.rider_id = ?
+        ORDER BY e.id
+        """,
+        (
+            competition_id,
+            rider_id,
+        ),
+    ).fetchall()
+
+    categories = {
+        category
+        for raw_category, _ in rows
+        if (
+            category := normalize_category(
+                raw_category
+            )
+        )
+    }
+
+    sexes = {
+        str(raw_sex).strip().upper()
+        for _, raw_sex in rows
+        if (
+            raw_sex is not None
+            and str(raw_sex).strip().upper()
+            in {"M", "F"}
+        )
+    }
+
+    categorie = (
+        next(iter(categories))
+        if len(categories) == 1
+        else None
+    )
+
+    sexe = (
+        next(iter(sexes))
+        if len(sexes) == 1
+        else None
+    )
+
+    return categorie, sexe
+
+
+def complete_result_identity(
+    connection: sqlite3.Connection,
+    competition_id: int,
+    rider_id: int,
+    result: IWWFResult,
+) -> IWWFResult:
+    entry_category, entry_sex = get_entry_identity(
+        connection,
+        competition_id,
+        rider_id,
+    )
+
+    categorie = normalize_category(
+        result.categorie
+        or entry_category
+    )
+
+    sexe = result.sexe or entry_sex
+
+    if sexe is not None:
+        sexe = sexe.strip().upper() or None
+
+    return IWWFResult(
+        iwwf_id=result.iwwf_id,
+        nom_complet=result.nom_complet,
+        ligue=result.ligue,
+        categorie=categorie,
+        sexe=sexe,
+        discipline=result.discipline,
+        tour=result.tour,
+        rang_classement=result.rang_classement,
+        score=result.score,
+        document_url=result.document_url,
+        fichier_source=result.fichier_source,
+    )
+
+
 def get_rider_id(
     connection: sqlite3.Connection,
     iwwf_id: str,
@@ -98,36 +231,60 @@ def get_rider_id(
 
     return int(row[0]) if row is not None else None
 
+
 def get_classement_from_filename(
     filename: str,
 ) -> str:
     """
-    Déduit le type de classement à partir du nom du fichier IWWF.
+    D?duit le classement ? partir du nom du fichier IWWF.
     """
-    stem = Path(filename).stem.lower()
+    stem = (
+        Path(filename)
+        .stem
+        .lower()
+        .removesuffix("_results")
+    )
 
-    if stem.startswith("allm_"):
+    if stem.startswith(("allm_", "men_")):
         return "Open Men"
 
-    if stem.startswith("allf_"):
+    if stem.startswith(("allf_", "women_")):
         return "Open Women"
 
-    if stem.startswith("21_m_"):
-        return "U21 Men"
+    parts = stem.split("_")
+    first = parts[0]
+    second = parts[1] if len(parts) > 1 else None
 
-    if stem.startswith("21_f_"):
-        return "U21 Women"
+    categories = {
+        "10": "U10",
+        "12": "U12",
+        "14": "U14",
+        "17": "U17",
+        "18": "U18",
+        "21": "U21",
+        "35": "35+",
+        "45": "45+",
+        "55": "55+",
+        "65": "65+",
+        "70": "70+",
+        "75": "75+",
+        "80": "80+",
+    }
 
-    if stem.startswith("21_"):
-        return "U21"
+    categorie = categories.get(first)
+    sexe = {
+        "m": "Men",
+        "f": "Women",
+    }.get(second)
 
-    if stem.startswith("men_"):
-        return "Open Men"
+    if categorie and sexe:
+        return f"{categorie} {sexe}"
 
-    if stem.startswith("women_"):
-        return "Open Women"
-    
-    return stem.removesuffix("_results")
+    if categorie:
+        return categorie
+
+    return stem
+
 
 def get_or_create_result(
     connection: sqlite3.Connection,
@@ -240,23 +397,60 @@ def insert_classification(
 
 
 def find_result_files(
-    competition_directory: Path,
+    competition_directory: str | Path,
 ) -> list[Path]:
     """
-    Écarte volontairement les pages de résultats live et les fichiers
-    qui ne correspondent pas à des résultats.
+    S?lectionne les pages de r?sultats.
+
+    Les variantes _fra et _gbr sont retenues uniquement
+    lorsqu'aucun fichier principal *_results.html
+    n'existe pour le m?me classement.
     """
-    files: list[Path] = []
+    directory = Path(competition_directory)
 
-    for path in competition_directory.glob("*_results.html"):
-        lower_name = path.name.lower()
+    candidates = {
+        *directory.glob("*_results.html"),
+        *directory.glob("*_results_fra.html"),
+        *directory.glob("*_results_gbr.html"),
+    }
 
-        if "live" in lower_name:
-            continue
+    groups: dict[str, list[Path]] = {}
 
-        files.append(path)
+    for candidate in candidates:
+        canonical_stem = candidate.stem.lower()
 
-    return sorted(files)
+        for suffix in ("_fra", "_gbr"):
+            if canonical_stem.endswith(suffix):
+                canonical_stem = canonical_stem[
+                    : -len(suffix)
+                ]
+                break
+
+        groups.setdefault(
+            canonical_stem,
+            [],
+        ).append(candidate)
+
+    selected: list[Path] = []
+
+    for canonical_stem, group in groups.items():
+        principal = [
+            candidate
+            for candidate in group
+            if candidate.stem.lower()
+            == canonical_stem
+        ]
+
+        if principal:
+            selected.extend(principal)
+        else:
+            selected.extend(group)
+
+    return sorted(
+        selected,
+        key=lambda candidate: candidate.name.lower(),
+    )
+
 
 
 def import_competition_results(
@@ -365,12 +559,19 @@ def import_competition_results(
 
                     continue
 
+                completed_result = complete_result_identity(
+                    connection,
+                    competition_id,
+                    rider_id,
+                    result,
+                )
+
                 try:
                     result_id, result_created = get_or_create_result(
                         connection,
                         competition_id,
                         rider_id,
-                        result,
+                        completed_result,
                     )
 
                     if result_created:
@@ -381,7 +582,7 @@ def import_competition_results(
                     classification_created = insert_classification(
                         connection,
                         result_id,
-                        result,
+                        completed_result,
                         classement,
                         html_file.name,
                     )

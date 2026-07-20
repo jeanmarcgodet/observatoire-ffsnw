@@ -15,6 +15,9 @@ CATEGORY_MAP = {
     "-21": "U21",
     "-18": "U18",
     "-14": "U14",
+    "-17": "U17",
+    "-12": "U12",
+    "-10": "U10",
 }
 
 @dataclass(frozen=True)
@@ -215,13 +218,52 @@ def find_category_cell_index(
 
     return expected_index
 
+def is_results_header(
+    headers: list[str],
+) -> bool:
+    normalized = [normalize_header(value) for value in headers]
+
+    origin_headers = {
+        "league",
+        "federation",
+        "nation",
+        "country",
+    }
+
+    if "name" not in normalized:
+        return False
+
+    if not any(header in origin_headers for header in normalized):
+        return False
+
+    metadata_headers = {
+        "",
+        "name",
+        "league",
+        "federation",
+        "nation",
+        "country",
+        "categ.",
+        "categ",
+        "category",
+        "rank",
+        "rang",
+        "place",
+        "points",
+        "total",
+        "overall",
+        "remark",
+        "remarks",
+        "comment",
+        "comments",
+    }
+
+    return any(header not in metadata_headers for header in normalized)
+
+
 def find_results_table(
     soup: BeautifulSoup,
 ) -> tuple[Tag, list[str]]:
-    """
-    Recherche une table contenant au minimum les colonnes
-    Name et Categ.
-    """
     for table in soup.find_all("table"):
         for row in table.find_all("tr"):
             cells = get_direct_cells(row)
@@ -233,15 +275,12 @@ def find_results_table(
                 normalize_text(cell.get_text(" ", strip=True))
                 for cell in cells
             ]
-            normalized = [normalize_header(value) for value in headers]
 
-            if "name" in normalized and any(
-                header in {"categ.", "categ", "category"}
-                for header in normalized
-            ):
+            if is_results_header(headers):
                 return table, headers
 
     raise RuntimeError("Aucune table de résultats reconnue")
+
 
 
 def find_header_row(
@@ -257,15 +296,12 @@ def find_header_row(
             normalize_text(cell.get_text(" ", strip=True))
             for cell in cells
         ]
-        normalized = [normalize_header(value) for value in headers]
 
-        if "name" in normalized and any(
-            header in {"categ.", "categ", "category"}
-            for header in normalized
-        ):
+        if is_results_header(headers):
             return row, headers
 
     raise RuntimeError("Ligne d'en-tête introuvable")
+
 
 
 def find_column(
@@ -284,12 +320,26 @@ def find_column(
     )
 
 
+def find_optional_column(
+    headers: list[str],
+    accepted_names: set[str],
+) -> int | None:
+    normalized = [normalize_header(value) for value in headers]
+
+    for index, header in enumerate(normalized):
+        if header in accepted_names:
+            return index
+
+    return None
+
+
+
 def is_score_column(
     index: int,
     header: str,
-    category_index: int,
+    data_start_index: int,
 ) -> bool:
-    if index <= category_index:
+    if index <= data_start_index:
         return False
 
     normalized = normalize_header(header)
@@ -313,6 +363,7 @@ def is_score_column(
     return normalized not in excluded
 
 
+
 def parse_results_file(
     html_file: str | Path,
 ) -> list[IWWFResult]:
@@ -326,8 +377,6 @@ def parse_results_file(
         errors="ignore",
     )
 
-    # Le parseur html.parser est volontairement utilisé :
-    # les anciennes pages IWWF sont parfois mal formées.
     soup = BeautifulSoup(html, "html.parser")
 
     discipline = detect_discipline(soup, path)
@@ -339,15 +388,21 @@ def parse_results_file(
         headers,
         {"league", "federation", "nation", "country"},
     )
-    category_index = find_column(
+    category_index = find_optional_column(
         headers,
         {"categ.", "categ", "category"},
+    )
+
+    data_start_index = (
+        category_index
+        if category_index is not None
+        else league_index
     )
 
     score_columns = [
         (index, normalize_text(header))
         for index, header in enumerate(headers)
-        if is_score_column(index, header, category_index)
+        if is_score_column(index, header, data_start_index)
     ]
 
     if not score_columns:
@@ -361,10 +416,14 @@ def parse_results_file(
 
     parsed: list[IWWFResult] = []
 
-    for row in all_rows[header_position + 1 :]:
+    for row in all_rows[header_position + 1:]:
         cells = get_direct_cells(row)
 
-        if len(cells) <= max(name_index, category_index):
+        required_indexes = [name_index, league_index]
+        if category_index is not None:
+            required_indexes.append(category_index)
+
+        if len(cells) <= max(required_indexes):
             continue
 
         name_cell = cells[name_index]
@@ -374,14 +433,12 @@ def parse_results_file(
             continue
 
         iwwf_id = extract_iwwf_id(rider_link.get("href"))
-
         if iwwf_id is None:
             continue
 
         nom_complet = normalize_text(
             rider_link.get_text(" ", strip=True)
         )
-
         if not nom_complet:
             continue
 
@@ -391,34 +448,26 @@ def parse_results_file(
         ligue_raw = get_cell_text(cells, league_index)
         ligue = ligue_raw.lstrip("*").strip() or None
 
-        actual_category_index = find_category_cell_index(
-            cells,
-            category_index,
-        )
+        categorie: str | None = None
+        sexe: str | None = None
+        column_shift = 0
 
-        category_raw = get_cell_text(
-            cells,
-            actual_category_index,
-        )
-
-        categorie, sexe = split_category_and_sex(
-            category_raw
-        )
-
-        column_shift = (
-            actual_category_index - category_index
-        )
+        if category_index is not None:
+            actual_category_index = find_category_cell_index(
+                cells,
+                category_index,
+            )
+            category_raw = get_cell_text(cells, actual_category_index)
+            categorie, sexe = split_category_and_sex(category_raw)
+            column_shift = actual_category_index - category_index
 
         for column_index, tour in score_columns:
-            actual_column_index = (
-                column_index + column_shift
-            )
+            actual_column_index = column_index + column_shift
 
             if actual_column_index >= len(cells):
                 continue
 
             score_cell = cells[actual_column_index]
-
             score = normalize_score(
                 score_cell.get_text(" ", strip=True)
             )
@@ -426,11 +475,7 @@ def parse_results_file(
             if not score:
                 continue
 
-            score_link = score_cell.find(
-                "a",
-                href=True,
-            )
-
+            score_link = score_cell.find("a", href=True)
             document_url = (
                 score_link.get("href")
                 if score_link is not None
@@ -454,3 +499,4 @@ def parse_results_file(
             )
 
     return parsed
+
