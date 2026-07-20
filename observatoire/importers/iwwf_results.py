@@ -8,6 +8,14 @@ from urllib.parse import parse_qs, urlparse
 from bs4 import BeautifulSoup
 from bs4.element import Tag
 
+CATEGORY_MAP = {
+    "Ope": "Open",
+    "OPEN": "Open",
+    "open": "Open",
+    "-21": "U21",
+    "-18": "U18",
+    "-14": "U14",
+}
 
 @dataclass(frozen=True)
 class IWWFResult:
@@ -84,30 +92,36 @@ def parse_integer(value: str) -> int | None:
 
     return int(match.group())
 
-
 def split_category_and_sex(
     value: str,
 ) -> tuple[str | None, str | None]:
-    """
-    Exemples :
-        '-21 M' -> ('-21', 'M')
-        'Ope F' -> ('Ope', 'F')
-        '45+ M' -> ('45+', 'M')
-    """
     normalized = normalize_text(value)
 
     if not normalized:
         return None, None
 
-    match = re.match(r"^(.*?)(?:\s+([MF]))$", normalized, re.IGNORECASE)
+    match = re.match(
+        r"^(.*?)(?:\s+([MF]))$",
+        normalized,
+        re.IGNORECASE,
+    )
 
     if match is None:
-        return normalized, None
+        categorie = CATEGORY_MAP.get(
+            normalized,
+            normalized,
+        )
+        return categorie, None
 
-    categorie = match.group(1).strip() or None
+    raw_category = match.group(1).strip()
+    categorie = CATEGORY_MAP.get(
+        raw_category,
+        raw_category,
+    )
+
     sexe = match.group(2).upper()
 
-    return categorie, sexe
+    return categorie or None, sexe
 
 
 def detect_discipline(
@@ -161,6 +175,45 @@ def get_cell_text(cells: list[Tag], index: int) -> str:
 
     return normalize_text(cells[index].get_text(" ", strip=True))
 
+def find_category_cell_index(
+    cells: list[Tag],
+    expected_index: int,
+) -> int:
+    """
+    Certaines pages IWWF contiennent une cellule vide supplémentaire
+    dans les lignes de données, mais pas dans la ligne d'en-tête.
+
+    Recherche donc la cellule contenant réellement une valeur comme :
+        Ope F
+        -21 M
+        55+ F
+    """
+    candidate_indexes = range(
+        max(0, expected_index - 1),
+        min(len(cells), expected_index + 3),
+    )
+
+    for index in candidate_indexes:
+        value = get_cell_text(cells, index)
+
+        if re.match(
+            r"^.+\s+[MF]$",
+            value,
+            re.IGNORECASE,
+        ):
+            return index
+
+    for index in range(len(cells)):
+        value = get_cell_text(cells, index)
+
+        if re.match(
+            r"^.+\s+[MF]$",
+            value,
+            re.IGNORECASE,
+        ):
+            return index
+
+    return expected_index
 
 def find_results_table(
     soup: BeautifulSoup,
@@ -247,6 +300,7 @@ def is_score_column(
     excluded = {
         "points",
         "total",
+        "overall",
         "rank",
         "rang",
         "place",
@@ -337,22 +391,46 @@ def parse_results_file(
         ligue_raw = get_cell_text(cells, league_index)
         ligue = ligue_raw.lstrip("*").strip() or None
 
-        category_raw = get_cell_text(cells, category_index)
-        categorie, sexe = split_category_and_sex(category_raw)
+        actual_category_index = find_category_cell_index(
+            cells,
+            category_index,
+        )
+
+        category_raw = get_cell_text(
+            cells,
+            actual_category_index,
+        )
+
+        categorie, sexe = split_category_and_sex(
+            category_raw
+        )
+
+        column_shift = (
+            actual_category_index - category_index
+        )
 
         for column_index, tour in score_columns:
-            if column_index >= len(cells):
+            actual_column_index = (
+                column_index + column_shift
+            )
+
+            if actual_column_index >= len(cells):
                 continue
 
-            score_cell = cells[column_index]
+            score_cell = cells[actual_column_index]
+
             score = normalize_score(
                 score_cell.get_text(" ", strip=True)
-        )
+            )
 
             if not score:
                 continue
 
-            score_link = score_cell.find("a", href=True)
+            score_link = score_cell.find(
+                "a",
+                href=True,
+            )
+
             document_url = (
                 score_link.get("href")
                 if score_link is not None

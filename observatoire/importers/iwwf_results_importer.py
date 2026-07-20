@@ -98,25 +98,11 @@ def get_rider_id(
 
     return int(row[0]) if row is not None else None
 
-
 def get_classement_from_filename(
     filename: str,
 ) -> str:
     """
     Déduit le type de classement à partir du nom du fichier IWWF.
-
-    Exemples :
-        allm_slalom_results.html
-            -> Open Men
-
-        allf_tricks_results.html
-            -> Open Women
-
-        21_m_jump_results.html
-            -> U21 Men
-
-        21_f_overall_results.html
-            -> U21 Women
     """
     stem = Path(filename).stem.lower()
 
@@ -131,6 +117,9 @@ def get_classement_from_filename(
 
     if stem.startswith("21_f_"):
         return "U21 Women"
+
+    if stem.startswith("21_"):
+        return "U21"
 
     return stem.removesuffix("_results")
 
