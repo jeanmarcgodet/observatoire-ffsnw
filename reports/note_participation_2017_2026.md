@@ -64,6 +64,35 @@ Chez les Seniors, seuls **8 des 43 participants de 2025** sont présents en 2026
 
 ![Taux de fidélisation](figures/taux_fidelisation_2018_2026.png)
 
+<!-- BEGIN TRANSITION U21 OPEN -->
+## Transition de la catégorie U21 vers l’Open
+
+L’analyse porte sur les sportifs dont la dernière participation observée en U21 se situe entre 2017 et 2023. Cette borne permet de disposer de trois années complètes de recul.
+
+Sur **31 sorties observées de U21**, **13 sportifs apparaissent ensuite en Open dans un délai maximal de trois ans**, soit **41.9 %**.
+
+À l’inverse, **18 sportifs**, soit **58.1 %**, ne sont plus retrouvés dans les championnats nationaux étudiés sur cette période.
+
+Cette absence ne signifie pas nécessairement un arrêt complet de la pratique ; elle indique une sortie du périmètre compétitif national observé.
+
+### Délai du passage vers l’Open
+
+| Délai | Sportifs |
+|---|---:|
+| Même année | 3 |
+| Un an | 5 |
+| Deux ans | 4 |
+| Trois ans | 1 |
+| Non retrouvés | 18 |
+
+Chez les femmes, **5 sur 11** passent en Open, soit **45.5 %**.
+
+Chez les hommes, **8 sur 20** passent en Open, soit **40.0 %**.
+
+![Transition U21 vers Open](figures/transition_u21_open_2017_2023.png)
+
+La transition entre U21 et Open constitue ainsi un point de fragilité majeur de la continuité compétitive nationale.
+<!-- END TRANSITION U21 OPEN -->
 ## Conclusion provisoire
 
 Les données ne montrent pas un effondrement général de la filière jeunes. Elles mettent en évidence une difficulté croissante à maintenir une participation durable dans les catégories Open et Seniors.
