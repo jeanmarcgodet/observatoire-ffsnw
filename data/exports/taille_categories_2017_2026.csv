@@ -1,0 +1,14 @@
+﻿categorie;annees_observees;effectif_median;effectif_moyen;effectif_minimum;effectif_maximum;participants_2026;poids_une_personne_2026_pct;annees_sous_10;annees_sous_20;annees_sous_30;niveau_structurel
+U8;1;1.0;1.0;1;1;1;100.0;1;1;1;moins_de_10
+U10;10;3.0;3.5;1;8;6;16.7;10;10;10;moins_de_10
+U12;10;6.0;6.0;3;9;9;11.1;10;10;10;moins_de_10
+U14;10;9.0;8.8;5;13;6;16.7;7;10;10;moins_de_10
+U17;10;13.0;13.4;7;21;12;8.3;2;9;10;moins_de_20
+U21;9;11.0;10.3;1;15;9;11.1;3;9;9;moins_de_20
+OPEN;10;20.0;20.5;12;30;12;8.3;0;5;9;moins_de_30
+35+;10;5.5;6.2;3;10;3;33.3;8;10;10;moins_de_10
+45+;10;13.0;11.7;5;19;5;20.0;2;10;10;moins_de_20
+55+;10;11.5;13.5;4;23;4;25.0;1;8;10;moins_de_20
+65+;10;4.0;4.5;2;11;4;25.0;9;10;10;moins_de_10
+70+;5;3.0;3.0;1;4;0;;5;5;5;moins_de_10
+75+;5;1.0;1.2;1;2;1;100.0;5;5;5;moins_de_10
