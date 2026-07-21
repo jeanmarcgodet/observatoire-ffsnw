@@ -289,6 +289,61 @@ Dans de nombreux champs, le nombre de concurrents est égal ou inférieur au nom
 
 La participation aux Championnats de France étant libre, sans sélection préalable, cette situation révèle une profondeur compétitive nationale extrêmement limitée.
 <!-- END PROFONDEUR EPREUVES -->
+<!-- BEGIN PERSISTANCE PARTICIPATION -->
+## Un vivier marqué par une forte rotation
+
+Entre 2017 et 2026, **289 personnes différentes** ont participé au moins une fois aux Championnats de France étudiés.
+
+La médiane n’est toutefois que de **2 années de participation** par personne. La moyenne est de **3.3 années**.
+
+| Nombre d’années observées | Participants |
+|---|---:|
+| Une seule année | 109 |
+| Deux à trois années | 73 |
+| Quatre à six années | 68 |
+| Sept à dix années | 39 |
+
+**109 participants sur 289** ne sont observés qu’une seule année.
+
+Au total, **182 personnes sur 289**, soit **63.0 %**, apparaissent pendant trois années au maximum sur la période étudiée.
+
+À l’inverse, seuls **39 participants sur 289** sont présents pendant au moins sept années.
+
+Seulement **3 personnes** sont observées chacune des dix années.
+
+**93 participants sur 289** sont présents pendant au moins cinq années.
+
+![Persistance individuelle de la participation](figures/persistance_participation_2017_2026.png)
+
+### La cohorte observée en 2017
+
+Parmi les **103 participants présents en 2017**, seuls **18 sont également retrouvés en 2026**.
+
+Cela représente **18 sur 103**, soit **17.5 %**.
+
+Cette présence aux deux extrémités de la période ne signifie pas que ces personnes ont participé chaque année entre 2017 et 2026.
+
+### Lecture par sexe
+
+| Sexe | Participants uniques | Une seule année | Au moins cinq années | Dix années |
+|---|---:|---:|---:|---:|
+| Femmes | 96 | 38 | 24 | 1 |
+| Hommes | 193 | 71 | 69 | 2 |
+
+Chez les femmes, **24 sur 96** sont présentes pendant au moins cinq années.
+
+Chez les hommes, cette situation concerne **69 sur 193**.
+
+Ces écarts restent descriptifs. Ils peuvent être influencés par la structure d’âge, les catégories et les très faibles effectifs de certaines épreuves.
+
+### Interprétation
+
+La discipline ne repose pas sur un noyau large et durable de compétiteurs nationaux. Une part importante des personnes recensées ne participe que ponctuellement, tandis que le groupe présent sur une longue durée demeure très réduit.
+
+Cette rotation contribue à fragiliser la profondeur des catégories et la continuité entre les niveaux jeunes, U21 et Open.
+
+L’absence d’un sportif lors des Championnats de France ne permet cependant pas de conclure à un abandon du ski nautique. Elle signifie uniquement qu’il n’est plus retrouvé dans le périmètre des compétitions nationales étudiées.
+<!-- END PERSISTANCE PARTICIPATION -->
 ## Conclusion provisoire
 
 Les données ne montrent pas un effondrement général de la filière jeunes. Elles mettent en évidence une difficulté croissante à maintenir une participation durable dans les catégories Open et Seniors.
