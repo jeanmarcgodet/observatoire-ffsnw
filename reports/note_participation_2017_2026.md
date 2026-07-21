@@ -225,6 +225,70 @@ Cet entonnoir doit être rapproché de la taille déjà très faible des catégo
 
 La participation aux Championnats de France étant libre, sans sélection préalable, ces faibles nombres ne correspondent pas à une élite restreinte par des quotas. Ils révèlent l’étroitesse réelle du vivier compétitif national et sa difficulté à conserver les sportifs au fil des catégories.
 <!-- END ENTONNOIR U17 U21 OPEN -->
+<!-- BEGIN PROFONDEUR EPREUVES -->
+## Des épreuves nationales souvent réduites à quelques concurrents
+
+Le nombre total de participants masque une fragmentation supplémentaire entre les catégories et les trois disciplines : slalom, figures et saut.
+
+Un « champ catégorie–discipline » correspond ici à une catégorie nationale observée une année, croisée avec chacune des trois disciplines.
+
+Entre 2017 et 2026, **330 champs potentiels** sont ainsi observés.
+
+**50 champs sur 330** ne comptent aucun participant dans la discipline considérée.
+
+**103 champs** ne réunissent que **un à trois participants**.
+
+En incluant les champs vides, **153 champs sur 330**, soit **46.4 %**, comptent au maximum trois participants.
+
+Parmi les **280 champs effectivement disputés**, **103**, soit **36.8 %**, ne dépassent pas trois concurrents.
+
+**279 champs sur 330**, soit **84.5 %**, comptent moins de dix participants.
+
+**327 champs sur 330**, soit **99.1 %**, comptent moins de vingt participants.
+
+Seuls **3 champs sur 330** atteignent vingt participants ou davantage.
+
+### Profondeur médiane par discipline
+
+| Discipline | Champs | Champs vides | Médiane tous champs | Médiane champs disputés | Maximum |
+|---|---:|---:|---:|---:|---:|
+| Slalom | 110 | 7 | 6.0 | 8.0 | 27 |
+| Figures | 110 | 11 | 4.0 | 4.0 | 15 |
+| Saut | 110 | 32 | 3.0 | 4.0 | 14 |
+
+Parmi les champs effectivement disputés, l’effectif médian est de **8 participants en slalom**, mais seulement de **4 en figures** et de **4 en saut**.
+
+### Situation observée en 2026
+
+| Catégorie | Slalom | Figures | Saut |
+|---|---:|---:|---:|
+| U8 | 0 | 1 | 0 |
+| U10 | 5 | 4 | 1 |
+| U12 | 9 | 8 | 5 |
+| U14 | 6 | 2 | 2 |
+| U17 | 11 | 8 | 6 |
+| U21 | 7 | 6 | 4 |
+| Open | 10 | 6 | 4 |
+| 35+ | 3 | 0 | 0 |
+| 45+ | 3 | 0 | 0 |
+| 55+ | 3 | 1 | 0 |
+| 65+ | 3 | 0 | 0 |
+| 75+ | 1 | 1 | 0 |
+
+La catégorie Open ne réunit en 2026 que **10 concurrents en slalom**, **6 en figures** et **4 en saut**.
+
+Une seule personne représente donc **10.0 %** du champ Open en slalom, **16.7 %** en figures et **25.0 %** en saut.
+
+![Profondeur des champs catégorie–discipline](figures/profondeur_champs_categories_disciplines_2017_2026.png)
+
+### Interprétation
+
+Ces résultats montrent que la faiblesse du vivier national ne tient pas seulement au nombre global de participants. Elle est accentuée par la fragmentation des sportifs entre de nombreuses catégories et plusieurs disciplines.
+
+Dans de nombreux champs, le nombre de concurrents est égal ou inférieur au nombre de places sur un podium.
+
+La participation aux Championnats de France étant libre, sans sélection préalable, cette situation révèle une profondeur compétitive nationale extrêmement limitée.
+<!-- END PROFONDEUR EPREUVES -->
 ## Conclusion provisoire
 
 Les données ne montrent pas un effondrement général de la filière jeunes. Elles mettent en évidence une difficulté croissante à maintenir une participation durable dans les catégories Open et Seniors.
