@@ -149,9 +149,12 @@ def main():
             "Classifications multiples": """
                 SELECT COUNT(*)
                 FROM (
-                    SELECT result_id
-                    FROM result_classifications
-                    GROUP BY result_id
+                    SELECT rc.result_id
+                    FROM result_classifications rc
+                    JOIN results re
+                      ON re.id = rc.result_id
+                    WHERE re.competition_id = ?
+                    GROUP BY rc.result_id
                     HAVING COUNT(*) <> 1
                 )
             """,
