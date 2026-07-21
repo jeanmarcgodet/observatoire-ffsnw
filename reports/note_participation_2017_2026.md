@@ -12,6 +12,56 @@ Les participants sont dénombrés comme des sportifs uniques par année, toutes 
 
 La continuité des identités a été rétablie au moyen de 117 correspondances entre anciens et nouveaux identifiants.
 
+<!-- BEGIN CONTEXTE EFFECTIFS -->
+## Une population compétitive nationale très réduite
+
+En 2026, les compétitions nationales étudiées rassemblent seulement **69 participants uniques**, toutes catégories confondues.
+
+Ce chiffre ne représente pas l’ensemble des licenciés ou des pratiquants de ski nautique. Il mesure le vivier compétitif national effectivement présent aux Championnats de France.
+
+La participation à ces championnats étant libre, sans sélection sportive préalable, les faibles effectifs observés ne peuvent pas être expliqués par un système de qualification, des quotas ou une limitation du nombre de participants.
+
+Ils témoignent donc de la très faible profondeur de la pratique compétitive nationale observable.
+
+### Effectifs nationaux observés en 2026
+
+Les grandes populations comptent **41 Jeunes/U21**, **12 Open** et **17 Seniors**.
+
+La somme de ces populations peut légèrement dépasser le nombre de participants uniques lorsqu’un même sportif apparaît dans plusieurs catégories au cours de la saison.
+
+| Catégorie | Participants | Femmes | Hommes |
+|---|---:|---:|---:|
+| U8 | 1 | 0 | 1 |
+| U10 | 6 | 4 | 2 |
+| U12 | 9 | 3 | 6 |
+| U14 | 6 | 2 | 4 |
+| U17 | 12 | 6 | 6 |
+| U21 | 9 | 2 | 7 |
+| Open | 12 | 7 | 5 |
+| 35+ | 3 | 3 | 0 |
+| 45+ | 5 | 2 | 3 |
+| 55+ | 4 | 0 | 4 |
+| 65+ | 4 | 0 | 4 |
+| 75+ | 1 | 0 | 1 |
+
+### Conséquence sur l’interprétation des pourcentages
+
+Dans la catégorie Open, qui ne compte que **12 participants en 2026**, une seule personne représente **8.3 %** de l’effectif.
+
+Chez les Seniors, une personne représente **5.9 %** des 17 participants observés.
+
+Le taux de passage U21 vers Open est de **13 sur 31**, soit **41.9 %**. Une seule transition supplémentaire ou en moins modifie ce taux de **3.2 points**.
+
+Chez les femmes, le résultat repose sur seulement **5 passages sur 11 sportives**. Une seule personne représente alors **9.1 points de pourcentage**.
+
+### Règle de présentation retenue
+
+Les résultats doivent donc toujours être présentés sous la forme **effectif / population totale**, puis éventuellement en pourcentage.
+
+Pour les groupes de moins de 30 personnes, les pourcentages sont considérés comme descriptifs et doivent être interprétés avec prudence.
+
+Pour les groupes de moins de 10 personnes, aucun pourcentage ne doit être commenté indépendamment de l’effectif brut correspondant.
+<!-- END CONTEXTE EFFECTIFS -->
 ## Principaux résultats
 
 La participation est de **103 sportifs en 2017**, atteint **109 en 2023**, puis recule à **69 en 2026**.
