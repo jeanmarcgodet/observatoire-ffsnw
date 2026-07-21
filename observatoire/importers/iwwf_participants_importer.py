@@ -5,6 +5,8 @@ import sqlite3
 from pathlib import Path
 
 from observatoire.config import DATABASE_FILE
+from observatoire.importers.iwwf_results import parse_results_file
+from observatoire.importers.iwwf_results_importer import find_result_files
 from observatoire.importers.iwwf_participants import (
     Participant,
     normalize_category,
@@ -218,6 +220,126 @@ def find_hors_championnat_only_iwwf_ids(
     return hors_ids - official_ids
 
 
+
+def merge_result_participants(
+    result_files: list[Path],
+) -> list[Participant]:
+    """
+    Reconstruit les participants depuis les pages de r?sultats
+    lorsque la liste g?n?rale IWWF ne contient pas de cat?gorie.
+    """
+    merged: dict[
+        tuple[str, str, str],
+        Participant,
+    ] = {}
+
+    category_prefixes = {
+        "8": "U8",
+        "10": "U10",
+        "12": "U12",
+        "14": "U14",
+        "17": "U17",
+        "18": "U18",
+        "21": "U21",
+        "35": "35+",
+        "45": "45+",
+        "55": "55+",
+        "65": "65+",
+        "70": "70+",
+        "75": "75+",
+        "80": "80+",
+    }
+
+    for html_file in result_files:
+        filename_parts = (
+            html_file.stem
+            .lower()
+            .split("_")
+        )
+
+        inferred_category = None
+        inferred_sex = ""
+
+        if filename_parts:
+            first = filename_parts[0]
+            second = (
+                filename_parts[1]
+                if len(filename_parts) > 1
+                else ""
+            )
+
+            if first in category_prefixes:
+                inferred_category = (
+                    category_prefixes[first]
+                )
+
+                if second in {"m", "f"}:
+                    inferred_sex = second.upper()
+
+            elif first in {"allf", "women"}:
+                inferred_sex = "F"
+
+            elif first in {"allm", "men"}:
+                inferred_sex = "M"
+
+        for result in parse_results_file(html_file):
+            categorie = normalize_category(
+                result.categorie
+                or inferred_category
+                or ""
+            )
+
+            sexe = (
+                result.sexe
+                or inferred_sex
+                or ""
+            ).strip().upper()
+
+            if not categorie:
+                # Les pages f?minines group?es de 19FRA03
+                # doivent ?tre rattach?es ? l'inscription
+                # r?ellement port?e par la skieuse lorsqu'elle
+                # existe d?j? dans la base.
+                continue
+
+            if sexe not in {"M", "F"}:
+                continue
+
+            nom, prenom = split_participant_name(
+                result.nom_complet
+            )
+
+            nation = (
+                result.iwwf_id[:3]
+                if (
+                    len(result.iwwf_id) >= 3
+                    and result.iwwf_id[:3].isalpha()
+                )
+                else ""
+            )
+
+            key = (
+                result.iwwf_id,
+                categorie,
+                sexe,
+            )
+
+            merged.setdefault(
+                key,
+                Participant(
+                    iwwf_id=result.iwwf_id,
+                    nom=nom,
+                    prenom=prenom,
+                    nation=nation,
+                    categorie=categorie,
+                    sexe=sexe,
+                    annee_naissance=None,
+                ),
+            )
+
+    return list(merged.values())
+
+
 def merge_participants(
     participant_files: list[Path],
 ) -> list[Participant]:
@@ -286,6 +408,21 @@ def import_participants(
     )
 
     participants = merge_participants(participant_files)
+
+    if not participants:
+        result_files = find_result_files(
+            competition_directory
+        )
+
+        participants = merge_result_participants(
+            result_files
+        )
+
+    if not participants:
+        raise RuntimeError(
+            "Aucun participant identifiable pour "
+            f"{competition_code}"
+        )
 
     hors_championnat_ids = (
         find_hors_championnat_only_iwwf_ids(
