@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import sqlite3
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 from observatoire.config import DATABASE_FILE
@@ -125,6 +125,7 @@ def get_entry_identity(
     connection: sqlite3.Connection,
     competition_id: int,
     rider_id: int,
+    preferred_category: str | None = None,
 ) -> tuple[str | None, str | None]:
     rows = connection.execute(
         """
@@ -164,11 +165,16 @@ def get_entry_identity(
         )
     }
 
-    categorie = (
-        next(iter(categories))
-        if len(categories) == 1
-        else None
+    normalized_preferred_category = (
+        normalize_category(preferred_category)
     )
+
+    if normalized_preferred_category in categories:
+        categorie = normalized_preferred_category
+    elif len(categories) == 1:
+        categorie = next(iter(categories))
+    else:
+        categorie = None
 
     sexe = (
         next(iter(sexes))
@@ -184,11 +190,13 @@ def complete_result_identity(
     competition_id: int,
     rider_id: int,
     result: IWWFResult,
+    preferred_category: str | None = None,
 ) -> IWWFResult:
     entry_category, entry_sex = get_entry_identity(
         connection,
         competition_id,
         rider_id,
+        preferred_category,
     )
 
     categorie = normalize_category(
@@ -249,10 +257,10 @@ def get_classement_from_filename(
         return "45+/55+ Men"
 
     if stem.startswith("21_m_men_"):
-        return "U21/Open Men"
+        return "Open Men"
 
     if stem.startswith("21_f_women_"):
-        return "U21/Open Women"
+        return "Open Women"
 
     if stem.startswith("all_skiers_"):
         return "All Skiers"
@@ -419,6 +427,116 @@ def insert_classification(
     return cursor.rowcount == 1
 
 
+
+def get_result_file_discipline(
+    filename: str,
+) -> str | None:
+    """
+    Identifie la discipline port?e par un fichier de r?sultats.
+    """
+    stem = Path(filename).stem.lower()
+    padded = f"_{stem}_"
+
+    for discipline in (
+        "slalom",
+        "tricks",
+        "jump",
+        "overall",
+    ):
+        if f"_{discipline}_" in padded:
+            return discipline
+
+    return None
+
+
+def recalculate_classification_ranks(
+    prepared_results: list[
+        tuple[int, IWWFResult, str]
+    ],
+) -> list[tuple[int, IWWFResult, str]]:
+    """
+    Recalcule les rangs ? l'int?rieur de chaque classement.
+
+    Les pages mixtes IWWF donnent un rang global entre U21
+    et Open. Ce rang ne doit pas ?tre conserv? apr?s s?paration
+    des deux cat?gories.
+    """
+    groups: dict[
+        str,
+        list[tuple[int, IWWFResult]],
+    ] = {}
+
+    for rider_id, result, classement in prepared_results:
+        groups.setdefault(
+            classement,
+            [],
+        ).append(
+            (
+                rider_id,
+                result,
+            )
+        )
+
+    rank_maps: dict[str, dict[int, int]] = {}
+
+    for classement, group in groups.items():
+        rider_ranks: dict[int, int] = {}
+
+        for rider_id, result in group:
+            if result.rang_classement is None:
+                continue
+
+            rider_ranks.setdefault(
+                rider_id,
+                result.rang_classement,
+            )
+
+        rank_map: dict[int, int] = {}
+
+        for original_rank in sorted(
+            set(rider_ranks.values())
+        ):
+            rank_map[original_rank] = (
+                1
+                + sum(
+                    1
+                    for rank in rider_ranks.values()
+                    if rank < original_rank
+                )
+            )
+
+        rank_maps[classement] = rank_map
+
+    recalculated: list[
+        tuple[int, IWWFResult, str]
+    ] = []
+
+    for rider_id, result, classement in prepared_results:
+        new_rank = result.rang_classement
+
+        if new_rank is not None:
+            new_rank = rank_maps.get(
+                classement,
+                {},
+            ).get(
+                new_rank,
+                new_rank,
+            )
+
+        recalculated.append(
+            (
+                rider_id,
+                replace(
+                    result,
+                    rang_classement=new_rank,
+                ),
+                classement,
+            )
+        )
+
+    return recalculated
+
+
 def find_result_files(
     competition_directory: str | Path,
 ) -> list[Path]:
@@ -529,6 +647,47 @@ def import_competition_results(
             competition_code,
         )
 
+        dedicated_u21_files: set[
+            tuple[str, str]
+        ] = set()
+
+        for candidate in files:
+            candidate_classement = (
+                get_classement_from_filename(
+                    candidate.name
+                )
+            )
+
+            candidate_discipline = (
+                get_result_file_discipline(
+                    candidate.name
+                )
+            )
+
+            if (
+                candidate_discipline is not None
+                and candidate_classement
+                in (
+                    "U21",
+                    "U21 Men",
+                    "U21 Women",
+                )
+            ):
+                if candidate_classement == "U21":
+                    candidate_sexes = ("M", "F")
+                elif candidate_classement == "U21 Men":
+                    candidate_sexes = ("M",)
+                else:
+                    candidate_sexes = ("F",)
+
+                for candidate_sex in candidate_sexes:
+                    dedicated_u21_files.add(
+                        (
+                            candidate_sex,
+                            candidate_discipline,
+                        )
+                    )
+
         for html_file in files:
             try:
                 results = parse_results_file(html_file)
@@ -565,19 +724,17 @@ def import_competition_results(
 
                 continue
 
-            report.fichiers_importes += 1
-            report.resultats_parses += len(results)
-
-            classement = get_classement_from_filename(
-                html_file.name
+            classement_fichier = (
+                get_classement_from_filename(
+                    html_file.name
+                )
             )
 
-            if verbose:
-                print(
-                    f"[OK] {html_file.name} : "
-                    f"{len(results)} résultat(s) — "
-                    f"{classement}"
-                )
+            prepared_results: list[
+                tuple[int, IWWFResult, str]
+            ] = []
+
+            categories_in_file: set[str] = set()
 
             for result in results:
                 rider_id = get_rider_id(
@@ -591,25 +748,142 @@ def import_competition_results(
                     if verbose:
                         print(
                             "  [RIDER ABSENT] "
-                            f"{result.iwwf_id} — "
+                            f"{result.iwwf_id} ? "
                             f"{result.nom_complet}"
                         )
 
                     continue
+
+                preferred_category = None
+
+                if classement_fichier in (
+                    "Open Men",
+                    "Open Women",
+                ):
+                    preferred_category = "Open"
+
+                elif classement_fichier in (
+                    "U21",
+                    "U21 Men",
+                    "U21 Women",
+                ):
+                    preferred_category = "U21"
 
                 completed_result = complete_result_identity(
                     connection,
                     competition_id,
                     rider_id,
                     result,
+                    preferred_category=preferred_category,
                 )
 
-                try:
-                    result_id, result_created = get_or_create_result(
-                        connection,
-                        competition_id,
+                categorie = normalize_category(
+                    completed_result.categorie
+                )
+
+                if categorie is not None:
+                    categories_in_file.add(categorie)
+
+                classement_resultat = classement_fichier
+
+                # Certaines pages U21 regroupent hommes et femmes.
+                # Le classement est alors pr?cis? ? partir du sexe
+                # du r?sultat.
+                if classement_fichier == "U21":
+                    if completed_result.sexe == "M":
+                        classement_resultat = "U21 Men"
+                    elif completed_result.sexe == "F":
+                        classement_resultat = "U21 Women"
+
+                if (
+                    classement_fichier
+                    in (
+                        "Open Men",
+                        "Open Women",
+                    )
+                    and categorie == "U21"
+                ):
+                    sexe = (
+                        completed_result.sexe
+                        or (
+                            "M"
+                            if classement_fichier
+                            == "Open Men"
+                            else "F"
+                        )
+                    )
+
+                    discipline = (
+                        completed_result.discipline
+                        .strip()
+                        .lower()
+                    )
+
+                    # Une page U21 d?di?e existe :
+                    # la ligne mixte est une r?p?tition.
+                    if (
+                        sexe,
+                        discipline,
+                    ) in dedicated_u21_files:
+                        continue
+
+                    # Aucune page U21 d?di?e :
+                    # la ligne mixte constitue la source U21.
+                    classement_resultat = (
+                        "U21 Men"
+                        if sexe == "M"
+                        else "U21 Women"
+                    )
+
+                prepared_results.append(
+                    (
                         rider_id,
                         completed_result,
+                        classement_resultat,
+                    )
+                )
+
+            mixed_open_page = (
+                classement_fichier
+                in (
+                    "Open Men",
+                    "Open Women",
+                )
+                and "U21" in categories_in_file
+            )
+
+            if mixed_open_page:
+                prepared_results = (
+                    recalculate_classification_ranks(
+                        prepared_results
+                    )
+                )
+
+            report.fichiers_importes += 1
+            report.resultats_parses += len(
+                prepared_results
+            )
+
+            if verbose:
+                print(
+                    f"[OK] {html_file.name} : "
+                    f"{len(prepared_results)} r?sultat(s) ? "
+                    f"{classement_fichier}"
+                )
+
+            for (
+                rider_id,
+                completed_result,
+                classement_resultat,
+            ) in prepared_results:
+                try:
+                    result_id, result_created = (
+                        get_or_create_result(
+                            connection,
+                            competition_id,
+                            rider_id,
+                            completed_result,
+                        )
                     )
 
                     if result_created:
@@ -617,12 +891,14 @@ def import_competition_results(
                     else:
                         report.resultats_existants += 1
 
-                    classification_created = insert_classification(
-                        connection,
-                        result_id,
-                        completed_result,
-                        classement,
-                        html_file.name,
+                    classification_created = (
+                        insert_classification(
+                            connection,
+                            result_id,
+                            completed_result,
+                            classement_resultat,
+                            html_file.name,
+                        )
                     )
 
                     if classification_created:
