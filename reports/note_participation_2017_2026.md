@@ -62,6 +62,53 @@ Pour les groupes de moins de 30 personnes, les pourcentages sont considérés co
 
 Pour les groupes de moins de 10 personnes, aucun pourcentage ne doit être commenté indépendamment de l’effectif brut correspondant.
 <!-- END CONTEXTE EFFECTIFS -->
+
+<!-- BEGIN TAILLE STRUCTURELLE -->
+## Des effectifs structurellement très faibles
+
+La faiblesse des effectifs observée en 2026 n’est pas seulement conjoncturelle. Elle constitue une caractéristique durable de la pratique compétitive nationale.
+
+Entre 2017 et 2026, la base contient **110 observations catégorie–année**.
+
+Parmi elles, **63 sur 110**, soit **57.3 %**, réunissent moins de dix participants.
+
+**102 sur 110**, soit **92.7 %**, réunissent moins de vingt participants.
+
+**109 sur 110**, soit **99.1 %**, réunissent moins de trente participants.
+
+Sur dix saisons, seules **1 observation catégorie–année sur 110** atteint donc au moins trente concurrents.
+
+La catégorie Open, pourtant centrale dans la continuité sportive vers le plus haut niveau, présente un effectif médian de seulement **20 participants**. La médiane est de **11 en U21**, **13 en U17** et **9 en U14**.
+
+### Effectifs par catégorie
+
+| Catégorie | Années observées | Médiane | Minimum–maximum | Effectif 2026 | Poids d’une personne en 2026 |
+|---|---:|---:|---:|---:|---:|
+| U8 | 1 | 1,0 | 1–1 | 1 | 100,0 % |
+| U10 | 10 | 3,0 | 1–8 | 6 | 16,7 % |
+| U12 | 10 | 6,0 | 3–9 | 9 | 11,1 % |
+| U14 | 10 | 9,0 | 5–13 | 6 | 16,7 % |
+| U17 | 10 | 13,0 | 7–21 | 12 | 8,3 % |
+| U21 | 9 | 11,0 | 1–15 | 9 | 11,1 % |
+| Open | 10 | 20,0 | 12–30 | 12 | 8,3 % |
+| 35+ | 10 | 5,5 | 3–10 | 3 | 33,3 % |
+| 45+ | 10 | 13,0 | 5–19 | 5 | 20,0 % |
+| 55+ | 10 | 11,5 | 4–23 | 4 | 25,0 % |
+| 65+ | 10 | 4,0 | 2–11 | 4 | 25,0 % |
+| 70+ | 5 | 3,0 | 1–4 | 0 | — |
+| 75+ | 5 | 1,0 | 1–2 | 1 | 100,0 % |
+
+![Effectif médian par catégorie](figures/effectif_median_categories_2017_2026.png)
+
+### Portée de ce constat
+
+Ces effectifs sont d’autant plus significatifs que la participation aux Championnats de France est libre, sans sélection sportive préalable.
+
+Ils ne décrivent donc pas une élite volontairement restreinte par des qualifications ou des quotas. Ils révèlent la très faible profondeur du vivier compétitif national effectivement mobilisé.
+
+Dans ces conditions, une variation d’une ou deux personnes peut modifier fortement les pourcentages d’une catégorie. Les effectifs bruts et les dénominateurs doivent toujours précéder l’interprétation des taux.
+<!-- END TAILLE STRUCTURELLE -->
+
 ## Principaux résultats
 
 La participation est de **103 sportifs en 2017**, atteint **109 en 2023**, puis recule à **69 en 2026**.
