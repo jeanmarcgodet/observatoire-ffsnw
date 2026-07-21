@@ -50,8 +50,8 @@ DEFAULT_TIMEOUT_SECONDS: Final[float] = 30.0
 DEFAULT_DELAY_SECONDS: Final[float] = 0.35
 DEFAULT_MAX_PAGES: Final[int] = 300
 
-COMPETITION_CODE_PATTERN: Final[re.Pattern[str]] = re.compile(
-    r"^[0-9]{2}[A-Z]{3}[0-9]{3}$"
+COMPETITION_CODE_PATTERN = re.compile(
+    r"^\d{2}[A-Z]{3}\d{2,3}$"
 )
 
 SAFE_FILENAME_PATTERN: Final[re.Pattern[str]] = re.compile(
