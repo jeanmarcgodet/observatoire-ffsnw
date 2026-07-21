@@ -59,12 +59,31 @@ def main() -> None:
     html_file = args.html_file
 
     if html_file is None:
-        html_file = (
+        competition_directory = (
             Path("data")
             / "raw"
             / "iwwf"
             / competition_code
-            / "all_skiers_list.html"
+        )
+
+        default_candidates = [
+            competition_directory
+            / "all_skiers_list.html",
+            *sorted(
+                competition_directory.glob(
+                    "identity_candidates*.json"
+                )
+            ),
+        ]
+
+        html_file = next(
+            (
+                candidate
+                for candidate in default_candidates
+                if candidate.is_file()
+            ),
+            competition_directory
+            / "all_skiers_list.html",
         )
 
     if not html_file.is_file():

@@ -1,15 +1,139 @@
 from __future__ import annotations
 
+import json
 import sqlite3
 from pathlib import Path
 
 from observatoire.config import DATABASE_FILE
 from observatoire.importers.iwwf_participants import (
     Participant,
+    normalize_category,
     parse_competition_metadata,
     parse_participants,
     parse_startlist_participants,
+    split_participant_name,
 )
+
+
+
+def parse_identity_candidates_json(
+    json_file: Path,
+) -> list[Participant]:
+    """
+    Charge une liste d'identit?s IWWF r?solues depuis un JSON.
+
+    Ce format est utilis? lorsque l'ancienne page de r?sultats
+    ne contient pas de liens skier=... dans ses tableaux.
+    """
+    data = json.loads(
+        json_file.read_text(
+            encoding="utf-8",
+        )
+    )
+
+    if not isinstance(data, dict):
+        raise RuntimeError(
+            f"Format JSON invalide : {json_file}"
+        )
+
+    participants: list[Participant] = []
+
+    for raw_name, identity in data.items():
+        if not isinstance(identity, dict):
+            raise RuntimeError(
+                f"Identit? invalide pour {raw_name}"
+            )
+
+        iwwf_id = str(
+            identity.get("ranking_id")
+            or ""
+        ).strip().upper()
+
+        if not iwwf_id:
+            raise RuntimeError(
+                "Identifiant IWWF manquant pour "
+                f"{raw_name}"
+            )
+
+        full_name = str(
+            identity.get("source_name")
+            or raw_name
+        ).strip()
+
+        # Privil?gie le nom fourni par la page officielle
+        # de classement lorsqu'il correspond ? l'identifiant.
+        candidates = identity.get("candidates")
+
+        if isinstance(candidates, list):
+            for candidate in candidates:
+                if not isinstance(candidate, dict):
+                    continue
+
+                candidate_id = str(
+                    candidate.get("ranking_id")
+                    or ""
+                ).strip().upper()
+
+                candidate_name = str(
+                    candidate.get("candidate_name")
+                    or ""
+                ).strip()
+
+                if (
+                    candidate_id == iwwf_id
+                    and candidate_name
+                ):
+                    full_name = candidate_name
+                    break
+
+        categorie = normalize_category(
+            str(
+                identity.get("category")
+                or ""
+            ).strip()
+        )
+
+        sexe = str(
+            identity.get("sex")
+            or ""
+        ).strip().upper()
+
+        if not categorie:
+            raise RuntimeError(
+                f"Cat?gorie manquante pour {raw_name}"
+            )
+
+        if sexe not in {"M", "F"}:
+            raise RuntimeError(
+                f"Sexe invalide pour {raw_name}"
+            )
+
+        nom, prenom = split_participant_name(
+            full_name
+        )
+
+        nation = (
+            iwwf_id[:3]
+            if (
+                len(iwwf_id) >= 3
+                and iwwf_id[:3].isalpha()
+            )
+            else ""
+        )
+
+        participants.append(
+            Participant(
+                iwwf_id=iwwf_id,
+                nom=nom,
+                prenom=prenom,
+                nation=nation,
+                categorie=categorie,
+                sexe=sexe,
+                annee_naissance=None,
+            )
+        )
+
+    return participants
 
 
 def find_participant_files(
@@ -108,7 +232,9 @@ def merge_participants(
     merged: dict[tuple[str, str, str], Participant] = {}
 
     for html_file in participant_files:
-        if html_file.name.lower().endswith(
+        if html_file.suffix.lower() == ".json":
+            parser = parse_identity_candidates_json
+        elif html_file.name.lower().endswith(
             "_startlist.html"
         ):
             parser = parse_startlist_participants

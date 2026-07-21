@@ -1,0 +1,736 @@
+{
+  "Amblard Arthur": {
+    "source_name": "Amblard Arthur",
+    "category": "U17",
+    "sex": "M",
+    "ranking_id": "FRA092016110",
+    "candidates": [
+      {
+        "candidate_name": "Amblard Arthur",
+        "similarity": 1.0,
+        "ranking_id": "FRA092016110",
+        "skier_number": "16110",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=16110"
+      }
+    ]
+  },
+  "Amblard Charlotte": {
+    "source_name": "Amblard Charlotte",
+    "category": "U12",
+    "sex": "F",
+    "ranking_id": "FRA422019882",
+    "candidates": [
+      {
+        "candidate_name": "Amblard Charlotte",
+        "similarity": 1.0,
+        "ranking_id": "FRA422019882",
+        "skier_number": "19882",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=19882"
+      },
+      {
+        "candidate_name": "Amblard Charlotte",
+        "similarity": 1.0,
+        "ranking_id": "FRA422019882",
+        "skier_number": "19882",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=19882"
+      }
+    ]
+  },
+  "Anguenot Ins": {
+    "source_name": "Anguenot Ins",
+    "category": "U17",
+    "sex": "F",
+    "ranking_id": "FRA692015508",
+    "candidates": [
+      {
+        "candidate_name": "Anguenot Inès",
+        "similarity": 0.96,
+        "ranking_id": "FRA692015508",
+        "skier_number": "15508",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=15508"
+      }
+    ]
+  },
+  "Area Dylan": {
+    "source_name": "Area Dylan",
+    "category": "U17",
+    "sex": "M",
+    "ranking_id": "FRA962014432",
+    "candidates": [
+      {
+        "candidate_name": "Area Dylan",
+        "similarity": 1.0,
+        "ranking_id": "FRA962014432",
+        "skier_number": "14432",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=14432"
+      }
+    ]
+  },
+  "Atherton Emily": {
+    "source_name": "Atherton Emily",
+    "category": "U14",
+    "sex": "F",
+    "ranking_id": "GBR412020432",
+    "candidates": [
+      {
+        "candidate_name": "Atherton Emily",
+        "similarity": 1.0,
+        "ranking_id": "GBR412020432",
+        "skier_number": "20432",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=20432"
+      }
+    ]
+  },
+  "Barenghi Jean": {
+    "source_name": "Barenghi Jean",
+    "category": "U17",
+    "sex": "M",
+    "ranking_id": "SUI862014597",
+    "candidates": [
+      {
+        "candidate_name": "Barenghi Jean",
+        "similarity": 1.0,
+        "ranking_id": "SUI862014597",
+        "skier_number": "14597",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=14597"
+      }
+    ]
+  },
+  "Burge Mara": {
+    "source_name": "Burge Mara",
+    "category": "U17",
+    "sex": "F",
+    "ranking_id": "SUI132016141",
+    "candidates": [
+      {
+        "candidate_name": "Bürge Mara",
+        "similarity": 1.0,
+        "ranking_id": "SUI132016141",
+        "skier_number": "16141",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=16141"
+      }
+    ]
+  },
+  "Cambray Joan": {
+    "source_name": "Cambray Joan",
+    "category": "U17",
+    "sex": "M",
+    "ranking_id": "FRA252012839",
+    "candidates": [
+      {
+        "candidate_name": "Cambray Joan",
+        "similarity": 1.0,
+        "ranking_id": "FRA252012839",
+        "skier_number": "12839",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=12839"
+      }
+    ]
+  },
+  "Constans Bastien": {
+    "source_name": "Constans Bastien",
+    "category": "U17",
+    "sex": "M",
+    "ranking_id": "FRA802015569",
+    "candidates": [
+      {
+        "candidate_name": "Constans Bastien",
+        "similarity": 1.0,
+        "ranking_id": "FRA802015569",
+        "skier_number": "15569",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=15569"
+      }
+    ]
+  },
+  "Cortes Emma": {
+    "source_name": "Cortes Emma",
+    "category": "U12",
+    "sex": "F",
+    "ranking_id": "FRA902020448",
+    "candidates": [
+      {
+        "candidate_name": "Cortes Emma",
+        "similarity": 1.0,
+        "ranking_id": "FRA902020448",
+        "skier_number": "20448",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=20448"
+      }
+    ]
+  },
+  "Creissels Rosalie": {
+    "source_name": "Creissels Rosalie",
+    "category": "U17",
+    "sex": "F",
+    "ranking_id": "FRA372015163",
+    "candidates": [
+      {
+        "candidate_name": "Creissels Rosalie",
+        "similarity": 1.0,
+        "ranking_id": "FRA372015163",
+        "skier_number": "15163",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=15163"
+      }
+    ]
+  },
+  "Desgrippes Hugo": {
+    "source_name": "Desgrippes Hugo",
+    "category": "U17",
+    "sex": "M",
+    "ranking_id": "FRA122013878",
+    "candidates": [
+      {
+        "candidate_name": "Desgrippes Hugo",
+        "similarity": 1.0,
+        "ranking_id": "FRA122013878",
+        "skier_number": "13878",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=13878"
+      }
+    ]
+  },
+  "Draux Hippolyte": {
+    "source_name": "Draux Hippolyte",
+    "category": "U14",
+    "sex": "M",
+    "ranking_id": "FRA822017476",
+    "candidates": [
+      {
+        "candidate_name": "Draux Hippolyte",
+        "similarity": 1.0,
+        "ranking_id": "FRA822017476",
+        "skier_number": "17476",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=17476"
+      }
+    ]
+  },
+  "Duplan Fribourg Tristan": {
+    "source_name": "Duplan Fribourg Tristan",
+    "category": "U10",
+    "sex": "M",
+    "ranking_id": "FRA372017879",
+    "candidates": [
+      {
+        "candidate_name": "Duplan Fribourg Tristan",
+        "similarity": 1.0,
+        "ranking_id": "FRA372017879",
+        "skier_number": "17879",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=17879"
+      }
+    ]
+  },
+  "Duplan-Fribourg Louis": {
+    "source_name": "Duplan-Fribourg Louis",
+    "category": "U17",
+    "sex": "M",
+    "ranking_id": "FRA762011464",
+    "candidates": [
+      {
+        "candidate_name": "Duplan-Fribourg Louis",
+        "similarity": 1.0,
+        "ranking_id": "FRA762011464",
+        "skier_number": "11464",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=11464"
+      },
+      {
+        "candidate_name": "Duplan-Fribourg Pol",
+        "similarity": 0.85,
+        "ranking_id": "FRA182014458",
+        "skier_number": "14458",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=14458"
+      }
+    ]
+  },
+  "Duplan-Fribourg Pol": {
+    "source_name": "Duplan-Fribourg Pol",
+    "category": "U14",
+    "sex": "M",
+    "ranking_id": "FRA182014458",
+    "candidates": [
+      {
+        "candidate_name": "Duplan-Fribourg Pol",
+        "similarity": 1.0,
+        "ranking_id": "FRA182014458",
+        "skier_number": "14458",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=14458"
+      }
+    ]
+  },
+  "Duverger Marie-Lou": {
+    "source_name": "Duverger Marie-Lou",
+    "category": "U10",
+    "sex": "F",
+    "ranking_id": "FRA442019267",
+    "candidates": [
+      {
+        "candidate_name": "Duverger Marie-Lou",
+        "similarity": 1.0,
+        "ranking_id": "FRA442019267",
+        "skier_number": "19267",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=19267"
+      }
+    ]
+  },
+  "Fautrel Pierrick": {
+    "source_name": "Fautrel Pierrick",
+    "category": "U10",
+    "sex": "M",
+    "ranking_id": "FRA152020182",
+    "candidates": [
+      {
+        "candidate_name": "Fautrel Pierrick",
+        "similarity": 1.0,
+        "ranking_id": "FRA152020182",
+        "skier_number": "20182",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=20182"
+      }
+    ]
+  },
+  "Fautrel Sbastien": {
+    "source_name": "Fautrel Sbastien",
+    "category": "U12",
+    "sex": "M",
+    "ranking_id": "FRA332020176",
+    "candidates": [
+      {
+        "candidate_name": "Fautrel Sébastien",
+        "similarity": 1.0,
+        "ranking_id": "FRA332020176",
+        "skier_number": "20176",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=20176"
+      }
+    ]
+  },
+  "Genelot Mathilde": {
+    "source_name": "Genelot Mathilde",
+    "category": "U17",
+    "sex": "F",
+    "ranking_id": "FRA232014327",
+    "candidates": [
+      {
+        "candidate_name": "Genelot Mathilde",
+        "similarity": 1.0,
+        "ranking_id": "FRA232014327",
+        "skier_number": "14327",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=14327"
+      }
+    ]
+  },
+  "Germain Pierre Louis": {
+    "source_name": "Germain Pierre Louis",
+    "category": "U10",
+    "sex": "M",
+    "ranking_id": "FRA932019865",
+    "candidates": [
+      {
+        "candidate_name": "Germain Pierre Louis",
+        "similarity": 1.0,
+        "ranking_id": "FRA932019865",
+        "skier_number": "19865",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=19865"
+      }
+    ]
+  },
+  "Hanein Mickael": {
+    "source_name": "Hanein Mickael",
+    "category": "U14",
+    "sex": "M",
+    "ranking_id": "SUI272019984",
+    "candidates": [
+      {
+        "candidate_name": "Hanein Mickael",
+        "similarity": 1.0,
+        "ranking_id": "SUI272019984",
+        "skier_number": "19984",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=19984"
+      }
+    ]
+  },
+  "Keusseoglou Alexis": {
+    "source_name": "Keusseoglou Alexis",
+    "category": "U17",
+    "sex": "M",
+    "ranking_id": "MON252016040",
+    "candidates": [
+      {
+        "candidate_name": "Keusseoglou Alexis",
+        "similarity": 1.0,
+        "ranking_id": "MON252016040",
+        "skier_number": "16040",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=16040"
+      }
+    ]
+  },
+  "Kulunkian Dreyfus Samuel": {
+    "source_name": "Kulunkian Dreyfus Samuel",
+    "category": "U17",
+    "sex": "M",
+    "ranking_id": "FRA842017443",
+    "candidates": [
+      {
+        "candidate_name": "Kulunkian Dreyfus Samuel",
+        "similarity": 1.0,
+        "ranking_id": "FRA842017443",
+        "skier_number": "17443",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=17443"
+      }
+    ]
+  },
+  "Lavau Clarens": {
+    "source_name": "Lavau Clarens",
+    "category": "U12",
+    "sex": "M",
+    "ranking_id": "FRA082020249",
+    "candidates": [
+      {
+        "candidate_name": "Lavau Clarens",
+        "similarity": 1.0,
+        "ranking_id": "FRA082020249",
+        "skier_number": "20249",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=20249"
+      }
+    ]
+  },
+  "Ledroit Mia": {
+    "source_name": "Ledroit Mia",
+    "category": "U14",
+    "sex": "F",
+    "ranking_id": "FRA592018486",
+    "candidates": [
+      {
+        "candidate_name": "Ledroit Mia",
+        "similarity": 1.0,
+        "ranking_id": "FRA592018486",
+        "skier_number": "18486",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=18486"
+      }
+    ]
+  },
+  "Marsan Alexandre": {
+    "source_name": "Marsan Alexandre",
+    "category": "U17",
+    "sex": "M",
+    "ranking_id": "MON422017166",
+    "candidates": [
+      {
+        "candidate_name": "Marsan Alexandre",
+        "similarity": 1.0,
+        "ranking_id": "MON422017166",
+        "skier_number": "17166",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=17166"
+      }
+    ]
+  },
+  "Mezzanotti Carla": {
+    "source_name": "Mezzanotti Carla",
+    "category": "U14",
+    "sex": "F",
+    "ranking_id": "FRA972018441",
+    "candidates": [
+      {
+        "candidate_name": "Mezzanotti Carla",
+        "similarity": 1.0,
+        "ranking_id": "FRA972018441",
+        "skier_number": "18441",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=18441"
+      }
+    ]
+  },
+  "Morel Benjamin": {
+    "source_name": "Morel Benjamin",
+    "category": "U17",
+    "sex": "M",
+    "ranking_id": "FRA942016114",
+    "candidates": [
+      {
+        "candidate_name": "Morel Benjamin",
+        "similarity": 1.0,
+        "ranking_id": "FRA942016114",
+        "skier_number": "16114",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=16114"
+      }
+    ]
+  },
+  "Morin Antoine": {
+    "source_name": "Morin Antoine",
+    "category": "U14",
+    "sex": "M",
+    "ranking_id": "FRA772017219",
+    "candidates": [
+      {
+        "candidate_name": "Morin Antoine",
+        "similarity": 1.0,
+        "ranking_id": "FRA772017219",
+        "skier_number": "17219",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=17219"
+      }
+    ]
+  },
+  "Morin Samuel": {
+    "source_name": "Morin Samuel",
+    "category": "U10",
+    "sex": "M",
+    "ranking_id": "FRA892019931",
+    "candidates": [
+      {
+        "candidate_name": "Morin Samuel",
+        "similarity": 1.0,
+        "ranking_id": "FRA892019931",
+        "skier_number": "19931",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=19931"
+      }
+    ]
+  },
+  "Ndeau Tanguy": {
+    "source_name": "Ndeau Tanguy",
+    "category": "U17",
+    "sex": "M",
+    "ranking_id": "FRA912016503",
+    "candidates": [
+      {
+        "candidate_name": "Nédeau Tanguy",
+        "similarity": 1.0,
+        "ranking_id": "FRA912016503",
+        "skier_number": "16503",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=16503"
+      }
+    ]
+  },
+  "Neyrac Alban": {
+    "source_name": "Neyrac Alban",
+    "category": "U14",
+    "sex": "M",
+    "ranking_id": "FRA092017662",
+    "candidates": [
+      {
+        "candidate_name": "Neyrac Alban",
+        "similarity": 1.0,
+        "ranking_id": "FRA092017662",
+        "skier_number": "17662",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=17662"
+      }
+    ]
+  },
+  "Nicolas Mathis": {
+    "source_name": "Nicolas Mathis",
+    "category": "U14",
+    "sex": "M",
+    "ranking_id": "FRA792017477",
+    "candidates": [
+      {
+        "candidate_name": "Nicolas Mathis",
+        "similarity": 1.0,
+        "ranking_id": "FRA792017477",
+        "skier_number": "17477",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=17477"
+      }
+    ]
+  },
+  "Notat Hugo": {
+    "source_name": "Notat Hugo",
+    "category": "U14",
+    "sex": "M",
+    "ranking_id": "FRA462018361",
+    "candidates": [
+      {
+        "candidate_name": "Notat Hugo",
+        "similarity": 1.0,
+        "ranking_id": "FRA462018361",
+        "skier_number": "18361",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=18361"
+      }
+    ]
+  },
+  "Paget Marie": {
+    "source_name": "Paget Marie",
+    "category": "U14",
+    "sex": "F",
+    "ranking_id": "FRA872018315",
+    "candidates": [
+      {
+        "candidate_name": "Paget Marie",
+        "similarity": 1.0,
+        "ranking_id": "FRA872018315",
+        "skier_number": "18315",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=18315"
+      }
+    ]
+  },
+  "Paturel Lena": {
+    "source_name": "Paturel Lena",
+    "category": "U17",
+    "sex": "F",
+    "ranking_id": "SUI652014604",
+    "candidates": [
+      {
+        "candidate_name": "Paturel Lena",
+        "similarity": 1.0,
+        "ranking_id": "SUI652014604",
+        "skier_number": "14604",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=14604"
+      }
+    ]
+  },
+  "Pradat Lola": {
+    "source_name": "Pradat Lola",
+    "category": "U14",
+    "sex": "F",
+    "ranking_id": "FRA232017819",
+    "candidates": [
+      {
+        "candidate_name": "Pradat Lola",
+        "similarity": 1.0,
+        "ranking_id": "FRA232017819",
+        "skier_number": "17819",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=17819"
+      }
+    ]
+  },
+  "Rance Hugo": {
+    "source_name": "Rance Hugo",
+    "category": "U17",
+    "sex": "M",
+    "ranking_id": "FRA612017774",
+    "candidates": [
+      {
+        "candidate_name": "Rance Hugo",
+        "similarity": 1.0,
+        "ranking_id": "FRA612017774",
+        "skier_number": "17774",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=17774"
+      }
+    ]
+  },
+  "Rocard Albert": {
+    "source_name": "Rocard Albert",
+    "category": "U12",
+    "sex": "M",
+    "ranking_id": "FRA492017778",
+    "candidates": [
+      {
+        "candidate_name": "Rocard Albert",
+        "similarity": 1.0,
+        "ranking_id": "FRA492017778",
+        "skier_number": "17778",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=17778"
+      }
+    ]
+  },
+  "Rocard Emilien": {
+    "source_name": "Rocard Emilien",
+    "category": "U10",
+    "sex": "M",
+    "ranking_id": "FRA862019835",
+    "candidates": [
+      {
+        "candidate_name": "Rocard Emilien",
+        "similarity": 1.0,
+        "ranking_id": "FRA862019835",
+        "skier_number": "19835",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=19835"
+      }
+    ]
+  },
+  "Rousselot Nicolas": {
+    "source_name": "Rousselot Nicolas",
+    "category": "U17",
+    "sex": "M",
+    "ranking_id": "FRA112014525",
+    "candidates": [
+      {
+        "candidate_name": "Rousselot Nicolas",
+        "similarity": 1.0,
+        "ranking_id": "FRA112014525",
+        "skier_number": "14525",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=14525"
+      }
+    ]
+  },
+  "Sniter Mathilde": {
+    "source_name": "Sniter Mathilde",
+    "category": "U14",
+    "sex": "F",
+    "ranking_id": "FRA682016834",
+    "candidates": [
+      {
+        "candidate_name": "Sniter Mathilde",
+        "similarity": 1.0,
+        "ranking_id": "FRA682016834",
+        "skier_number": "16834",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=16834"
+      }
+    ]
+  },
+  "Sonier Perrine": {
+    "source_name": "Sonier Perrine",
+    "category": "U17",
+    "sex": "F",
+    "ranking_id": "FRA292011415",
+    "candidates": [
+      {
+        "candidate_name": "Sonier Perrine",
+        "similarity": 1.0,
+        "ranking_id": "FRA292011415",
+        "skier_number": "11415",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=11415"
+      }
+    ]
+  },
+  "Souci Benjamin": {
+    "source_name": "Souci Benjamin",
+    "category": "U12",
+    "sex": "M",
+    "ranking_id": "FRA822019222",
+    "candidates": [
+      {
+        "candidate_name": "Souci Benjamin",
+        "similarity": 1.0,
+        "ranking_id": "FRA822019222",
+        "skier_number": "19222",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=19222"
+      }
+    ]
+  },
+  "Verhaeghe Joshua": {
+    "source_name": "Verhaeghe Joshua",
+    "category": "U10",
+    "sex": "M",
+    "ranking_id": "FRA482019783",
+    "candidates": [
+      {
+        "candidate_name": "Verhaeghe Joshua",
+        "similarity": 1.0,
+        "ranking_id": "FRA482019783",
+        "skier_number": "19783",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=19783"
+      }
+    ]
+  },
+  "Wild Tim": {
+    "source_name": "Wild Tim",
+    "category": "U10",
+    "sex": "M",
+    "ranking_id": "FRA842022681",
+    "candidates": [
+      {
+        "candidate_name": "Wild Tim",
+        "similarity": 1.0,
+        "ranking_id": "FRA842022681",
+        "skier_number": "22681",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=22681"
+      }
+    ]
+  },
+  "Witczak Thomas": {
+    "source_name": "Witczak Thomas",
+    "category": "U17",
+    "sex": "M",
+    "ranking_id": "FRA072016337",
+    "candidates": [
+      {
+        "candidate_name": "Witczak Thomas",
+        "similarity": 1.0,
+        "ranking_id": "FRA072016337",
+        "skier_number": "16337",
+        "source_url": "https://www.iwwfed-ea.org/classic/rl2017/eame/index.php?skier=16337"
+      }
+    ]
+  }
+}

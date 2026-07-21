@@ -1,0 +1,76 @@
+{
+  "competition_code": "17FRA005",
+  "competition_key": "T-17FRA005",
+  "source_url": "https://www.iwwfed-ea.org/classic/17FRA005/",
+  "output_directory": "data\\raw\\iwwf\\17FRA005",
+  "started_at": "2026-07-21T08:48:56+00:00",
+  "completed_at": "2026-07-21T08:48:58+00:00",
+  "pages_discovered": 5,
+  "pages_downloaded": 5,
+  "pages_reused": 0,
+  "pages_failed": 0,
+  "manifest_path": "data\\raw\\iwwf\\17FRA005\\manifest.json",
+  "pages": [
+    {
+      "page": "index",
+      "url": "https://www.iwwfed-ea.org/classic/17FRA005/",
+      "filename": "index.html",
+      "status_code": 200,
+      "content_type": "text/html; charset=iso-8859-1",
+      "size_bytes": 94636,
+      "sha256": "ab7931ad47e52158b7d12f6b5693955d8b811c35b762e090027cf7fd2defaf5f",
+      "downloaded_at": "2026-07-21T08:48:56+00:00",
+      "discovered_from": null,
+      "reused": false
+    },
+    {
+      "page": "17FRA005",
+      "url": "https://www.iwwfed-ea.org/competition.php?cc=T-17FRA005&page=17FRA005",
+      "filename": "17FRA005.html",
+      "status_code": 200,
+      "content_type": "text/html; charset=iso-8859-1",
+      "size_bytes": 94636,
+      "sha256": "ab7931ad47e52158b7d12f6b5693955d8b811c35b762e090027cf7fd2defaf5f",
+      "downloaded_at": "2026-07-21T08:48:57+00:00",
+      "discovered_from": "index",
+      "reused": false
+    },
+    {
+      "page": "live",
+      "url": "https://www.iwwfed-ea.org/competition.php?cc=T-17FRA005&page=live",
+      "filename": "live.html",
+      "status_code": 200,
+      "content_type": "text/html; charset=iso-8859-1",
+      "size_bytes": 26662,
+      "sha256": "c31151356862555ff4e698d72da19510dbd951243e5a0b05e10da112447d4b08",
+      "downloaded_at": "2026-07-21T08:48:57+00:00",
+      "discovered_from": "index",
+      "reused": false
+    },
+    {
+      "page": "panel",
+      "url": "https://www.iwwfed-ea.org/competition.php?cc=T-17FRA005&page=panel",
+      "filename": "panel.html",
+      "status_code": 200,
+      "content_type": "text/html; charset=iso-8859-1",
+      "size_bytes": 29225,
+      "sha256": "8f37e87d5f4791e06ed3990f7a0a0620eb2f2318da8ba3bd9d5a149c2c8bdd97",
+      "downloaded_at": "2026-07-21T08:48:58+00:00",
+      "discovered_from": "index",
+      "reused": false
+    },
+    {
+      "page": "TimeTable",
+      "url": "https://www.iwwfed-ea.org/competition.php?cc=T-17FRA005&page=TimeTable",
+      "filename": "TimeTable.html",
+      "status_code": 200,
+      "content_type": "text/html; charset=iso-8859-1",
+      "size_bytes": 46793,
+      "sha256": "3ddbd3f2d05180fab086b39417930105937972f24f05652999d6410991d3cc50",
+      "downloaded_at": "2026-07-21T08:48:58+00:00",
+      "discovered_from": "index",
+      "reused": false
+    }
+  ],
+  "errors": []
+}
