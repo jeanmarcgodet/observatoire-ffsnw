@@ -190,6 +190,41 @@ Chez les hommes, **8 sur 20** passent en Open, soit **40.0 %**.
 
 La transition entre U21 et Open constitue ainsi un point de fragilité majeur de la continuité compétitive nationale.
 <!-- END TRANSITION U21 OPEN -->
+<!-- BEGIN ENTONNOIR U17 U21 OPEN -->
+## Un entonnoir compétitif extrêmement étroit
+
+Pour suivre une même population sur l’ensemble du parcours, l’analyse retient les **32 sportifs dont la dernière saison observée en U17 se situe entre 2017 et 2020**.
+
+Parmi ces **32 sportifs**, seuls **19 sont ensuite retrouvés en U21** dans un délai maximal de trois ans.
+
+Parmi la cohorte initiale, seuls **9 sportifs sont finalement retrouvés en Open après leur passage en U21**.
+
+| Étape observée | Sportifs |
+|---|---:|
+| Dernière saison U17 | 32 |
+| Passage en U21 | 19 |
+| Passage en Open après U21 | 9 |
+
+Le parcours complet U17 → U21 → Open concerne donc **9 sportifs sur 32**.
+
+Une seule personne représente ici **3.1 points de pourcentage**. Le pourcentage correspondant ne doit donc jamais être présenté sans les effectifs bruts.
+
+### Lecture par sexe
+
+Chez les femmes, la cohorte ne comprend que **12 sportives** : **6 atteignent U21** et **3 atteignent ensuite Open**.
+
+Chez les hommes, la cohorte comprend **20 sportifs** : **13 atteignent U21** et **6 atteignent ensuite Open**.
+
+Ces nombres sont trop faibles pour conclure à une différence statistiquement robuste entre les sexes.
+
+![Entonnoir U17 vers U21 puis Open](figures/entonnoir_u17_u21_open_2017_2020.png)
+
+### Portée institutionnelle
+
+Cet entonnoir doit être rapproché de la taille déjà très faible des catégories nationales. L’Open ne réunit qu’un effectif médian de vingt participants sur la période 2017-2026.
+
+La participation aux Championnats de France étant libre, sans sélection préalable, ces faibles nombres ne correspondent pas à une élite restreinte par des quotas. Ils révèlent l’étroitesse réelle du vivier compétitif national et sa difficulté à conserver les sportifs au fil des catégories.
+<!-- END ENTONNOIR U17 U21 OPEN -->
 ## Conclusion provisoire
 
 Les données ne montrent pas un effondrement général de la filière jeunes. Elles mettent en évidence une difficulté croissante à maintenir une participation durable dans les catégories Open et Seniors.
