@@ -1,0 +1,11 @@
+﻿annee;participants_distincts;femmes_distinctes;hommes_distincts;champs_possibles;champs_effectifs;champs_vides;taux_occupation_pct;champs_1_participant;champs_2_participants;champs_3_participants;champs_1_a_3_participants;part_champs_1_a_3_parmi_effectifs_pct;champs_4_a_5_participants;champs_6_a_9_participants;champs_10_participants_ou_plus;participations_dans_les_champs;moyenne_par_champ_possible;moyenne_par_champ_effectif;mediane_par_champ_effectif;effectif_maximal_d_un_champ;places_de_podium_couvertes;part_des_participations_couverte_pct
+2017;103;32;71;104;59;45;56.7;11;9;8;28;47.5;14;14;3;256;2.5;4.3;4.0;15;146;57.0
+2018;101;32;69;104;66;38;63.5;11;17;15;43;65.2;16;6;1;224;2.2;3.4;3.0;17;159;71.0
+2019;99;31;68;104;67;37;64.4;14;14;14;42;62.7;13;10;2;229;2.2;3.4;3.0;13;159;69.4
+2020;82;22;60;104;48;56;46.2;12;2;12;26;54.2;14;8;0;172;1.7;3.6;3.0;9;118;68.6
+2021;110;30;80;104;57;47;54.8;15;11;7;33;57.9;19;5;0;176;1.7;3.1;3.0;8;130;73.9
+2022;102;30;72;104;49;55;47.1;13;7;10;30;61.2;9;7;3;189;1.8;3.9;3.0;18;114;60.3
+2023;109;32;77;104;69;35;66.3;20;11;13;44;63.8;17;5;3;221;2.1;3.2;3.0;10;156;70.6
+2024;91;32;59;104;63;41;60.6;13;17;13;43;68.3;13;6;1;193;1.9;3.1;3.0;10;146;75.6
+2025;88;28;60;104;58;46;55.8;19;8;13;40;69.0;11;6;1;173;1.7;3.0;3.0;11;128;74.0
+2026;69;26;43;104;52;52;50.0;20;4;12;36;69.2;13;3;0;141;1.4;2.7;3.0;7;112;79.4
