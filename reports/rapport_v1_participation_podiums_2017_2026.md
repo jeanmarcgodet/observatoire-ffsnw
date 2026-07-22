@@ -8,7 +8,7 @@
 
 Ce rapport analyse les sportifs distincts effectivement recensés dans les Championnats de France de ski nautique classique intégrés à la base pour la période 2017-2026.
 
-Un même sportif n’est compté qu’une fois par année dans l’indicateur de participation annuelle, même s’il participe dans plusieurs catégories et plusieurs épreuves.
+Un même sportif n’est compté qu’une fois dans un Championnat de France dans l’indicateur de participation annuelle, même s’il participe dans plusieurs catégories et plusieurs épreuves.
 
 Conformément à la terminologie du PPF 2025-2029, le ski nautique constitue la discipline reconnue de haut niveau. Le slalom, les figures, le saut et le combiné sont des épreuves du ski nautique ; ils ne sont pas traités ici comme des disciplines autonomes.
 

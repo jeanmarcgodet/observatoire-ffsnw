@@ -347,7 +347,7 @@ lines = [
     ),
     "",
     (
-        "Un même sportif n’est compté qu’une fois par année dans "
+        "Un même sportif n’est compté qu’une fois dans un Championnat de France dans "
         "l’indicateur de participation annuelle, même s’il participe "
         "dans plusieurs catégories et plusieurs épreuves."
     ),
