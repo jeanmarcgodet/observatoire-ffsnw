@@ -16,9 +16,9 @@ Le combiné est une épreuve fondée sur les performances réalisées dans le sl
 
 ### Participants distincts et participations dans les champs
 
-Le nombre de **participants distincts** correspond au nombre de personnes différentes recensées au cours d’une année.
+Le nombre de **participants distincts** correspond au nombre de personnes différentes recensées au cours d’un championnat.
 
-Les **participations dans les champs** correspondent à la somme des sportifs observés dans chaque champ catégorie × sexe × épreuve. Une même personne peut donc être comptée dans plusieurs champs.
+Les **participations dans les champs** correspondent à la somme des sportifs observés dans chaque champ (=catégorie × sexe × épreuve). Une même personne peut donc être comptée dans plusieurs champs.
 
 Ces deux indicateurs ne doivent pas être additionnés ni interprétés comme s’ils mesuraient la même réalité.
 

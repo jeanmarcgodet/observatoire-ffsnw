@@ -367,18 +367,18 @@ lines = [
     "",
     "### Participants distincts et participations dans les champs",
     "",
-    (
-        "Le nombre de **participants distincts** correspond au "
-        "nombre de personnes différentes recensées au cours d’une "
-        "année."
-    ),
+        (
+            "Le nombre de **participants distincts** correspond au "
+            "nombre de personnes diff\u00e9rentes recens\u00e9es au cours "
+            "d\u2019un championnat."
+        ),
     "",
-    (
-        "Les **participations dans les champs** correspondent à la "
-        "somme des sportifs observés dans chaque champ "
-        "catégorie × sexe × épreuve. Une même personne peut donc "
-        "être comptée dans plusieurs champs."
-    ),
+        (
+            "Les **participations dans les champs** correspondent \u00e0 la "
+            "somme des sportifs observ\u00e9s dans chaque champ "
+            "(=cat\u00e9gorie \u00d7 sexe \u00d7 \u00e9preuve). Une m\u00eame personne "
+            "peut donc \u00eatre compt\u00e9e dans plusieurs champs."
+        ),
     "",
     (
         "Ces deux indicateurs ne doivent pas être additionnés ni "
