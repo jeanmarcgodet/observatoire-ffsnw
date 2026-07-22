@@ -1,4 +1,4 @@
-# Participation et profondeur des podiums
+# Participation et profondeur des champs de compétition
 
 ## Championnats de France de ski nautique classique — 2017-2026
 
@@ -43,7 +43,7 @@ La contraction récente est également visible entre 2023 et 2026 : **109 à 69*
 
 ![Évolution de la participation annuelle](figures/participation_totale_2017_2026.png)
 
-## 3. Mesure de la profondeur des podiums
+## 3. Profondeur des champs et poids des podiums
 
 La part théorique du champ couverte par le podium est calculée séparément dans chaque champ catégorie × sexe × épreuve.
 
@@ -164,7 +164,7 @@ En 2026, les champs Seniors effectivement disputés comptent tous au maximum tro
 
 La valeur individuelle d’une médaille ne doit pas être confondue avec la profondeur collective du champ dans lequel elle est obtenue.
 
-Les résultats de 2026 montrent qu’une part importante des épreuves nationales fonctionne avec un nombre de participants inférieur ou égal au nombre de places disponibles sur le podium.
+Les résultats de 2026 montrent que la majorité des champs catégorie × sexe × épreuve effectivement disputés ne réunit pas plus de trois participants, soit un effectif inférieur ou égal au nombre de places disponibles sur le podium.
 
 Cette situation est particulièrement marquée en saut, en combiné et dans les catégories Seniors, mais elle concerne également une part importante des champs de la Relève et de l’ensemble U21/Open.
 
