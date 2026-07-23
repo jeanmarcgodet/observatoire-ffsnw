@@ -1,0 +1,7 @@
+﻿Indicator;Athletes;AthleteSharePercent;CompetitionParticipations;ActivitySharePercent;MeanCompetitionsPerAthlete
+TOP_10_ATHLETES;10;3.3;241;14.6;24.1
+TOP_20_ATHLETES;20;6.6;406;24.6;20.3
+TOP_50_ATHLETES;50;16.6;773;46.8;15.46
+TOP_10_PERCENT;30;9.9;546;33.1;18.2
+TOP_20_PERCENT;60;19.9;870;52.7;14.5
+TOP_50_PERCENT;151;50.0;1404;85.0;9.3

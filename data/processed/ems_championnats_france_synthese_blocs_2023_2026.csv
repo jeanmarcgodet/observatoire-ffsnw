@@ -1,0 +1,13 @@
+﻿Year;CompetitionCode;ChampionshipBlock;CompetitionName;ApprovedFrenchAthletes;FrenchAthletesWithEvent;ObservedFrenchFields;FrenchFieldParticipations;MeanFrenchFieldSize;MedianFrenchFieldSize;FieldsOneToThree;ShareFieldsOneToThreePercent;FrenchPodiumPlaces;FrenchPodiumWeightPercent
+2023;23FRA017;RELEVES;Championnat de France RELEVE 2023;23;23;27;63;2.33;2;25;92.6;59;93.7
+2023;23FRA018;U21_OPEN;Championnat de France 2023 - U21 + OPEN;31;31;16;73;4.56;4.0;4;25.0;46;63.0
+2023;23FRA023;SENIOR;Championnat de France SENIOR 2023;42;42;26;77;2.96;2.0;19;73.1;51;66.2
+2024;24FRA026;RELEVES;Championnat de France RELEVES;21;21;22;63;2.86;3.0;14;63.6;48;76.2
+2024;24FRA027;U21_OPEN;Championnat de France U21 + OPEN;22;22;16;46;2.88;2.5;12;75.0;38;82.6
+2024;24FRA034;SENIOR;Championnat de France SENIOR;40;40;29;84;2.9;2;20;69.0;63;75.0
+2025;25FRA016;RELEVES;Championnat de France RELEVES 2025;22;22;27;64;2.37;2;23;85.2;55;85.9
+2025;25FRA206;U21_OPEN;Championnat de France U21 + OPEN;23;23;16;58;3.62;3.0;9;56.2;43;74.1
+2025;25FRA018;SENIOR;Championnat de France SENIOR 2025;32;32;24;70;2.92;2.0;15;62.5;47;67.1
+2026;26FRA020;RELEVES;Championnat de France RELEVES 2026;33;33;31;77;2.48;2;23;74.2;64;83.1
+2026;26FRA021;U21_OPEN;Championnat de France U21 + OPEN;19;19;13;45;3.46;4;6;46.2;31;68.9
+2026;26FRA041;SENIOR;Championnat de France SENIOR 2026;14;14;8;15;1.88;1.5;8;100.0;15;100.0
