@@ -1,0 +1,39 @@
+DÉCOMPOSITION DU REBOND OPEN 2025
+==============================================================================
+
+1. ORIGINE DES 49 OPEN
+------------------------------------------------------------------------------
+MAINTENU_DEPUIS_2024 : 24 sportifs (49,0 %) ; 79 participations-compétitions ; médiane=3.0 ; une seule compétition=6 ; 3+=14 ; Championnat de France=9 (37,5 %).
+    Âges : ≤21=0 ; 22-34=20 ; 35+=4 ; également U21=0 ; également Senior=0.
+RETOUR_APRES_INTERRUPTION : 4 sportifs (8,2 %) ; 8 participations-compétitions ; médiane=1.5 ; une seule compétition=2 ; 3+=1 ; Championnat de France=0 (0,0 %).
+    Âges : ≤21=0 ; 22-34=2 ; 35+=2 ; également U21=0 ; également Senior=0.
+NOUVEAU_DANS_FENETRE : 21 sportifs (42,9 %) ; 33 participations-compétitions ; médiane=1.0 ; une seule compétition=15 ; 3+=3 ; Championnat de France=5 (23,8 %).
+    Âges : ≤21=3 ; 22-34=15 ; 35+=3 ; également U21=2 ; également Senior=3.
+
+2. PROFONDEUR DES COMPÉTITIONS OPEN EN 2025
+------------------------------------------------------------------------------
+Compétitions avec au moins un Open : 25 sur 29.
+Compétitions avec 1-4 Open : 15.
+Compétitions avec 5-9 Open : 9.
+Compétitions avec au moins 10 Open : 1.
+
+Dix compétitions réunissant le plus d'Open :
+- 25FRA206 — Championnat de France U21 + OPEN : Open=14 ; U21=9 ; Seniors=4 ; total français=27 ; profil=CENTREE_OPEN.
+- 25FRA217 — New !!! Championnats de Ligue NAQU Mémorial Michel Naudinat : Open=8 ; U21=3 ; Seniors=14 ; total français=34 ; profil=U21_OPEN_SIGNIFICATIF.
+- 25FRA005 — MALIBU OPEN : Open=8 ; U21=2 ; Seniors=13 ; total français=25 ; profil=DOMINANTE_SENIOR.
+- 25FRA008 — Magic Cup : Open=8 ; U21=0 ; Seniors=2 ; total français=10 ; profil=CENTREE_OPEN.
+- 25FRA006 — LACANAU SKI CLASSIC : Open=7 ; U21=4 ; Seniors=15 ; total français=27 ; profil=DOMINANTE_SENIOR.
+- 25FRA031 — BAURECH 3 EVENTS- RL 3 RDS/ Events : Open=7 ; U21=1 ; Seniors=10 ; total français=21 ; profil=U21_OPEN_SIGNIFICATIF.
+- 25FRA030 — BAURECH Slalom CUP / 4 RDS : Open=7 ; U21=0 ; Seniors=17 ; total français=26 ; profil=DOMINANTE_SENIOR.
+- 25FRA019 — Championnats du mont de Laroche : Open=6 ; U21=3 ; Seniors=10 ; total français=20 ; profil=U21_OPEN_SIGNIFICATIF.
+- 25FRA010 — Magic Challenge : Open=5 ; U21=2 ; Seniors=6 ; total français=14 ; profil=U21_OPEN_SIGNIFICATIF.
+- 25FRA032 — BAURECH SLALOM SERIES 4RD : Open=5 ; U21=2 ; Seniors=9 ; total français=18 ; profil=DOMINANTE_SENIOR.
+
+3. INTERPRÉTATION À VALIDER
+------------------------------------------------------------------------------
+- Le rebond du nombre d'Open doit être distingué d'un élargissement durable : une entrée limitée à une seule compétition reste périphérique.
+- La captation par le Championnat de France est calculée à partir des inscriptions EMS ; elle n'est pas affectée par l'incomplétude des résultats U21/Open 2025.
+- Les sportifs de 35 ans ou plus inscrits en Open restent comptés dans Open, conformément à la catégorie réellement disputée.
+- Les nouveaux dans la fenêtre 2023-2025 ne sont pas nécessairement des débutants ou de nouveaux licenciés.
+
+FIN DU DIAGNOSTIC

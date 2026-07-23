@@ -1,0 +1,12 @@
+RÉFÉRENCES À L'ANCIEN INDICATEUR LARGE DU CHAMPIONNAT OPEN
+================================================================================
+
+- data\exports\audit_capture_championnat_open_ems_2023_2025.txt : ancien indicateur large OpenChampionshipParticipation
+- data\exports\diagnostic_open_calendrier_2023_2025.txt : ancien taux de captation 2023 de 51,2 %
+
+Valeurs de référence à utiliser :
+- 2023 : 18 Open français sur 41, soit 43,9 %.
+- 2024 : 16 Open français sur 37, soit 43,2 %.
+- 2025 : 14 Open français sur 49, soit 28,6 %.
+
+FIN

@@ -1,0 +1,50 @@
+﻿Year;CompetitionCode;CompetitionName;IdentityKey;SkierId;Name;CategoryRaw;SourceFile
+2018;18FRA010;Championnats de France Relèves 2018;IWWF:11408;11408;Bordier Lindsay;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\18FRA010\all_skiers_list.html
+2018;18FRA010;Championnats de France Relèves 2018;IWWF:11038;11038;Brunel Emma;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\18FRA010\all_skiers_list.html
+2018;18FRA010;Championnats de France Relèves 2018;IWWF:20738;20738;Caux Valentin;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\18FRA010\all_skiers_list.html
+2018;18FRA010;Championnats de France Relèves 2018;IWWF:17758;17758;Couchet Manon;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\18FRA010\all_skiers_list.html
+2018;18FRA010;Championnats de France Relèves 2018;IWWF:15163;15163;Creissels Rosalie;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\18FRA010\all_skiers_list.html
+2018;18FRA010;Championnats de France Relèves 2018;IWWF:13878;13878;Desgrippes Hugo;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\18FRA010\all_skiers_list.html
+2018;18FRA010;Championnats de France Relèves 2018;IWWF:10517;10517;Miermont Lea;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\18FRA010\all_skiers_list.html
+2018;18FRA010;Championnats de France Relèves 2018;IWWF:13690;13690;Moulanier Marie-Lou;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\18FRA010\all_skiers_list.html
+2018;18FRA010;Championnats de France Relèves 2018;IWWF:16503;16503;Ndeau Tanguy;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\18FRA010\all_skiers_list.html
+2018;18FRA010;Championnats de France Relèves 2018;IWWF:11348;11348;Vigezzi Enzo;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\18FRA010\all_skiers_list.html
+2019;19FRA002;Championnats de France FFSNW Ski Nautique Relèves Espoirs Para;IWWF:11038;11038;BRUNEL, Emma;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\19FRA002\all_skiers_list.html
+2019;19FRA002;Championnats de France FFSNW Ski Nautique Relèves Espoirs Para;IWWF:17758;17758;COUCHET, Manon;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\19FRA002\all_skiers_list.html
+2019;19FRA002;Championnats de France FFSNW Ski Nautique Relèves Espoirs Para;IWWF:14327;14327;GENELOT, Mathilde;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\19FRA002\all_skiers_list.html
+2019;19FRA002;Championnats de France FFSNW Ski Nautique Relèves Espoirs Para;IWWF:10517;10517;MIERMONT, Lea;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\19FRA002\all_skiers_list.html
+2019;19FRA002;Championnats de France FFSNW Ski Nautique Relèves Espoirs Para;IWWF:13690;13690;MOULANIER, Marie-Lou;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\19FRA002\all_skiers_list.html
+2019;19FRA002;Championnats de France FFSNW Ski Nautique Relèves Espoirs Para;IWWF:11408;11408;BORDIER, Lindsay;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\19FRA002\all_skiers_list.html
+2019;19FRA002;Championnats de France FFSNW Ski Nautique Relèves Espoirs Para;IWWF:17489;17489;CALEN, Julian;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\19FRA002\all_skiers_list.html
+2019;19FRA002;Championnats de France FFSNW Ski Nautique Relèves Espoirs Para;IWWF:16114;16114;MOREL, Benjamin;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\19FRA002\all_skiers_list.html
+2019;19FRA002;Championnats de France FFSNW Ski Nautique Relèves Espoirs Para;IWWF:16503;16503;NEDEAU, Tanguy;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\19FRA002\all_skiers_list.html
+2019;19FRA002;Championnats de France FFSNW Ski Nautique Relèves Espoirs Para;IWWF:17774;17774;RANCE, Hugo;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\19FRA002\all_skiers_list.html
+2019;19FRA002;Championnats de France FFSNW Ski Nautique Relèves Espoirs Para;IWWF:14525;14525;ROUSSELOT, Nicolas;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\19FRA002\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;IWWF:FRA092016110;FRA092016110;Amblard Arthur;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\20FRA029\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;IWWF:FRA692015508;FRA692015508;Anguenot Ins;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\20FRA029\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;IWWF:FRA502011408;FRA502011408;Bordier Lindsay;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\20FRA029\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;IWWF:FRA432017489;FRA432017489;Calen Julian;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\20FRA029\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;IWWF:FRA762011464;FRA762011464;Duplan-Fribourg Louis;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\20FRA029\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;IWWF:FRA232014327;FRA232014327;Genelot Mathilde;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\20FRA029\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;IWWF:FRA842017443;FRA842017443;Kulunkian Dreyfus Samuel;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\20FRA029\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;IWWF:FRA562023628;FRA562023628;Lhommelet Sacha;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\20FRA029\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;IWWF:FRA072010517;FRA072010517;Miermont Lea;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\20FRA029\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;IWWF:FRA912016503;FRA912016503;Nedeau Tanguy;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\20FRA029\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;IWWF:FRA112014525;FRA112014525;Rousselot Nicolas;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\20FRA029\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;IWWF:FRA292011415;FRA292011415;Sonier Perrine;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\20FRA029\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;IWWF:FRA122015527;FRA122015527;Spedicato Thomas;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\20FRA029\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;IWWF:FRA072016337;FRA072016337;Witczak Thomas;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\20FRA029\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;IWWF:FRA052014721;FRA052014721;Martin-Champetier Laura;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\20FRA029\21_f_jump_results.html
+2021;21FRA045;Championnats de France RELEVES 2021;IWWF:FRA092016110;FRA092016110;Amblard Arthur;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\21FRA045\all_skiers_list.html
+2021;21FRA045;Championnats de France RELEVES 2021;IWWF:FRA692015508;FRA692015508;Anguenot Ines;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\21FRA045\all_skiers_list.html
+2021;21FRA045;Championnats de France RELEVES 2021;IWWF:FRA502011408;FRA502011408;Bordier Lindsay;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\21FRA045\all_skiers_list.html
+2021;21FRA045;Championnats de France RELEVES 2021;IWWF:FRA352022859;FRA352022859;Curti Oceane;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\21FRA045\all_skiers_list.html
+2021;21FRA045;Championnats de France RELEVES 2021;IWWF:FRA822017476;FRA822017476;Draux Hippolyte;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\21FRA045\all_skiers_list.html
+2021;21FRA045;Championnats de France RELEVES 2021;IWWF:FRA842017443;FRA842017443;Kulunkian Dreyfus Samuel;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\21FRA045\all_skiers_list.html
+2021;21FRA045;Championnats de France RELEVES 2021;IWWF:FRA942016114;FRA942016114;Morel Benjamin;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\21FRA045\all_skiers_list.html
+2021;21FRA045;Championnats de France RELEVES 2021;IWWF:FRA912016503;FRA912016503;Nedeau Tanguy;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\21FRA045\all_skiers_list.html
+2021;21FRA045;Championnats de France RELEVES 2021;IWWF:FRA872018315;FRA872018315;Paget Marie;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\21FRA045\all_skiers_list.html
+2021;21FRA045;Championnats de France RELEVES 2021;IWWF:FRA292011415;FRA292011415;Sonier Perrine;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\21FRA045\all_skiers_list.html
+2021;21FRA045;Championnats de France RELEVES 2021;IWWF:FRA792016604;FRA792016604;Vermot-Gaud Gabin;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\21FRA045\all_skiers_list.html
+2021;21FRA045;Championnats de France RELEVES 2021;IWWF:FRA072016337;FRA072016337;Witczak Thomas;-21 M;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\21FRA045\all_skiers_list.html
+2022;22FRA030;Championnats de France RELEVES U10 to U17 - Championnat de Ligue BFC;IWWF:FRA872018315;FRA872018315;Paget Marie;-21 F;C:\Users\jgodet\Documents\observatoire-ffsnw\data\raw\iwwf\22FRA030\all_skiers_list.html

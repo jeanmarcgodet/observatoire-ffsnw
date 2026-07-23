@@ -1,0 +1,42 @@
+DIAGNOSTIC DE LA FILIÈRE U21 → OPEN — EMS 2023-2025
+==============================================================================
+
+PÉRIMÈTRE
+Catégories réellement inscrites dans EMS. U17, U21 et Open forment la filière cible.
+Les Seniors sont isolés comme population d'aval. Les données décrivent des inscriptions approuvées.
+
+1. COMPOSITION ANNUELLE
+------------------------------------------------------------------------------
+2023 : total=206 ; filière cible=79 ; U17=21 ; U21=22 ; Open=41 ; Seniors=101.
+2024 : total=191 ; filière cible=71 ; U17=20 ; U21=17 ; Open=37 ; Seniors=101.
+2025 : total=198 ; filière cible=85 ; U17=22 ; U21=17 ; Open=49 ; Seniors=101.
+
+2. CALENDRIER ET UTILITÉ POUR LA FILIÈRE
+------------------------------------------------------------------------------
+2023 : 26 compétitions ; 25 avec U17/U21/Open ; 18 avec U21 ; 24 avec Open ; 10 avec au moins 5 Open ; 12 à dominante Senior ou sans filière cible.
+       Médiane U17/U21/Open lorsqu'ils sont présents=6.0 ; médiane Open=3.5.
+2024 : 29 compétitions ; 28 avec U17/U21/Open ; 19 avec U21 ; 25 avec Open ; 12 avec au moins 5 Open ; 18 à dominante Senior ou sans filière cible.
+       Médiane U17/U21/Open lorsqu'ils sont présents=5.0 ; médiane Open=4.0.
+2025 : 29 compétitions ; 28 avec U17/U21/Open ; 19 avec U21 ; 25 avec Open ; 10 avec au moins 5 Open ; 17 à dominante Senior ou sans filière cible.
+       Médiane U17/U21/Open lorsqu'ils sont présents=8.0 ; médiane Open=4.0.
+
+3. PASSAGE U21 → OPEN
+------------------------------------------------------------------------------
+Cohorte U21 2023 : 22 sportifs ; 8 observés en Open (36,4 %) ; même année=2 ; année suivante=3.
+Cohorte U21 2024 : 8 sportifs ; 1 observés en Open (12,5 %) ; même année=0 ; année suivante=1.
+Cohorte U21 2025 : 6 sportifs ; 0 également Open la même année ; suivi futur censuré.
+
+4. PÉRENNITÉ EN OPEN
+------------------------------------------------------------------------------
+2023→2024 : 41 Open initiaux ; 23 maintenus en Open (56,1 %) ; 0 seulement Seniors ; 18 absents du circuit français EMS.
+2024→2025 : 37 Open initiaux ; 24 maintenus en Open (64,9 %) ; 0 seulement Seniors ; 13 absents du circuit français EMS.
+
+5. RÈGLES D'INTERPRÉTATION
+------------------------------------------------------------------------------
+- Le total toutes catégories ne doit pas servir seul à évaluer la filière de performance.
+- Les Seniors documentent uniquement l'aval et la continuité après Open.
+- La catégorie réellement inscrite prévaut sur une catégorie reconstruite par l'âge.
+- Une compétition avec un ou deux Open n'a pas la même fonction qu'un champ Open significatif.
+- L'absence l'année suivante ne prouve pas un abandon définitif.
+
+FIN DU DIAGNOSTIC

@@ -1,0 +1,45 @@
+AUDIT U21 — CODES HISTORIQUES EXPLICITES 2017-2022
+==========================================================================================
+
+1. PÉRIMÈTRE
+------------------------------------------------------------------------------------------
+Les codes sont ceux des anciens scripts de trajectoire, sans filtre sur competitions.niveau.
+Codes résolus : 17FRA002, 17FRA005, 18FRA001, 18FRA010, 18FRA030, 19FRA001, 19FRA002, 19FRA03, 20FRA029, 20FRA030, 20FRA031, 21FRA044, 21FRA045, 21FRA046, 22FRA029, 22FRA030, 22FRA031
+
+2. RÉSULTATS PAR COMPÉTITION
+------------------------------------------------------------------------------------------
+2017 — 17FRA002 — Championnats de France Open Senior Handi 2017 : niveau=championnat_france ; U21 entries=0 ; U21 HTML=0 ; statut=AUCUN_U21.
+2017 — 17FRA005 — Championnat de France Relève 2017 : niveau=absent ; U21 entries=0 ; U21 HTML=0 ; statut=AUCUN_U21.
+2018 — 18FRA001 — OPEN French Nationals 2018 : niveau=championnat_france ; U21 entries=0 ; U21 HTML=0 ; statut=AUCUN_U21.
+2018 — 18FRA010 — Championnats de France Relèves 2018 : niveau=absent ; U21 entries=10 ; U21 HTML=10 ; statut=DB_ET_HTML.
+2018 — 18FRA030 — Championnats de France Seniors : niveau=absent ; U21 entries=0 ; U21 HTML=0 ; statut=AUCUN_U21.
+2019 — 19FRA001 — French OPEN National Championships & OPEN de FRANCE : niveau=championnat_france ; U21 entries=0 ; U21 HTML=0 ; statut=AUCUN_U21.
+2019 — 19FRA002 — Championnats de France FFSNW Ski Nautique Relèves Espoirs Para : niveau=absent ; U21 entries=11 ; U21 HTML=11 ; statut=DB_ET_HTML.
+2019 — 19FRA03 — Championnats de France Séniors : niveau=absent ; U21 entries=0 ; U21 HTML=0 ; statut=AUCUN_U21.
+2020 — 20FRA029 — CHAMPIONNATS DE FRANCE RELEVE 2020 : niveau=absent ; U21 entries=15 ; U21 HTML=15 ; statut=DB_ET_HTML.
+2020 — 20FRA030 — Championnats de France OPEN 2020 : niveau=championnat_france ; U21 entries=0 ; U21 HTML=0 ; statut=AUCUN_U21.
+2020 — 20FRA031 — CHAMPIONNATS DE FRANCE SENIORS 2020 : niveau=absent ; U21 entries=0 ; U21 HTML=0 ; statut=AUCUN_U21.
+2021 — 21FRA044 — Championnats de France SENIORS 2021 : niveau=absent ; U21 entries=0 ; U21 HTML=0 ; statut=AUCUN_U21.
+2021 — 21FRA045 — Championnats de France RELEVES 2021 : niveau=absent ; U21 entries=12 ; U21 HTML=12 ; statut=DB_ET_HTML.
+2021 — 21FRA046 — Championnat de France OPEN 2021 : niveau=championnat_france ; U21 entries=0 ; U21 HTML=0 ; statut=AUCUN_U21.
+2022 — 22FRA029 — Championnats de France SENIOR : niveau=absent ; U21 entries=0 ; U21 HTML=0 ; statut=AUCUN_U21.
+2022 — 22FRA030 — Championnats de France RELEVES U10 to U17 - Championnat de Ligue BFC : niveau=absent ; U21 entries=1 ; U21 HTML=1 ; statut=DB_ET_HTML.
+2022 — 22FRA031 — Championnat de France OPEN U21 : niveau=championnat_france ; U21 entries=0 ; U21 HTML=0 ; statut=AUCUN_U21.
+
+3. EFFECTIFS ANNUELS U21 DANS LES FICHIERS BRUTS
+------------------------------------------------------------------------------------------
+Année | U21 HTML distincts | ancien export | concordance
+2017 | 0 | n.d. | n.d.
+2018 | 10 | 10 | OUI
+2019 | 11 | 11 | OUI
+2020 | 15 | 15 | OUI
+2021 | 12 | 12 | OUI
+2022 | 1 | 1 | OUI
+
+4. CONCLUSION AUTOMATIQUE
+------------------------------------------------------------------------------------------
+Des U21 historiques sont retrouvés dans les fichiers bruts pour : 2018, 2019, 2020, 2021, 2022.
+Le filtre niveau=championnat_france excluait bien des compétitions contenant des U21.
+Les fichiers bruts reproduisent l'ancien export pour : 2018, 2019, 2020, 2021, 2022.
+
+FIN DE L'AUDIT

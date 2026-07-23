@@ -1,0 +1,26 @@
+AUDIT DES SOURCES U21 — ENTRIES VS RÉSULTATS 2017-2026
+========================================================================================
+
+Année | entries U21 | résultats U21 | communs | résultats seuls | ancien export | résultats=ancien export
+----------------------------------------------------------------------------------------
+2017 | 0 | 0 | 0 | 0 | n.d. | n.d.
+2018 | 0 | 0 | 0 | 0 | 10 | 0
+2019 | 0 | 0 | 0 | 0 | 11 | 0
+2020 | 0 | 0 | 0 | 0 | 15 | 0
+2021 | 0 | 0 | 0 | 0 | 12 | 0
+2022 | 0 | 0 | 0 | 0 | 1 | 0
+2023 | 15 | 13 | 13 | 0 | 15 | 0
+2024 | 9 | 6 | 6 | 0 | 9 | 0
+2025 | 11 | 8 | 8 | 0 | 11 | 0
+2026 | 9 | 8 | 8 | 0 | 9 | 0
+
+INDIVIDUS U21 PRÉSENTS DANS LES RÉSULTATS MAIS ABSENTS DES ENTRIES
+----------------------------------------------------------------------------------------
+Aucun.
+
+CONCLUSION AUTOMATIQUE
+----------------------------------------------------------------------------------------
+Des écarts persistent entre résultats et ancien export pour : 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
+La reconstruction définitive devra utiliser une source harmonisée : résultats classés pour les années anciennes, puis résultats/EMS réconciliés pour les années récentes.
+
+FIN DE L'AUDIT

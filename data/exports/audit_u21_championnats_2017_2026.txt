@@ -1,0 +1,47 @@
+AUDIT DES CATÉGORIES U21 — CHAMPIONNATS DE FRANCE 2017-2026
+======================================================================================
+
+1. COMPARAISON DES EFFECTIFS U21 PAR ANNÉE
+--------------------------------------------------------------------------------------
+Année | règle actuelle | règle large d'audit | ancien export participation_categories
+2017 | 0 | 0 | n.d.
+2018 | 0 | 0 | 10
+2019 | 0 | 0 | 11
+2020 | 0 | 0 | 15
+2021 | 0 | 0 | 12
+2022 | 0 | 0 | 1
+2023 | 15 | 15 | 15
+2024 | 9 | 9 | 9
+2025 | 11 | 11 | 11
+2026 | 9 | 9 | 9
+
+2. LIBELLÉS BRUTS CONSIDÉRÉS U21 PAR LA RÈGLE ACTUELLE
+--------------------------------------------------------------------------------------
+2023 — 'U21' : 15 sportifs distincts.
+2024 — 'U21' : 9 sportifs distincts.
+2025 — 'U21' : 11 sportifs distincts.
+2026 — 'U21' : 9 sportifs distincts.
+
+3. LIBELLÉS DÉTECTÉS PAR LA RÈGLE LARGE MAIS PAS PAR LA RÈGLE ACTUELLE
+--------------------------------------------------------------------------------------
+Aucun libellé supplémentaire détecté.
+
+4. SPORTIFS ÂGÉS DE 15 À 21 ANS NON RECONNUS COMME U21
+--------------------------------------------------------------------------------------
+2017 : 12 lignes à examiner.
+2018 : 4 lignes à examiner.
+2019 : 4 lignes à examiner.
+2020 : 8 lignes à examiner.
+2021 : 4 lignes à examiner.
+2022 : 14 lignes à examiner.
+2023 : 0 lignes à examiner.
+2024 : 1 lignes à examiner.
+2025 : 0 lignes à examiner.
+2026 : 0 lignes à examiner.
+
+5. CONCLUSION AUTOMATIQUE
+--------------------------------------------------------------------------------------
+Écart détecté avec l'ancien export pour : 2018, 2019, 2020, 2021, 2022.
+La reconstruction U21→Open ne doit pas être interprétée avant correction ou explication de ces écarts.
+
+FIN DE L'AUDIT

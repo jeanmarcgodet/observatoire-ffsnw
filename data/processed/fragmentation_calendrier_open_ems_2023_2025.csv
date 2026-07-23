@@ -1,0 +1,4 @@
+﻿Year;CompetitionsWithOpen;CompetitionPairs;PairsWithZeroOverlap;ZeroOverlapSharePercent;MeanJaccardAllPairs;MedianJaccardAllPairs;MeanJaccardPositivePairs;MedianJaccardPositivePairs;ConnectedComponents;LargestComponentCompetitions;IsolatedCompetitions
+2023;24;276;180;65.2;0.082;0.0;0.235;0.2;2;22;0
+2024;25;300;175;58.3;0.119;0.0;0.286;0.25;4;21;2
+2025;25;300;201;67.0;0.067;0.0;0.202;0.167;2;23;0

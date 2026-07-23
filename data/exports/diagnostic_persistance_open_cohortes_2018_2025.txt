@@ -1,0 +1,41 @@
+PÉRENNITÉ OPEN — COHORTES COMPARABLES 2018-2025
+==================================================================================
+
+1. INDICATEURS GLOBAUX
+----------------------------------------------------------------------------------
+Horizon 1 an(s) : réapparition Open=11/46 (23,9 %) ; continuité sans interruption=11/46 (23,9 %).
+Horizon 2 an(s) : réapparition Open=17/41 (41,5 %) ; continuité sans interruption=7/41 (17,1 %).
+Horizon 3 an(s) : réapparition Open=18/39 (46,2 %) ; continuité sans interruption=4/39 (10,3 %).
+
+2. SELON L'ORIGINE U21 OBSERVABLE
+----------------------------------------------------------------------------------
+Horizon 1 an(s) :
+- U21_RECENT : 3/9 réapparaissent (33,3 %) ; 3 sans interruption (33,3 %).
+- SANS_U21_RECENT : 8/37 réapparaissent (21,6 %) ; 8 sans interruption (21,6 %).
+Horizon 2 an(s) :
+- U21_RECENT : 8/9 réapparaissent (88,9 %) ; 2 sans interruption (22,2 %).
+- SANS_U21_RECENT : 9/32 réapparaissent (28,1 %) ; 5 sans interruption (15,6 %).
+Horizon 3 an(s) :
+- U21_RECENT : 8/9 réapparaissent (88,9 %) ; 1 sans interruption (11,1 %).
+- SANS_U21_RECENT : 10/30 réapparaissent (33,3 %) ; 3 sans interruption (10,0 %).
+
+3. PAR COHORTE DE PREMIÈRE APPARITION OPEN
+----------------------------------------------------------------------------------
+2018 : entrants=10 ; issus d'un U21 récent=3 ; recul=8 an(s) ; Open année suivante=4 ; Open sous trois ans=6.
+2019 : entrants=6 ; issus d'un U21 récent=0 ; recul=7 an(s) ; Open année suivante=1 ; Open sous trois ans=2.
+2020 : entrants=6 ; issus d'un U21 récent=2 ; recul=6 an(s) ; Open année suivante=2 ; Open sous trois ans=3.
+2021 : entrants=3 ; issus d'un U21 récent=0 ; recul=5 an(s) ; Open année suivante=2 ; Open sous trois ans=2.
+2022 : entrants=9 ; issus d'un U21 récent=3 ; recul=4 an(s) ; Open année suivante=1 ; Open sous trois ans=4.
+2023 : entrants=5 ; issus d'un U21 récent=1 ; recul=3 an(s) ; Open année suivante=1 ; Open sous trois ans=1.
+2024 : entrants=2 ; issus d'un U21 récent=0 ; recul=2 an(s) ; Open année suivante=0 ; Open sous trois ans=censuré.
+2025 : entrants=5 ; issus d'un U21 récent=0 ; recul=1 an(s) ; Open année suivante=0 ; Open sous trois ans=censuré.
+2026 : entrants=2 ; issus d'un U21 récent=0 ; recul=0 an(s) ; Open année suivante=censuré ; Open sous trois ans=censuré.
+
+4. PRÉCAUTIONS
+- La cohorte 2017 est exclue car tronquée à gauche.
+- Une réapparition sous trois ans peut survenir après une ou plusieurs saisons d'absence.
+- La continuité mesure une présence chaque année, sans interruption.
+- 'Sans U21 récent' signifie seulement qu'aucun U21 n'est observé dans les trois années précédant la première apparition Open.
+- Une absence au Championnat de France ne signifie pas une sortie de toute pratique compétitive.
+
+FIN DU DIAGNOSTIC

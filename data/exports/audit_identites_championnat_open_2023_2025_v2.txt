@@ -1,0 +1,28 @@
+RÉCONCILIATION ROBUSTE DES IDENTITÉS OPEN — 2023-2025
+========================================================================================
+
+Source DB : lignes entries Open du code précis. Source EMS : participations Open approuvées du même code.
+
+2023 — 23FRA018 : DB Open=21 ; EMS Open=21 ; appariés=21 ; DB seul=0 ; EMS seul=0.
+
+2024 — 24FRA027 : DB Open=19 ; EMS Open=18 ; appariés=18 ; DB seul=1 ; EMS seul=0.
+       APPARIEMENTS APPROCHÉS À CONTRÔLER :
+       - Ins Anguenot (2002) ↔ ANGUENOT Inès (2002) ; score=0.96.
+       DB SEUL :
+       - ID=349 ; Arthur Amblard ; YOB=2002 ; catégorie=Open.
+
+2025 — 25FRA206 : DB Open=15 ; EMS Open=14 ; appariés=13 ; DB seul=2 ; EMS seul=1.
+       APPARIEMENTS APPROCHÉS À CONTRÔLER :
+       - Ins Anguenot (2002) ↔ ANGUENOT Inès (2002) ; score=0.96.
+       DB SEUL :
+       - ID=245 ; Lorraine Fribourg ; YOB= ; catégorie=Open.
+       - ID=247 ; Alexandre HUGONIN, ; YOB=1978 ; catégorie=Open.
+       EMS SEUL :
+       - FRA|2007|DUVERGER MARIE-LOU ; DUVERGER Marie-Lou ; YOB=2007 ; pays=FRA ; catégorie=Open F (18).
+
+INTERPRÉTATION
+- DB_SEUL : inscription Open présente dans `entries`, absente de l'export EMS annuel.
+- EMS_SEUL : inscription EMS approuvée absente des `entries` importées.
+- Les lignes appariées par nom approché doivent être contrôlées visuellement.
+
+FIN DE L'AUDIT

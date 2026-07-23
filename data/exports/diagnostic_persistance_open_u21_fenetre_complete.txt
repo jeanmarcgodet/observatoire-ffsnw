@@ -1,0 +1,29 @@
+PERSISTANCE OPEN SELON L'ORIGINE U21 — FENÊTRE COMPLÈTE
+==================================================================================
+
+Cohortes de première apparition Open observée 2020-2023 : trois ans de recul avant et après.
+
+U21_DANS_LES_3_ANS_AVANT_OU_MEME_ANNEE
+----------------------------------------------------------------------------------
+Effectif : 6.
+Open l'année suivante : 2/6 (33,3 %).
+Réapparition sous deux ans : 5/6 (83,3 %).
+Réapparition sous trois ans : 5/6 (83,3 %).
+Présence continue jusqu'à trois ans : 0/6 (0,0 %).
+
+AUCUN_U21_OBSERVE_DANS_LES_3_ANS
+----------------------------------------------------------------------------------
+Effectif : 17.
+Open l'année suivante : 4/17 (23,5 %).
+Réapparition sous deux ans : 5/17 (29,4 %).
+Réapparition sous trois ans : 5/17 (29,4 %).
+Présence continue jusqu'à trois ans : 1/17 (5,9 %).
+
+PRÉCAUTIONS
+----------------------------------------------------------------------------------
+Effectif total : 23, dont 6 avec un parcours U21 récent.
+- La première apparition Open observée n'est pas nécessairement la première participation Open de toute la carrière.
+- Les effectifs restent trop faibles pour attribuer une causalité au parcours U21.
+- Une absence au Championnat de France ne signifie pas une absence de toute compétition.
+
+FIN DU DIAGNOSTIC

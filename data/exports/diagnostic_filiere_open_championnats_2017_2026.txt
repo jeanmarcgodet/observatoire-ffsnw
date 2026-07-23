@@ -1,0 +1,54 @@
+FILIÈRE U21 → OPEN AUX CHAMPIONNATS DE FRANCE 2017-2026
+==================================================================================
+
+PÉRIMÈTRE
+Participation aux Championnats de France présents dans la base. Open constitue la catégorie centrale ; les Seniors sont analysés en aval.
+
+1. EFFECTIFS ET RENOUVELLEMENT OPEN
+----------------------------------------------------------------------------------
+2017 : Open=28 ; femmes=14 ; hommes=14 ; également U21=0.
+2018 : Open=18 ; maintenus=8 (28,6 %) ; entrants/retours=10 (55,6 %) ; retours=0 ; nouveaux dans la fenêtre=10.
+2019 : Open=24 ; maintenus=10 (55,6 %) ; entrants/retours=14 (58,3 %) ; retours=8 ; nouveaux dans la fenêtre=6.
+2020 : Open=21 ; maintenus=13 (54,2 %) ; entrants/retours=8 (38,1 %) ; retours=2 ; nouveaux dans la fenêtre=6.
+2021 : Open=17 ; maintenus=10 (47,6 %) ; entrants/retours=7 (41,2 %) ; retours=4 ; nouveaux dans la fenêtre=3.
+2022 : Open=30 ; maintenus=12 (70,6 %) ; entrants/retours=18 (60,0 %) ; retours=9 ; nouveaux dans la fenêtre=9.
+2023 : Open=21 ; maintenus=12 (40,0 %) ; entrants/retours=9 (42,9 %) ; retours=4 ; nouveaux dans la fenêtre=5.
+2024 : Open=19 ; maintenus=11 (52,4 %) ; entrants/retours=8 (42,1 %) ; retours=6 ; nouveaux dans la fenêtre=2.
+2025 : Open=15 ; maintenus=9 (47,4 %) ; entrants/retours=6 (40,0 %) ; retours=1 ; nouveaux dans la fenêtre=5.
+2026 : Open=12 ; maintenus=6 (40,0 %) ; entrants/retours=6 (50,0 %) ; retours=4 ; nouveaux dans la fenêtre=2.
+
+2. SORTIE U21 → OPEN
+----------------------------------------------------------------------------------
+Horizon 1 an(s) : 8/42 sorties U21 observées en Open (19,0 %).
+Horizon 2 an(s) : 13/35 sorties U21 observées en Open (37,1 %).
+Horizon 3 an(s) : 13/31 sorties U21 observées en Open (41,9 %).
+
+Par dernière année U21 :
+- 2018 : 4 sorties U21 ; 2/4 vers Open sous trois ans.
+- 2019 : 5 sorties U21 ; 1/5 vers Open sous trois ans.
+- 2020 : 8 sorties U21 ; 4/8 vers Open sous trois ans.
+- 2021 : 8 sorties U21 ; 3/8 vers Open sous trois ans.
+- 2023 : 6 sorties U21 ; 3/6 vers Open sous trois ans.
+- 2024 : 4 sorties U21 ; suivi disponible=2 an(s), cohorte censurée.
+- 2025 : 7 sorties U21 ; suivi disponible=1 an(s), cohorte censurée.
+- 2026 : 9 sorties U21 ; suivi disponible=0 an(s), cohorte censurée.
+
+3. PÉRENNITÉ APRÈS LA PREMIÈRE APPARITION OPEN
+----------------------------------------------------------------------------------
+Encore Open l'année suivante : 19/74 (25,7 %).
+Réapparition Open dans les trois années suivantes : 34/67 (50,7 %).
+Nombre médian de saisons Open observées : 2.0.
+Une seule saison Open : 34/76 (44,7 %).
+
+4. OPEN → SENIOR
+----------------------------------------------------------------------------------
+Anciens Open devenus éligibles 35+ dans la fenêtre : 25 ; observés ensuite en Senior : 5 (20,0 %).
+Cet indicateur décrit uniquement la continuité observable aux Championnats de France ; il ne mesure ni le revenu ni la pratique hors championnat.
+
+5. PRÉCAUTIONS
+- Les premières apparitions de 2017 sont tronquées à gauche.
+- Les cohortes 2024-2026 disposent d'un suivi incomplet.
+- Une absence au Championnat de France n'est pas un abandon sportif.
+- Les Seniors ne sont pas inclus dans les indicateurs centraux de renouvellement.
+
+FIN DU DIAGNOSTIC

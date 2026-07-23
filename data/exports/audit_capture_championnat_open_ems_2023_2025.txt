@@ -1,0 +1,55 @@
+AUDIT DE CAPTURE DU CHAMPIONNAT DE FRANCE OPEN — EMS 2023-2025
+======================================================================================
+
+Colonnes larges détectées dans le registre : OpenChampionshipParticipation, OpenChampionshipCodes
+
+2023 : Open distincts=41 ; code Open précis=18 ; indicateur large du registre=21 ; toute compétition nationale détectée=26.
+       Présences larges hors code Open précis : 8.
+       - FRA|1992|FRAISSE ROMAIN — FRAISSE Romain
+       - FRA|1995|GROISEAU AUDE — GROISEAU Aude
+       - FRA|1995|PANTIGNY LILYAN — PANTIGNY Lilyan
+       - FRA|1995|ROSSETTO TIMOTHEE — ROSSETTO Timothee
+       - FRA|1996|GRAS MARINE — GRAS Marine
+       - FRA|2001|CONSTANS LEA — CONSTANS Lea
+       - FRA|2001|MIQUEL AUDE — MIQUEL Aude
+       - FRA|2002|CONSTANS BASTIEN — CONSTANS Bastien
+2024 : Open distincts=37 ; code Open précis=16 ; indicateur large du registre=16 ; toute compétition nationale détectée=28.
+       Présences larges hors code Open précis : 12.
+       - FRA|1986|PIEDNOEL ANTOINE — PIEDNOEL Antoine
+       - FRA|1989|JAMIN ROLAND — JAMIN Roland
+       - FRA|1991|BISCHOFBERGER MARION — BISCHOFBERGER Marion
+       - FRA|1995|GROISEAU AUDE — GROISEAU Aude
+       - FRA|1995|PANTIGNY LILYAN — PANTIGNY Lilyan
+       - FRA|1998|BENZIDANE PATRICK — BENZIDANE Patrick
+       - FRA|2000|BORDIER LINDSAY — BORDIER Lindsay
+       - FRA|2000|GERARD LORENZO — GERARD Lorenzo
+       - FRA|2000|ROUSSET BLANDINE — ROUSSET Blandine
+       - FRA|2002|CONSTANS BASTIEN — CONSTANS Bastien
+       - FRA|2002|CUSEY MARTIN — CUSEY Martin
+       - FRA|2002|POISSONNIER LOIC — POISSONNIER Loic
+2025 : Open distincts=49 ; code Open précis=14 ; indicateur large du registre=14 ; toute compétition nationale détectée=31.
+       Présences larges hors code Open précis : 17.
+       - FRA|1989|JAMIN ROLAND — JAMIN Roland
+       - FRA|1989|PASQUALINI AYMERIC — PASQUALINI Aymeric
+       - FRA|1991|BACQUIAS DAVID — BACQUIAS David
+       - FRA|1991|BISCHOFBERGER MARION — BISCHOFBERGER Marion
+       - FRA|1991|JACQUIER ROMAIN — JACQUIER Romain
+       - FRA|1995|GROISEAU AUDE — GROISEAU Aude
+       - FRA|1995|PANTIGNY LILYAN — PANTIGNY Lilyan
+       - FRA|1996|BISCHOFBERGER ILLANA — BISCHOFBERGER Illana
+       - FRA|1998|AILLOT MATHILDE — AILLOT Mathilde
+       - FRA|1998|BENZIDANE PATRICK — BENZIDANE Patrick
+       - FRA|1998|COUCHET MANON — COUCHET Manon
+       - FRA|1998|DION MAXIME — DION Maxime
+       - FRA|1999|CALEN JULIAN — CALEN Julian
+       - FRA|1999|THIELEN ANTHONY — THIELEN Anthony
+       - FRA|2003|COUCHET CLEMENT — COUCHET Clément
+       - FRA|2003|PAGET MARIE — PAGET Marie
+       - FRA|2005|ESTANOL DAVID — ESTANOL David
+
+INTERPRÉTATION
+- Le code précis mesure la captation par le Championnat de France Open.
+- L'indicateur large peut inclure une présence Open dans un autre championnat national, notamment Senior.
+- Pour le rapport central sur la catégorie reine, le code précis doit être retenu.
+
+FIN DE L'AUDIT

@@ -1,0 +1,43 @@
+OPEN ET FONCTION DU CALENDRIER — EMS 2023-2025
+==============================================================================
+
+1. CATÉGORIE OPEN
+------------------------------------------------------------------------------
+2023 : 41 Open ; âges ≤21=2, 22-34=35, 35+=4 ; 112 participations-compétitions ; médiane=2 ; championnat=21 (51,2 % du vivier Open).
+       Une seule compétition=12 ; 3+=14 ; 5+=4 ; Top 10=51,8 % de l'activité Open ; Gini=0.38.
+2024 : 37 Open ; âges ≤21=1, 22-34=31, 35+=5 ; 116 participations-compétitions ; médiane=2 ; championnat=16 (43,2 % du vivier Open).
+       Une seule compétition=13 ; 3+=13 ; 5+=8 ; Top 10=61,2 % de l'activité Open ; Gini=0.447.
+2025 : 49 Open ; âges ≤21=3, 22-34=37, 35+=9 ; 120 participations-compétitions ; médiane=2 ; championnat=14 (28,6 % du vivier Open).
+       Une seule compétition=23 ; 3+=18 ; 5+=7 ; Top 10=46,7 % de l'activité Open ; Gini=0.388.
+
+2. RENOUVELLEMENT ET PÉRENNITÉ
+------------------------------------------------------------------------------
+2024 : 37 Open ; 23 maintenus (56,1 %) ; 14 entrants ou retours (37,8 % du vivier annuel) ; nouveaux dans la fenêtre=14 ; retours après interruption=0.
+2025 : 49 Open ; 24 maintenus (64,9 %) ; 25 entrants ou retours (51,0 % du vivier annuel) ; nouveaux dans la fenêtre=21 ; retours après interruption=4.
+
+3. PROFONDEUR OPEN DES COMPÉTITIONS
+------------------------------------------------------------------------------
+2023 : 26 compétitions ; sans Open=2 ; 1-2 Open=8 ; 3-4 Open=6 ; 5-9 Open=9 ; 10+ Open=1 ; dominante Senior/sans cible=12.
+2024 : 29 compétitions ; sans Open=4 ; 1-2 Open=8 ; 3-4 Open=5 ; 5-9 Open=10 ; 10+ Open=2 ; dominante Senior/sans cible=18.
+2025 : 29 compétitions ; sans Open=4 ; 1-2 Open=3 ; 3-4 Open=12 ; 5-9 Open=9 ; 10+ Open=1 ; dominante Senior/sans cible=17.
+
+4. TRANSITION ANNUELLE U21 → OPEN
+------------------------------------------------------------------------------
+2023 : 22 U21 ; Open même année=2 ; Open année suivante seulement=3 ; conversion même année ou suivante=22,7 %.
+2024 : 17 U21 ; Open même année=0 ; Open année suivante seulement=3 ; conversion même année ou suivante=17,6 %.
+2025 : 17 U21 ; 2 également Open la même année ; passage l'année suivante non observable.
+
+5. OPEN → SENIOR, UNIQUEMENT POUR LES SPORTIFS ÉLIGIBLES
+------------------------------------------------------------------------------
+2023→2024 : 7 Open deviennent ou sont éligibles 35+ ; 0 observés en Senior (0,0 %) ; 4 restent également ou uniquement Open ; 3 absents du circuit français EMS.
+2024→2025 : 6 Open deviennent ou sont éligibles 35+ ; 0 observés en Senior (0,0 %) ; 4 restent également ou uniquement Open ; 2 absents du circuit français EMS.
+
+PRÉCAUTIONS
+------------------------------------------------------------------------------
+- La saison 2025 ne permet pas d'observer le passage U21→Open en 2026.
+- Une entrée Open peut être une première apparition, un retour ou une entrée tardive.
+- Le classement 35+ repose sur l'âge, mais le statut Open repose sur la catégorie EMS réelle.
+- Le nombre de compétitions ne renseigne pas seul sur leur fonction dans la filière.
+- Les données EMS sont des inscriptions approuvées.
+
+FIN DU DIAGNOSTIC

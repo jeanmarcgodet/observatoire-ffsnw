@@ -1,0 +1,62 @@
+PARCOURS D'ENTRÉE EN OPEN ET PÉRENNITÉ
+==============================================================================
+
+1. ENTRANTS OU RETOURS OPEN 2024 : 14
+------------------------------------------------------------------------------
+ENTREE_DIRECTE_SANS_PARCOURS_OBSERVE : 10 ; une seule compétition=4 ; Championnat de France=1.
+U21_ANNEE_PRECEDENTE : 3 ; une seule compétition=0 ; Championnat de France=2.
+SENIOR_SANS_U21_OBSERVE : 1 ; une seule compétition=1 ; Championnat de France=1.
+
+1. ENTRANTS OU RETOURS OPEN 2025 : 25
+------------------------------------------------------------------------------
+ENTREE_DIRECTE_SANS_PARCOURS_OBSERVE : 14 ; une seule compétition=10 ; Championnat de France=1.
+RETOUR_OPEN : 4 ; une seule compétition=2 ; Championnat de France=0.
+SENIOR_SANS_U21_OBSERVE : 3 ; une seule compétition=3 ; Championnat de France=3.
+U21_MEME_ANNEE : 2 ; une seule compétition=2 ; Championnat de France=1.
+U21_ANNEE_PRECEDENTE : 1 ; une seule compétition=0 ; Championnat de France=0.
+U21_PLUS_ANCIEN_DANS_FENETRE : 1 ; une seule compétition=0 ; Championnat de France=0.
+
+2. PÉRENNITÉ DES ENTRANTS OPEN 2024 EN 2025
+------------------------------------------------------------------------------
+Ensemble : 14 entrants ; 7 encore Open en 2025 (50,0 %).
+
+Par pathway :
+- ENTREE_DIRECTE_SANS_PARCOURS_OBSERVE : 10 entrants ; 5 maintenus ; taux=50,0 % ; moyenne de compétitions 2024=1,8.
+- SENIOR_SANS_U21_OBSERVE : 1 entrants ; 0 maintenus ; taux=0,0 % ; moyenne de compétitions 2024=1.
+- U21_ANNEE_PRECEDENTE : 3 entrants ; 2 maintenus ; taux=66,7 % ; moyenne de compétitions 2024=4,33.
+
+Par intensity :
+- 1_COMPETITION : 5 entrants ; 2 maintenus ; taux=40,0 % ; moyenne de compétitions 2024=1.
+- 2_COMPETITIONS : 6 entrants ; 2 maintenus ; taux=33,3 % ; moyenne de compétitions 2024=2.
+- 3_PLUS_COMPETITIONS : 3 entrants ; 3 maintenus ; taux=100,0 % ; moyenne de compétitions 2024=5.
+
+Par championnat :
+- ABSENT_CHAMPIONNAT : 10 entrants ; 4 maintenus ; taux=40,0 % ; moyenne de compétitions 2024=1,8.
+- PRESENT_CHAMPIONNAT : 4 entrants ; 3 maintenus ; taux=75,0 % ; moyenne de compétitions 2024=3,5.
+
+3. COMPÉTITIONS 2024 FRÉQUENTÉES PAR LES ENTRANTS OPEN
+------------------------------------------------------------------------------
+La rétention associée est descriptive : un entrant peut apparaître dans plusieurs compétitions et aucun effet causal n'est attribué.
+- 24FRA018 — LACANAU SKI CLASSIC 3D : Open=10 ; entrants 2024=4 ; encore Open en 2025=3.
+- 24FRA027 — Championnat de France U21 + OPEN : Open=16 ; entrants 2024=4 ; encore Open en 2025=3.
+- 24FRA016 — Coupe de Meuzac : Open=8 ; entrants 2024=3 ; encore Open en 2025=2.
+- 24FRA013 — Championnats de ligue BFC : Open=5 ; entrants 2024=3 ; encore Open en 2025=1.
+- 24FRA019 — PITROT 1 DAY : Open=5 ; entrants 2024=3 ; encore Open en 2025=1.
+- 24FRA003 — Frozen Magic JG : Open=6 ; entrants 2024=2 ; encore Open en 2025=2.
+- 24FRA031 — Magic Trophy : Open=7 ; entrants 2024=2 ; encore Open en 2025=2.
+- 24FRA008 — Grand Prix de Marcillac - Championnat de Ligue NAQUA : Open=6 ; entrants 2024=2 ; encore Open en 2025=1.
+- 24FRA012 — Championnat Ligue Grand Est et Coupe Richard Odin : Open=2 ; entrants 2024=2 ; encore Open en 2025=1.
+- 24FRA005 — LE PLAN D'EAU 3D JUIN : Open=6 ; entrants 2024=1 ; encore Open en 2025=1.
+- 24FRA009 — BORDEAUX SLALOM CUP : Open=6 ; entrants 2024=1 ; encore Open en 2025=1.
+- 24FRA030 — Magic Ski Time : Open=5 ; entrants 2024=1 ; encore Open en 2025=1.
+- 24FRA036 — Magic Challenge : Open=5 ; entrants 2024=1 ; encore Open en 2025=1.
+- 24FRA039 — LE PLAN D'EAU 3D : Open=4 ; entrants 2024=1 ; encore Open en 2025=1.
+- 24FRA017 — Coupe du pays de Montbéliard : Open=2 ; entrants 2024=1 ; encore Open en 2025=0.
+
+PRÉCAUTIONS
+- La fenêtre 2023-2025 est trop courte pour reconstituer toute une carrière.
+- Une entrée directe peut masquer un parcours antérieur à 2023.
+- La pérennité 2025 des entrants 2025 n'est pas encore observable.
+- Les résultats décrivent le circuit français EMS, pas toutes les compétitions à l'étranger.
+
+FIN DU DIAGNOSTIC

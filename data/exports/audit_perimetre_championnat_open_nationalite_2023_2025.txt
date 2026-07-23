@@ -1,0 +1,31 @@
+PÉRIMÈTRE DU CHAMPIONNAT DE FRANCE OPEN — NATIONALITÉ 2023-2025
+========================================================================================
+
+2023 — 23FRA018 : tous Open=21 ; Open français=18 ; Open non français=3.
+       Nationalités non françaises : GBR=1, MAR=1, PER=1.
+       - GBR — GBR|2000|EMMETT CHARLIE — EMMETT Charlie
+       - MAR — MAR|2000|BELMRAH GHALIA — BELMRAH Ghalia
+       - PER — PER|1991|CUGLIEVAN WIESE MARIA DELFINA — CUGLIEVAN WIESE María Delfina
+
+2024 — 24FRA027 : tous Open=18 ; Open français=16 ; Open non français=2.
+       Nationalités non françaises : ESP=1, MAR=1.
+       - ESP — ESP|2001|BARJAU BOADA CLAUDIA — BARJAU BOADA Claudia
+       - MAR — MAR|2004|BELMRAH KAMIL — BELMRAH Kamil
+
+2025 — 25FRA206 : tous Open=14 ; Open français=14 ; Open non français=0.
+
+ANCIEN INDICATEUR LARGE : EXTRAS FRANÇAIS HORS CODE OPEN PRÉCIS
+----------------------------------------------------------------------------------------
+2023 : 3 extras.
+       - FRA|1995|ROSSETTO TIMOTHEE — ROSSETTO Timothee
+       - FRA|2001|MIQUEL AUDE — MIQUEL Aude
+       - FRA|2002|CONSTANS BASTIEN — CONSTANS Bastien
+2024 : 0 extras.
+2025 : 0 extras.
+
+INTERPRÉTATION
+- La série française doit retenir uniquement IsFrench=1.
+- La série tous participants peut être supérieure si des étrangers sont admis au Championnat.
+- Les extras de l'indicateur large sont un phénomène distinct : ce sont des Français comptés hors du code Open précis.
+
+FIN DE L'AUDIT

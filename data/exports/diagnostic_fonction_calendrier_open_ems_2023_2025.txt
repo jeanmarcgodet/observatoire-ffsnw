@@ -1,0 +1,46 @@
+FONCTION EFFECTIVE DU CALENDRIER OPEN — EMS 2023-2025
+======================================================================================
+
+1. PROFONDEUR, ENTRÉES ET CHAMPIONNAT
+--------------------------------------------------------------------------------------
+2023 : 24 compétitions avec Open ; 41 Open distincts ; 1-4 Open=14 ; 5-9 Open=9 ; 10+ Open=1.
+       Championnat de France : 18 Open ; U21 récents=0 ; une seule compétition annuelle=2 ; entrants/retours=n.d..
+2024 : 25 compétitions avec Open ; 37 Open distincts ; 1-4 Open=13 ; 5-9 Open=10 ; 10+ Open=2.
+       Compétitions accueillant au moins un entrant/retour : 16/25 ; participations-compétitions d'entrants/retours=32 ; dans des champs de 1-4 Open=5 (15,6 %).
+       Championnat de France : 16 Open ; U21 récents=2 ; une seule compétition annuelle=4 ; entrants/retours=4.
+2025 : 25 compétitions avec Open ; 49 Open distincts ; 1-4 Open=15 ; 5-9 Open=9 ; 10+ Open=1.
+       Compétitions accueillant au moins un entrant/retour : 21/25 ; participations-compétitions d'entrants/retours=41 ; dans des champs de 1-4 Open=15 (36,6 %).
+       Championnat de France : 14 Open ; U21 récents=1 ; une seule compétition annuelle=6 ; entrants/retours=5.
+
+2. PRÉSENCE OPEN L'ANNÉE SUIVANTE
+--------------------------------------------------------------------------------------
+2023 → 2024 :
+- ALL/ALL : 23/41 (56,1 %) ; moyenne compétitions=2,732.
+- INTENSITY/1_COMPETITION : 3/12 (25,0 %) ; moyenne compétitions=1,0.
+- INTENSITY/2_COMPETITIONS : 10/15 (66,7 %) ; moyenne compétitions=2,0.
+- INTENSITY/3_4_COMPETITIONS : 6/10 (60,0 %) ; moyenne compétitions=3,4.
+- INTENSITY/5_PLUS : 4/4 (100,0 %) ; moyenne compétitions=9,0.
+- CHAMPIONSHIP/ABSENT_CHAMPIONNAT : 10/23 (43,5 %) ; moyenne compétitions=1,783.
+- CHAMPIONSHIP/PRESENT_CHAMPIONNAT : 13/18 (72,2 %) ; moyenne compétitions=3,944.
+2024 → 2025 :
+- ALL/ALL : 24/37 (64,9 %) ; moyenne compétitions=3,135.
+- INTENSITY/1_COMPETITION : 7/13 (53,8 %) ; moyenne compétitions=1,0.
+- INTENSITY/2_COMPETITIONS : 5/11 (45,5 %) ; moyenne compétitions=2,0.
+- INTENSITY/3_4_COMPETITIONS : 4/5 (80,0 %) ; moyenne compétitions=3,6.
+- INTENSITY/5_PLUS : 8/8 (100,0 %) ; moyenne compétitions=7,875.
+- CHAMPIONSHIP/ABSENT_CHAMPIONNAT : 13/21 (61,9 %) ; moyenne compétitions=2,143.
+- CHAMPIONSHIP/PRESENT_CHAMPIONNAT : 11/16 (68,8 %) ; moyenne compétitions=4,438.
+
+3. FRAGMENTATION ENTRE COMPÉTITIONS
+--------------------------------------------------------------------------------------
+2023 : 24 compétitions ; paires sans aucun Open commun=180/276 (65,2 %) ; Jaccard médian toutes paires=0.0 ; composantes=2 ; plus grande composante=22 ; isolées=0.
+2024 : 25 compétitions ; paires sans aucun Open commun=175/300 (58,3 %) ; Jaccard médian toutes paires=0.0 ; composantes=4 ; plus grande composante=21 ; isolées=2.
+2025 : 25 compétitions ; paires sans aucun Open commun=201/300 (67,0 %) ; Jaccard médian toutes paires=0.0 ; composantes=2 ; plus grande composante=23 ; isolées=0.
+
+4. PRÉCAUTIONS
+- Les données sont des inscriptions approuvées, pas nécessairement des départs.
+- Les taux associés à une compétition sont descriptifs : un sportif peut participer à plusieurs événements.
+- La fréquence de compétition peut être la conséquence, et non la cause, d'une meilleure intégration sportive.
+- Les entrants 2023 ne peuvent pas être distingués des Open déjà actifs avant la fenêtre.
+
+FIN DU DIAGNOSTIC

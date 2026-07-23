@@ -1,0 +1,872 @@
+INVENTAIRE DES SOURCES — FILIÈRE U21 → OPEN → SENIOR
+Dépôt : C:\Users\jgodet\Documents\observatoire-ffsnw
+
+====================================================================================================
+BASE SQLITE
+====================================================================================================
+Chemin : C:\Users\jgodet\Documents\observatoire-ffsnw\data\observatoire.db
+Tables : 6
+
+[PERTINENTE] competitions
+  Lignes : 29
+  Colonnes : id (INTEGER), iwwf_id (TEXT), nom (TEXT), date_debut (TEXT), date_fin (TEXT), pays (TEXT), ville (TEXT), discipline (TEXT), annee (INTEGER), niveau (TEXT), statut_collecte (TEXT), source_url (TEXT), population_cible (TEXT)
+  Exemple 1 : id=1 | iwwf_id='26FRA021' | nom='Championnat de France U21 + OPEN' | date_debut='2026-07-17' | date_fin='2026-07-19' | pays='FRA' | ville='Jaumard' | discipline='classic' | annee=2026 | niveau='championnat_france' | statut_collecte='controlee' | source_url='https://www.iwwfed-ea.org/classic/26FRA021/'
+  Exemple 2 : id=5 | iwwf_id='25FRA206' | nom='Championnat de France U21 + OPEN' | date_debut='2025-07-12' | date_fin='2025-07-13' | pays='FRA' | ville='Montbéliard' | discipline='classic' | annee=2025 | niveau='championnat_france' | statut_collecte='a_collecter' | source_url='https://www.iwwfed-ea.org/classic/25FRA206/'
+  Exemple 3 : id=6 | iwwf_id='24FRA027' | nom='Championnat de France U21 + OPEN' | date_debut='2024-07-16' | date_fin='2024-07-17' | pays='FRA' | ville='Seysses' | discipline='classic' | annee=2024 | niveau='championnat_france' | statut_collecte='a_collecter' | source_url='https://www.iwwfed-ea.org/classic/24FRA027/'
+
+[PERTINENTE] entries
+  Lignes : 997
+  Colonnes : id (INTEGER), competition_id (INTEGER), rider_id (INTEGER), categorie (TEXT), club (TEXT), equipe (TEXT)
+  Exemple 1 : id=1 | competition_id=1 | rider_id=1 | categorie='Open' | club=None | equipe=None
+  Exemple 2 : id=2 | competition_id=1 | rider_id=2 | categorie='Open' | club=None | equipe=None
+  Exemple 3 : id=3 | competition_id=1 | rider_id=3 | categorie='Open' | club=None | equipe=None
+
+[PERTINENTE] entry_disciplines
+  Lignes : 46
+  Colonnes : competition_id (INTEGER), rider_id (INTEGER), discipline (TEXT), detail (TEXT), source (TEXT)
+  Exemple 1 : competition_id=1 | rider_id=10 | discipline='slalom' | detail=None | source='ems'
+  Exemple 2 : competition_id=1 | rider_id=10 | discipline='tricks' | detail=None | source='ems'
+  Exemple 3 : competition_id=1 | rider_id=10 | discipline='jump' | detail=None | source='ems'
+
+[PERTINENTE] result_classifications
+  Lignes : 4321
+  Colonnes : id (INTEGER), result_id (INTEGER), classement (TEXT), categorie (TEXT), sexe (TEXT), rang (INTEGER), ligue (TEXT), fichier_source (TEXT)
+  Exemple 1 : id=1455 | result_id=566 | classement='Open Men' | categorie='Open' | sexe='M' | rang=1 | ligue='FRA' | fichier_source='men_jump_results.html'
+  Exemple 2 : id=1456 | result_id=567 | classement='Open Men' | categorie='Open' | sexe='M' | rang=1 | ligue='FRA' | fichier_source='men_jump_results.html'
+  Exemple 3 : id=1457 | result_id=568 | classement='Open Men' | categorie='Open' | sexe='M' | rang=2 | ligue='FRA' | fichier_source='men_jump_results.html'
+
+[PERTINENTE] results
+  Lignes : 4170
+  Colonnes : id (INTEGER), competition_id (INTEGER), rider_id (INTEGER), discipline (TEXT), tour (TEXT), score (TEXT), document_url (TEXT)
+  Exemple 1 : id=566 | competition_id=8 | rider_id=359 | discipline='jump' | tour='ELIMINATOIRES' | score='63,7m' | document_url=None
+  Exemple 2 : id=567 | competition_id=8 | rider_id=359 | discipline='jump' | tour='FINALES' | score='63,9m' | document_url=None
+  Exemple 3 : id=568 | competition_id=8 | rider_id=388 | discipline='jump' | tour='ELIMINATOIRES' | score='60,6m' | document_url=None
+
+[PERTINENTE] riders
+  Lignes : 408
+  Colonnes : id (INTEGER), iwwf_id (TEXT), nom (TEXT), prenom (TEXT), sexe (TEXT), nation (TEXT), annee_naissance (INTEGER), ems_athlete_id (TEXT)
+  Exemple 1 : id=1 | iwwf_id='FRA692015508' | nom='Anguenot' | prenom='Ins' | sexe='F' | nation='FRA' | annee_naissance=2002 | ems_athlete_id='a77841e4-9286-48c4-b588-31960cf56fc7'
+  Exemple 2 : id=2 | iwwf_id='FRA102006248' | nom='Bischofberger' | prenom='Illana' | sexe='F' | nation='FRA' | annee_naissance=1996 | ems_athlete_id='deabbaad-4072-4ef2-8cbe-e1ca06c8244f'
+  Exemple 3 : id=3 | iwwf_id='FRA042006250' | nom='Bischofberger' | prenom='Oscar' | sexe='M' | nation='FRA' | annee_naissance=1994 | ems_athlete_id='dc015da0-bdea-41b4-bc17-89e55cccd08c'
+
+
+====================================================================================================
+FICHIERS CSV PERTINENTS
+====================================================================================================
+
+[CSV] data\processed\candidats_identites_ems_resultats_2023_2026.csv
+  Lignes : 17
+  Colonnes : EmsName;ResultName;EmsNormalizedName;ResultNormalizedName;EmsYOB;ResultYOB;NameScore;Confidence;Occurrences;Years;CompetitionCodes;Fields
+  Exemple 1 : EmsName;ResultName;EmsNormalizedName;ResultNormalizedName;EmsYOB;ResultYOB;NameScore;Confidence;Occurrences;Years;CompetitionCodes;Fields='DUVERGER Marie-Lou;Duverger Marie-Lou;DUVERGER MARIE LOU;DUVERGER MARIE LOU;2007;2007;100.0;AUTO_EXACT_NAME;8;2023 |...
+  Exemple 2 : EmsName;ResultName;EmsNormalizedName;ResultNormalizedName;EmsYOB;ResultYOB;NameScore;Confidence;Occurrences;Years;CompetitionCodes;Fields='MOULANIER Marie-Lou;Moulanier Marie-Lou;MOULANIER MARIE LOU;MOULANIER MARIE LOU;1999;1999;100.0;AUTO_EXACT_NAME;4;20...
+  Exemple 3 : EmsName;ResultName;EmsNormalizedName;ResultNormalizedName;EmsYOB;ResultYOB;NameScore;Confidence;Occurrences;Years;CompetitionCodes;Fields='PARPETTE Jean-Yves;Parpette Jean-Yves;PARPETTE JEAN YVES;PARPETTE JEAN YVES;1947;1947;100.0;AUTO_EXACT_NAME;3;2023 |...
+
+[CSV] data\processed\comparaison_ems_resultats_blocs_2023_2026.csv
+  Lignes : 12
+  Colonnes : Year;ChampionshipBlock;ApprovedFrenchAthletes;ClassifiedFrenchAthletes;ApprovedFrenchFieldEntries;ClassifiedFrenchFieldEntries;EntryDifference;EntryCoveragePercent;ApprovedFields;ClassifiedFields;SharedFields;EmsOnlyFields;ResultsOnlyFields;QualityStatus
+  Exemple 1 : Year;ChampionshipBlock;ApprovedFrenchAthletes;ClassifiedFrenchAthletes;ApprovedFrenchFieldEntries;ClassifiedFrenchFieldEntries;EntryDifference;EntryCoveragePercent;ApprovedFields;ClassifiedFields;SharedFields;EmsOnlyFields;ResultsOnlyFields;QualityStatus='2023;RELEVES;23;23;63;63;0;100.0;27;27;27;0;0;EXACT'
+  Exemple 2 : Year;ChampionshipBlock;ApprovedFrenchAthletes;ClassifiedFrenchAthletes;ApprovedFrenchFieldEntries;ClassifiedFrenchFieldEntries;EntryDifference;EntryCoveragePercent;ApprovedFields;ClassifiedFields;SharedFields;EmsOnlyFields;ResultsOnlyFields;QualityStatus='2023;SENIOR;42;40;77;68;-9;88.3;26;26;26;0;0;REVIEW'
+  Exemple 3 : Year;ChampionshipBlock;ApprovedFrenchAthletes;ClassifiedFrenchAthletes;ApprovedFrenchFieldEntries;ClassifiedFrenchFieldEntries;EntryDifference;EntryCoveragePercent;ApprovedFields;ClassifiedFields;SharedFields;EmsOnlyFields;ResultsOnlyFields;QualityStatus='2023;U21_OPEN;31;30;73;69;-4;94.5;16;16;16;0;0;REVIEW'
+
+[CSV] data\processed\comparaison_ems_resultats_champs_2023_2026.csv
+  Lignes : 255
+  Colonnes : Year;CompetitionCode;ChampionshipBlock;PopulationGroup;Category;Sex;Event;ApprovedFrench;ClassifiedFrench;DifferenceClassifiedMinusApproved;ClassificationCoveragePercent;Status
+  Exemple 1 : Year;CompetitionCode;ChampionshipBlock;PopulationGroup;Category;Sex;Event;ApprovedFrench;ClassifiedFrench;DifferenceClassifiedMinusApproved;ClassificationCoveragePercent;Status='2023;23FRA017;RELEVES;JUNIOR;U17;F;COMBINE;1;1;0;100.0;MATCH'
+  Exemple 2 : Year;CompetitionCode;ChampionshipBlock;PopulationGroup;Category;Sex;Event;ApprovedFrench;ClassifiedFrench;DifferenceClassifiedMinusApproved;ClassificationCoveragePercent;Status='2023;23FRA017;RELEVES;JUNIOR;U17;F;FIGURES;2;2;0;100.0;MATCH'
+  Exemple 3 : Year;CompetitionCode;ChampionshipBlock;PopulationGroup;Category;Sex;Event;ApprovedFrench;ClassifiedFrench;DifferenceClassifiedMinusApproved;ClassificationCoveragePercent;Status='2023;23FRA017;RELEVES;JUNIOR;U17;F;SAUT;1;1;0;100.0;MATCH'
+
+[CSV] data\processed\comparaison_ems_resultats_individus_2023_2026.csv
+  Lignes : 822
+  Colonnes : Year;CompetitionCode;ChampionshipBlock;PopulationGroup;Category;Sex;Event;AthleteKey;Name;YOB;Status;EmsName;ResultName;EmsCategoryRaw;ResultRiderId
+  Exemple 1 : Year;CompetitionCode;ChampionshipBlock;PopulationGroup;Category;Sex;Event;AthleteKey;Name;YOB;Status;EmsName;ResultName;EmsCategoryRaw;ResultRiderId='2023;23FRA017;RELEVES;JUNIOR;U17;F;COMBINE;FRA|2007|DUVERGER MARIE LOU;Duverger Marie-Lou;2007;RESULTS_ONLY;;Duverge...
+  Exemple 2 : Year;CompetitionCode;ChampionshipBlock;PopulationGroup;Category;Sex;Event;AthleteKey;Name;YOB;Status;EmsName;ResultName;EmsCategoryRaw;ResultRiderId='2023;23FRA017;RELEVES;JUNIOR;U17;F;COMBINE;FRA|2007|DUVERGER MARIE-LOU;DUVERGER Marie-Lou;;EMS_ONLY;DUVERGER Marie-L...
+  Exemple 3 : Year;CompetitionCode;ChampionshipBlock;PopulationGroup;Category;Sex;Event;AthleteKey;Name;YOB;Status;EmsName;ResultName;EmsCategoryRaw;ResultRiderId='2023;23FRA017;RELEVES;JUNIOR;U17;F;FIGURES;FRA|2006|CURTI CLEMENTINE;CURTI Clémentine;;EMS_ONLY;CURTI Clémentine;;-1...
+
+[CSV] data\processed\comparaison_ems_resultats_reconciliee_2023_2026.csv
+  Lignes : 737
+  Colonnes : Year;CompetitionCode;ChampionshipBlock;Sex;Event;CanonicalAthleteKey;Status;DataQuality;EmsPopulationGroup;ResultPopulationGroup;EmsCategory;ResultCategory;EmsName;ResultName
+  Exemple 1 : Year;CompetitionCode;ChampionshipBlock;Sex;Event;CanonicalAthleteKey;Status;DataQuality;EmsPopulationGroup;ResultPopulationGroup;EmsCategory;ResultCategory;EmsName;ResultName='2023;23FRA017;RELEVES;M;FIGURES;FRA|2014|GILG MARTIN;MATCH;USABLE;RELEVES;RELEVES;U10;U10;GILG Martin;Gilg Martin'
+  Exemple 2 : Year;CompetitionCode;ChampionshipBlock;Sex;Event;CanonicalAthleteKey;Status;DataQuality;EmsPopulationGroup;ResultPopulationGroup;EmsCategory;ResultCategory;EmsName;ResultName='2023;23FRA017;RELEVES;M;SLALOM;FRA|2014|GILG MARTIN;MATCH;USABLE;RELEVES;RELEVES;U10;U10;GILG Martin;Gilg Martin'
+  Exemple 3 : Year;CompetitionCode;ChampionshipBlock;Sex;Event;CanonicalAthleteKey;Status;DataQuality;EmsPopulationGroup;ResultPopulationGroup;EmsCategory;ResultCategory;EmsName;ResultName='2023;23FRA017;RELEVES;F;SLALOM;FRA|2013|LACARRAU JULIA;MATCH;USABLE;RELEVES;RELEVES;U10;U10;LACARRAU Julia;Lacarrau ...
+
+[CSV] data\processed\conversion_disciplines_physiques_combine_2023_2026.csv
+  Lignes : 21
+  Colonnes : Scope;"Year";"ChampionshipBlock";"ApprovedEntries";"ConvertedEntries";"MissingEntries";"ConversionRatePercent"
+  Exemple 1 : Scope;"Year";"ChampionshipBlock";"ApprovedEntries";"ConvertedEntries";"MissingEntries";"ConversionRatePercent"='DISCIPLINES_PHYSIQUES;"2023";"RELEVES";"52";"52";"0";"100"'
+  Exemple 2 : Scope;"Year";"ChampionshipBlock";"ApprovedEntries";"ConvertedEntries";"MissingEntries";"ConversionRatePercent"='DISCIPLINES_PHYSIQUES;"2023";"SENIOR";"67";"61";"6";"91"'
+  Exemple 3 : Scope;"Year";"ChampionshipBlock";"ApprovedEntries";"ConvertedEntries";"MissingEntries";"ConversionRatePercent"='DISCIPLINES_PHYSIQUES;"2023";"U21_OPEN";"61";"58";"3";"95'
+
+[CSV] data\processed\conversion_ems_resultats_par_bloc_2023_2026.csv
+  Lignes : 11
+  Colonnes : Year;CompetitionCode;ChampionshipBlock;ApprovedAthletes;AthletesWithAnyClassification;FullConversionAthletes;PartialConversionAthletes;NoClassificationAthletes;AthleteClassificationRatePercent;FullConversionRatePercent;ApprovedFieldEntries;MatchedApprovedFieldEntries;MissingApprovedFieldEntries;FieldConversionRatePercent
+  Exemple 1 : Year;CompetitionCode;ChampionshipBlock;ApprovedAthletes;AthletesWithAnyClassification;FullConversionAthletes;PartialConversionAthletes;NoClassificationAthletes;AthleteClassificationRatePercent;FullConversionRatePercent;ApprovedFieldEntries;MatchedApprovedFieldEntries;MissingApprovedFieldEntries;FieldConversionRatePercent='2023;23FRA017;RELEVES;23;23;23;0;0;100.0;100.0;63;63;0;100.0'
+  Exemple 2 : Year;CompetitionCode;ChampionshipBlock;ApprovedAthletes;AthletesWithAnyClassification;FullConversionAthletes;PartialConversionAthletes;NoClassificationAthletes;AthleteClassificationRatePercent;FullConversionRatePercent;ApprovedFieldEntries;MatchedApprovedFieldEntries;MissingApprovedFieldEntries;FieldConversionRatePercent='2023;23FRA018;U21_OPEN;31;30;30;0;1;96.8;96.8;73;69;4;94.5'
+  Exemple 3 : Year;CompetitionCode;ChampionshipBlock;ApprovedAthletes;AthletesWithAnyClassification;FullConversionAthletes;PartialConversionAthletes;NoClassificationAthletes;AthleteClassificationRatePercent;FullConversionRatePercent;ApprovedFieldEntries;MatchedApprovedFieldEntries;MissingApprovedFieldEntries;FieldConversionRatePercent='2023;23FRA023;SENIOR;42;40;36;4;2;95.2;85.7;77;68;9;88.3'
+
+[CSV] data\processed\conversion_ems_resultats_par_sportif_2023_2026.csv
+  Lignes : 299
+  Colonnes : Year;CompetitionCode;ChampionshipBlock;AthleteKey;Name;Sex;ConversionStatus;ApprovedFields;MatchedApprovedFields;MissingApprovedFields;ClassifiedFields;AdditionalResultFields;CategoryChanges;FieldConversionPercent;ApprovedEvents;MissingEvents;EmsCategories;ResultCategories
+  Exemple 1 : Year;CompetitionCode;ChampionshipBlock;AthleteKey;Name;Sex;ConversionStatus;ApprovedFields;MatchedApprovedFields;MissingApprovedFields;ClassifiedFields;AdditionalResultFields;CategoryChanges;FieldConversionPercent;ApprovedEvents;MissingEvents;EmsCategories;ResultCategories='2023;23FRA017;RELEVES;FRA|2006|BRUYERE TONY;BRUYERE Tony;M;FULL_CONVERSION;1;1;0;1;0;0;100.0;SLALOM;;U17;U17'
+  Exemple 2 : Year;CompetitionCode;ChampionshipBlock;AthleteKey;Name;Sex;ConversionStatus;ApprovedFields;MatchedApprovedFields;MissingApprovedFields;ClassifiedFields;AdditionalResultFields;CategoryChanges;FieldConversionPercent;ApprovedEvents;MissingEvents;EmsCategories;ResultCategories='2023;23FRA017;RELEVES;FRA|2011|CONTE LUBIN;CONTE Lubin;M;FULL_CONVERSION;4;4;0;4;0;0;100.0;COMBINE'
+  Exemple 3 : Year;CompetitionCode;ChampionshipBlock;AthleteKey;Name;Sex;ConversionStatus;ApprovedFields;MatchedApprovedFields;MissingApprovedFields;ClassifiedFields;AdditionalResultFields;CategoryChanges;FieldConversionPercent;ApprovedEvents;MissingEvents;EmsCategories;ResultCategories='2023;23FRA017;RELEVES;FRA|2011|CORTES LILOU;CORTES Lilou;F;FULL_CONVERSION;2;2;0;2;0;0;100.0;FIGURES'
+
+[CSV] data\processed\ecarts_ems_resultats_par_sportif_2023_2026.csv
+  Lignes : 19
+  Colonnes : Year;"CompetitionCode";"ChampionshipBlock";"Status";"Name";"AthleteKey";"Sex";"EmsCategories";"ResultCategories";"Events";"FieldOccurrences"
+  Exemple 1 : Year;"CompetitionCode";"ChampionshipBlock";"Status";"Name";"AthleteKey";"Sex";"EmsCategories";"ResultCategories";"Events";"FieldOccurrences"='2023;"23FRA017";"RELEVES";"RESULTS_ONLY";"Maumy Aurelien";"FRA|2009|MAUMY AURELIEN";"M";"";"U14";"FIGURES'
+  Exemple 2 : Year;"CompetitionCode";"ChampionshipBlock";"Status";"Name";"AthleteKey";"Sex";"EmsCategories";"ResultCategories";"Events";"FieldOccurrences"='2023;"23FRA023";"SENIOR";"EMS_ONLY";"CHENESSEAU Bruno";"FRA|1953|CHENESSEAU BRUNO";"M";"65+";"";"SLALOM";"1"'
+  Exemple 3 : Year;"CompetitionCode";"ChampionshipBlock";"Status";"Name";"AthleteKey";"Sex";"EmsCategories";"ResultCategories";"Events";"FieldOccurrences"='2023;"23FRA023";"SENIOR";"EMS_ONLY";"DELACOUR Arnaud";"FRA|1985|DELACOUR ARNAUD";"M";"35+";"";"COMBINE'
+
+[CSV] data\processed\ecarts_ems_resultats_reconcilies_2023_2026.csv
+  Lignes : 60
+  Colonnes : Year;CompetitionCode;ChampionshipBlock;Sex;Event;CanonicalAthleteKey;Status;DataQuality;EmsPopulationGroup;ResultPopulationGroup;EmsCategory;ResultCategory;EmsName;ResultName
+  Exemple 1 : Year;CompetitionCode;ChampionshipBlock;Sex;Event;CanonicalAthleteKey;Status;DataQuality;EmsPopulationGroup;ResultPopulationGroup;EmsCategory;ResultCategory;EmsName;ResultName='2023;23FRA018;U21_OPEN;M;COMBINE;FRA|1996|DAILLAND TANGUY;EMS_ONLY;USABLE;OPEN;;OPEN;;DAILLAND Tanguy;'
+  Exemple 2 : Year;CompetitionCode;ChampionshipBlock;Sex;Event;CanonicalAthleteKey;Status;DataQuality;EmsPopulationGroup;ResultPopulationGroup;EmsCategory;ResultCategory;EmsName;ResultName='2023;23FRA018;U21_OPEN;M;FIGURES;FRA|1996|DAILLAND TANGUY;EMS_ONLY;USABLE;OPEN;;OPEN;;DAILLAND Tanguy;'
+  Exemple 3 : Year;CompetitionCode;ChampionshipBlock;Sex;Event;CanonicalAthleteKey;Status;DataQuality;EmsPopulationGroup;ResultPopulationGroup;EmsCategory;ResultCategory;EmsName;ResultName='2023;23FRA018;U21_OPEN;M;SAUT;FRA|1996|DAILLAND TANGUY;EMS_ONLY;USABLE;OPEN;;OPEN;;DAILLAND Tanguy;'
+
+[CSV] data\processed\ecarts_identites_residuels_2023_2026.csv
+  Lignes : 62
+  Colonnes : Year;CompetitionCode;ChampionshipBlock;PopulationGroup;Category;Sex;Event;Status;AthleteKey;Name;YOB
+  Exemple 1 : Year;CompetitionCode;ChampionshipBlock;PopulationGroup;Category;Sex;Event;Status;AthleteKey;Name;YOB='2023;23FRA018;U21_OPEN;OPEN;OPEN;M;COMBINE;EMS_ONLY;FRA|1996|DAILLAND TANGUY;DAILLAND Tanguy;1996'
+  Exemple 2 : Year;CompetitionCode;ChampionshipBlock;PopulationGroup;Category;Sex;Event;Status;AthleteKey;Name;YOB='2023;23FRA018;U21_OPEN;OPEN;OPEN;M;FIGURES;EMS_ONLY;FRA|1996|DAILLAND TANGUY;DAILLAND Tanguy;1996'
+  Exemple 3 : Year;CompetitionCode;ChampionshipBlock;PopulationGroup;Category;Sex;Event;Status;AthleteKey;Name;YOB='2023;23FRA018;U21_OPEN;OPEN;OPEN;M;SAUT;EMS_ONLY;FRA|1996|DAILLAND TANGUY;DAILLAND Tanguy;1996'
+
+[CSV] data\processed\ems_activite_avant_maintien_sortie_2023_2025.csv
+  Lignes : 12
+  Colonnes : FromYear;ToYear;Population;OriginAthletes;RetainedAthletes;ExitedAthletes;RetentionRatePercent;MeanCompetitionsRetained;MedianCompetitionsRetained;MeanCompetitionsExited;MedianCompetitionsExited
+  Exemple 1 : FromYear;ToYear;Population;OriginAthletes;RetainedAthletes;ExitedAthletes;RetentionRatePercent;MeanCompetitionsRetained;MedianCompetitionsRetained;MeanCompetitionsExited;MedianCompetitionsExited='2023;2024;ALL;206;140;66;68.0;3.19;3.0;1.76;1.0'
+  Exemple 2 : FromYear;ToYear;Population;OriginAthletes;RetainedAthletes;ExitedAthletes;RetentionRatePercent;MeanCompetitionsRetained;MedianCompetitionsRetained;MeanCompetitionsExited;MedianCompetitionsExited='2023;2024;RELEVES;30;19;11;63.3;3.16;3;1.55;1'
+  Exemple 3 : FromYear;ToYear;Population;OriginAthletes;RetainedAthletes;ExitedAthletes;RetentionRatePercent;MeanCompetitionsRetained;MedianCompetitionsRetained;MeanCompetitionsExited;MedianCompetitionsExited='2023;2024;JUNIOR;17;12;5;70.6;3.5;3.0;1.8;1'
+
+[CSV] data\processed\ems_audit_championnats_france_2023_2026.csv
+  Lignes : 12
+  Colonnes : Year;"CompetitionCode";"ChampionshipBlock";"Found";"CompetitionName";"ApprovedAll";"ApprovedFrench";"CategoriesRaw"
+  Exemple 1 : Year;"CompetitionCode";"ChampionshipBlock";"Found";"CompetitionName";"ApprovedAll";"ApprovedFrench";"CategoriesRaw"='2023;"23FRA017";"RELEVES";"True";"Championnat de France RELEVE 2023";"30";"23";"-10 F (10) | -10 M (10) | -10 M (9) ...
+  Exemple 2 : Year;"CompetitionCode";"ChampionshipBlock";"Found";"CompetitionName";"ApprovedAll";"ApprovedFrench";"CategoriesRaw"='2023;"23FRA018";"U21_OPEN";"True";"Championnat de France 2023 - U21 + OPEN";"35";"31";"-21 F (19) | -21 F (20) | -21...
+  Exemple 3 : Year;"CompetitionCode";"ChampionshipBlock";"Found";"CompetitionName";"ApprovedAll";"ApprovedFrench";"CategoriesRaw"='2023;"23FRA023";"SENIOR";"True";"Championnat de France SENIOR 2023";"43";"42";"35+ F (36) | 35+ M (38) | 35+ M (40) ...
+
+[CSV] data\processed\ems_championnats_france_anomalies_2023_2026.csv
+  Lignes : 12
+  Colonnes : Year;CompetitionCode;ChampionshipBlock;CompetitionName;AthleteKey;Name;Country;CategoryRaw;AnomalyType;Detail
+  Exemple 1 : Year;CompetitionCode;ChampionshipBlock;CompetitionName;AthleteKey;Name;Country;CategoryRaw;AnomalyType;Detail='2025;25FRA206;U21_OPEN;Championnat de France U21 + OPEN;FRA|1956|BALLOT GERARD;BALLOT Gerard;FRA;65+ M (69) Div 1;BL...
+  Exemple 2 : Year;CompetitionCode;ChampionshipBlock;CompetitionName;AthleteKey;Name;Country;CategoryRaw;AnomalyType;Detail='2025;25FRA206;U21_OPEN;Championnat de France U21 + OPEN;FRA|1965|COITOU ANNIE;COITOU Annie;FRA;55+ F (60) Div 1;BLOC...
+  Exemple 3 : Year;CompetitionCode;ChampionshipBlock;CompetitionName;AthleteKey;Name;Country;CategoryRaw;AnomalyType;Detail='2025;25FRA206;U21_OPEN;Championnat de France U21 + OPEN;FRA|1966|FRIBOURG LORRAINE;FRIBOURG Lorraine;FRA;55+ F (59) ...
+
+[CSV] data\processed\ems_championnats_france_champs_2023_2026.csv
+  Lignes : 256
+  Colonnes : Year;CompetitionCode;CompetitionName;ChampionshipBlock;PopulationGroup;Category;CategoryOrder;Sex;Event;ApprovedAll;ApprovedFrench;ApprovedForeign;FrenchDepthClass;FrenchFieldOneToThree;FrenchPodiumPlaces;FrenchPodiumWeightPercent;RawCategories;DivisionLabels
+  Exemple 1 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;PopulationGroup;Category;CategoryOrder;Sex;Event;ApprovedAll;ApprovedFrench;ApprovedForeign;FrenchDepthClass;FrenchFieldOneToThree;FrenchPodiumPlaces;FrenchPodiumWeightPercent;RawCategories;DivisionLabels='2023;23FRA017;Championnat de France RELEVE 2023;RELEVES;RELEVES;U10;10;F;SLALOM;1;1;0;1;1;1;100.0;-10 F (10);'
+  Exemple 2 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;PopulationGroup;Category;CategoryOrder;Sex;Event;ApprovedAll;ApprovedFrench;ApprovedForeign;FrenchDepthClass;FrenchFieldOneToThree;FrenchPodiumPlaces;FrenchPodiumWeightPercent;RawCategories;DivisionLabels='2023;23FRA017;Championnat de France RELEVE 2023;RELEVES;RELEVES;U10;10;M;FIGURES;2;2;0;2;1;2;100.0;-10 M (10) | -10 ...
+  Exemple 3 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;PopulationGroup;Category;CategoryOrder;Sex;Event;ApprovedAll;ApprovedFrench;ApprovedForeign;FrenchDepthClass;FrenchFieldOneToThree;FrenchPodiumPlaces;FrenchPodiumWeightPercent;RawCategories;DivisionLabels='2023;23FRA017;Championnat de France RELEVE 2023;RELEVES;RELEVES;U10;10;M;SLALOM;2;2;0;2;1;2;100.0;-10 M (10) | -10 M...
+
+[CSV] data\processed\ems_championnats_france_entrees_champs_2023_2026.csv
+  Lignes : 800
+  Colonnes : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;CategoryOrder;Sex;Age;Division;Event;AthleteKey;Name;Country;IsFrench;CategoryRaw
+  Exemple 1 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;CategoryOrder;Sex;Age;Division;Event;AthleteKey;Name;Country;IsFrench;CategoryRaw='2023;23FRA017;Championnat de France RELEVE 2023;RELEVES;1;RELEVES;U12;12;M;12;;SLALOM;MAR|2011|ALAOUI DRISS;ALAOUI D...
+  Exemple 2 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;CategoryOrder;Sex;Age;Division;Event;AthleteKey;Name;Country;IsFrench;CategoryRaw='2023;23FRA017;Championnat de France RELEVE 2023;RELEVES;1;JUNIOR;U17;17;M;17;;SLALOM;FRA|2006|BRUYERE TONY;BRUYERE T...
+  Exemple 3 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;CategoryOrder;Sex;Age;Division;Event;AthleteKey;Name;Country;IsFrench;CategoryRaw='2023;23FRA017;Championnat de France RELEVE 2023;RELEVES;1;RELEVES;U12;12;M;12;;SLALOM;FRA|2011|CONTE LUBIN;CONTE Lub...
+
+[CSV] data\processed\ems_championnats_france_entrees_paralleles_2023_2026.csv
+  Lignes : 16
+  Colonnes : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;CategoryOrder;Sex;Age;Division;Event;AthleteKey;Name;Country;IsFrench;CategoryRaw
+  Exemple 1 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;CategoryOrder;Sex;Age;Division;Event;AthleteKey;Name;Country;IsFrench;CategoryRaw='2025;25FRA206;Championnat de France U21 + OPEN;U21_OPEN;0;SENIOR;65+;65;M;69;1;SLALOM;FRA|1956|BALLOT GERARD;BALLOT ...
+  Exemple 2 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;CategoryOrder;Sex;Age;Division;Event;AthleteKey;Name;Country;IsFrench;CategoryRaw='2025;25FRA206;Championnat de France U21 + OPEN;U21_OPEN;0;SENIOR;55+;55;F;60;1;SLALOM;FRA|1965|COITOU ANNIE;COITOU A...
+  Exemple 3 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;CategoryOrder;Sex;Age;Division;Event;AthleteKey;Name;Country;IsFrench;CategoryRaw='2025;25FRA206;Championnat de France U21 + OPEN;U21_OPEN;0;SENIOR;55+;55;F;59;1;SLALOM;FRA|1966|FRIBOURG LORRAINE;FRI...
+
+[CSV] data\processed\ems_championnats_france_participants_normalises_2023_2026.csv
+  Lignes : 364
+  Colonnes : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;AthleteKey;Name;Country;IsFrench;YOB;CategoryRaw;Category;CategoryOrder;PopulationGroup;Sex;Age;Division;SlalomSelected;TricksSelected;JumpSelected;OverallSelected
+  Exemple 1 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;AthleteKey;Name;Country;IsFrench;YOB;CategoryRaw;Category;CategoryOrder;PopulationGroup;Sex;Age;Division;SlalomSelected;TricksSelected;JumpSelected;OverallSelected='2023;23FRA017;Championnat de France RELEVE 2023;RELEVES;1;MAR|2011|ALAOUI DRISS;ALAOUI Driss;MAR;0;2011;-12 M (12);U...
+  Exemple 2 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;AthleteKey;Name;Country;IsFrench;YOB;CategoryRaw;Category;CategoryOrder;PopulationGroup;Sex;Age;Division;SlalomSelected;TricksSelected;JumpSelected;OverallSelected='2023;23FRA017;Championnat de France RELEVE 2023;RELEVES;1;FRA|2006|BRUYERE TONY;BRUYERE Tony;FRA;1;2006;-17 M (17);U...
+  Exemple 3 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;AthleteKey;Name;Country;IsFrench;YOB;CategoryRaw;Category;CategoryOrder;PopulationGroup;Sex;Age;Division;SlalomSelected;TricksSelected;JumpSelected;OverallSelected='2023;23FRA017;Championnat de France RELEVE 2023;RELEVES;1;FRA|2011|CONTE LUBIN;CONTE Lubin;FRA;1;2011;-12 M (12);U12...
+
+[CSV] data\processed\ems_championnats_france_synthese_blocs_2023_2026.csv
+  Lignes : 12
+  Colonnes : Year;CompetitionCode;ChampionshipBlock;CompetitionName;ApprovedFrenchAthletes;FrenchAthletesWithEvent;ObservedFrenchFields;FrenchFieldParticipations;MeanFrenchFieldSize;MedianFrenchFieldSize;FieldsOneToThree;ShareFieldsOneToThreePercent;FrenchPodiumPlaces;FrenchPodiumWeightPercent
+  Exemple 1 : Year;CompetitionCode;ChampionshipBlock;CompetitionName;ApprovedFrenchAthletes;FrenchAthletesWithEvent;ObservedFrenchFields;FrenchFieldParticipations;MeanFrenchFieldSize;MedianFrenchFieldSize;FieldsOneToThree;ShareFieldsOneToThreePercent;FrenchPodiumPlaces;FrenchPodiumWeightPercent='2023;23FRA017;RELEVES;Championnat de France RELEVE 2023;23;23;27;63;2.33;2;25;92.6;59;93.7'
+  Exemple 2 : Year;CompetitionCode;ChampionshipBlock;CompetitionName;ApprovedFrenchAthletes;FrenchAthletesWithEvent;ObservedFrenchFields;FrenchFieldParticipations;MeanFrenchFieldSize;MedianFrenchFieldSize;FieldsOneToThree;ShareFieldsOneToThreePercent;FrenchPodiumPlaces;FrenchPodiumWeightPercent='2023;23FRA018;U21_OPEN;Championnat de France 2023 - U21 + OPEN;31;31;16;73;4.56;4.0;4;25.0;46;63.0'
+  Exemple 3 : Year;CompetitionCode;ChampionshipBlock;CompetitionName;ApprovedFrenchAthletes;FrenchAthletesWithEvent;ObservedFrenchFields;FrenchFieldParticipations;MeanFrenchFieldSize;MedianFrenchFieldSize;FieldsOneToThree;ShareFieldsOneToThreePercent;FrenchPodiumPlaces;FrenchPodiumWeightPercent='2023;23FRA023;SENIOR;Championnat de France SENIOR 2023;42;42;26;77;2.96;2.0;19;73.1;51;66.2'
+
+[CSV] data\processed\ems_championnats_france_synthese_population_epreuve_2023_2026.csv
+  Lignes : 78
+  Colonnes : Year;"ChampionshipBlock";"PopulationGroup";"Event";"ObservedFields";"FrenchFieldParticipations";"MeanFieldSize";"FieldsOneToThree";"ShareFieldsOneToThreePercent";"PodiumWeightPercent"
+  Exemple 1 : Year;"ChampionshipBlock";"PopulationGroup";"Event";"ObservedFields";"FrenchFieldParticipations";"MeanFieldSize";"FieldsOneToThree";"ShareFieldsOneToThreePercent";"PodiumWeightPercent"='2023;"RELEVES";"JUNIOR";"COMBINE";"2";"3";"1'
+  Exemple 2 : Year;"ChampionshipBlock";"PopulationGroup";"Event";"ObservedFields";"FrenchFieldParticipations";"MeanFieldSize";"FieldsOneToThree";"ShareFieldsOneToThreePercent";"PodiumWeightPercent"='2023;"RELEVES";"JUNIOR";"FIGURES";"2";"5";"2'
+  Exemple 3 : Year;"ChampionshipBlock";"PopulationGroup";"Event";"ObservedFields";"FrenchFieldParticipations";"MeanFieldSize";"FieldsOneToThree";"ShareFieldsOneToThreePercent";"PodiumWeightPercent"='2023;"RELEVES";"JUNIOR";"SAUT";"2";"4";"2";"2";"100";"100"'
+
+[CSV] data\processed\ems_championnats_france_synthese_population_sexe_2023_2026.csv
+  Lignes : 40
+  Colonnes : Year;"ChampionshipBlock";"PopulationGroup";"Sex";"ObservedFields";"FrenchFieldParticipations";"MeanFieldSize";"FieldsOneToThree";"ShareFieldsOneToThreePercent";"PodiumWeightPercent"
+  Exemple 1 : Year;"ChampionshipBlock";"PopulationGroup";"Sex";"ObservedFields";"FrenchFieldParticipations";"MeanFieldSize";"FieldsOneToThree";"ShareFieldsOneToThreePercent";"PodiumWeightPercent"='2023;"RELEVES";"JUNIOR";"F";"4";"7";"1'
+  Exemple 2 : Year;"ChampionshipBlock";"PopulationGroup";"Sex";"ObservedFields";"FrenchFieldParticipations";"MeanFieldSize";"FieldsOneToThree";"ShareFieldsOneToThreePercent";"PodiumWeightPercent"='2023;"RELEVES";"JUNIOR";"M";"4";"14";"3'
+  Exemple 3 : Year;"ChampionshipBlock";"PopulationGroup";"Sex";"ObservedFields";"FrenchFieldParticipations";"MeanFieldSize";"FieldsOneToThree";"ShareFieldsOneToThreePercent";"PodiumWeightPercent"='2023;"RELEVES";"RELEVES";"F";"9";"20";"2'
+
+[CSV] data\processed\ems_championnats_france_synthese_population_sexe_epreuve_2023_2026.csv
+  Lignes : 149
+  Colonnes : Year;ChampionshipBlock;PopulationGroup;Sex;Event;ObservedFields;FrenchFieldParticipations;MeanFieldSize;MedianFieldSize;FieldsOneToThree;ShareFieldsOneToThreePercent;PodiumWeightPercent
+  Exemple 1 : Year;ChampionshipBlock;PopulationGroup;Sex;Event;ObservedFields;FrenchFieldParticipations;MeanFieldSize;MedianFieldSize;FieldsOneToThree;ShareFieldsOneToThreePercent;PodiumWeightPercent='2023;RELEVES;JUNIOR;F;COMBINE;1;1;1;1;1;100.0;100.0'
+  Exemple 2 : Year;ChampionshipBlock;PopulationGroup;Sex;Event;ObservedFields;FrenchFieldParticipations;MeanFieldSize;MedianFieldSize;FieldsOneToThree;ShareFieldsOneToThreePercent;PodiumWeightPercent='2023;RELEVES;JUNIOR;F;FIGURES;1;2;2;2;1;100.0;100.0'
+  Exemple 3 : Year;ChampionshipBlock;PopulationGroup;Sex;Event;ObservedFields;FrenchFieldParticipations;MeanFieldSize;MedianFieldSize;FieldsOneToThree;ShareFieldsOneToThreePercent;PodiumWeightPercent='2023;RELEVES;JUNIOR;F;SAUT;1;1;1;1;1;100.0;100.0'
+
+[CSV] data\processed\ems_cohorte_2023_sexe_age.csv
+  Lignes : 18
+  Colonnes : CohortYear;Dimension;Group;InitialAthletes;Present2024;Present2024Percent;Present2025;Present2025Percent;PresentAllThreeYears;PresentAllThreeYearsPercent;ReturnAfterGap
+  Exemple 1 : CohortYear;Dimension;Group;InitialAthletes;Present2024;Present2024Percent;Present2025;Present2025Percent;PresentAllThreeYears;PresentAllThreeYearsPercent;ReturnAfterGap='2023;ALL;ALL;206;140;68.0;130;63.1;115;55.8;15'
+  Exemple 2 : CohortYear;Dimension;Group;InitialAthletes;Present2024;Present2024Percent;Present2025;Present2025Percent;PresentAllThreeYears;PresentAllThreeYearsPercent;ReturnAfterGap='2023;SEX;F;58;40;69.0;34;58.6;31;53.4;3'
+  Exemple 3 : CohortYear;Dimension;Group;InitialAthletes;Present2024;Present2024Percent;Present2025;Present2025Percent;PresentAllThreeYears;PresentAllThreeYearsPercent;ReturnAfterGap='2023;SEX;M;148;100;67.6;96;64.9;84;56.8;12'
+
+[CSV] data\processed\ems_cohorte_entrants_2024_detail.csv
+  Lignes : 51
+  Colonnes : AthleteKey;Name;Sex;Age;AgeBand;Competitions2024;IntensityBand;Present2025
+  Exemple 1 : AthleteKey;Name;Sex;Age;AgeBand;Competitions2024;IntensityBand;Present2025='FRA|2015|ANOUPHOUTTI SENGBOUAVANH SOMPHAVANH;ANOUPHOUTTI SENGBOUAVANH Somphavanh;F;9;RELEVES;1;1_COMPETITION;1'
+  Exemple 2 : AthleteKey;Name;Sex;Age;AgeBand;Competitions2024;IntensityBand;Present2025='FRA|2015|GUERIN LE SAUSSE ROSE;GUERIN LE SAUSSE Rose;F;9;RELEVES;1;1_COMPETITION;1'
+  Exemple 3 : AthleteKey;Name;Sex;Age;AgeBand;Competitions2024;IntensityBand;Present2025='FRA|2014|DUSSAUCY NOE;DUSSAUCY Noé;M;10;RELEVES;1;1_COMPETITION;1'
+
+[CSV] data\processed\ems_cohorte_entrants_2024_retention_2025.csv
+  Lignes : 21
+  Colonnes : Dimension;Group;Entrants2024;Present2025;Absent2025;RetentionRatePercent;MeanCompetitions2024
+  Exemple 1 : Dimension;Group;Entrants2024;Present2025;Absent2025;RetentionRatePercent;MeanCompetitions2024='ALL;ALL;51;23;28;45.1;1.69'
+  Exemple 2 : Dimension;Group;Entrants2024;Present2025;Absent2025;RetentionRatePercent;MeanCompetitions2024='SEX;F;12;6;6;50.0;1.25'
+  Exemple 3 : Dimension;Group;Entrants2024;Present2025;Absent2025;RetentionRatePercent;MeanCompetitions2024='SEX;M;39;17;22;43.6;1.82'
+
+[CSV] data\processed\ems_cohortes_retention_2023_2025.csv
+  Lignes : 2
+  Colonnes : Cohort;InitialAthletes;RetainedNextYear;RetainedNextYearPercent;PresentIn2025;PresentIn2025Percent;PresentAllThreeYears;PresentAllThreeYearsPercent;ReturnAfterGap
+  Exemple 1 : Cohort;InitialAthletes;RetainedNextYear;RetainedNextYearPercent;PresentIn2025;PresentIn2025Percent;PresentAllThreeYears;PresentAllThreeYearsPercent;ReturnAfterGap='ACTIVE_2023;206;140;68.0;130;63.1;115;55.8;15'
+  Exemple 2 : Cohort;InitialAthletes;RetainedNextYear;RetainedNextYearPercent;PresentIn2025;PresentIn2025Percent;PresentAllThreeYears;PresentAllThreeYearsPercent;ReturnAfterGap='ACTIVE_2024;191;138;72.3;138;72.3;;;'
+
+[CSV] data\processed\ems_comparaison_saisons_2023_2026.csv
+  Lignes : 4
+  Colonnes : Year;"CompetitionsAnalysed";"ApprovedEntriesAllCountries";"UniqueAthletesAllCountries";"ApprovedFrenchEntries";"UniqueFrenchAthletes";"FrenchSharePercent";"MeanCompetitionsPerFrenchAthlete";"MedianCompetitionsPerFrenchAthlete";"AthletesOneCompetition";"ShareOneCompetitionPercent";"AthletesTwoCompetitions";"AthletesThreeOrMore";"ShareThreeOrMorePercent";"AthletesFiveOrMore";"Top10Entries";"Top10SharePercent";"Top20Entries";"Top20SharePercent"
+  Exemple 1 : Year;"CompetitionsAnalysed";"ApprovedEntriesAllCountries";"UniqueAthletesAllCountries";"ApprovedFrenchEntries";"UniqueFrenchAthletes";"FrenchSharePercent";"MeanCompetitionsPerFrenchAthlete";"MedianCompetitionsPerFrenchAthlete";"AthletesOneCompetition";"ShareOneCompetitionPercent";"AthletesTwoCompetitions";"AthletesThreeOrMore";"ShareThreeOrMorePercent";"AthletesFiveOrMore";"Top10Entries";"Top10SharePercent";"Top20Entries";"Top20SharePercent"='2023;"26";"854";"380";"563";"206";"65.9";"2.73";"2.0";"57";"27.7";"66";"83";"40.3";"31";"83";"14.7";"140";"24.9"'
+  Exemple 2 : Year;"CompetitionsAnalysed";"ApprovedEntriesAllCountries";"UniqueAthletesAllCountries";"ApprovedFrenchEntries";"UniqueFrenchAthletes";"FrenchSharePercent";"MeanCompetitionsPerFrenchAthlete";"MedianCompetitionsPerFrenchAthlete";"AthletesOneCompetition";"ShareOneCompetitionPercent";"AthletesTwoCompetitions";"AthletesThreeOrMore";"ShareThreeOrMorePercent";"AthletesFiveOrMore";"Top10Entries";"Top10SharePercent";"Top20Entries";"Top20SharePercent"='2024;"30";"807";"343";"547";"191";"67.8";"2.86";"2";"66";"34.6";"42";"83";"43.5";"38";"89";"16.3";"150";"27.4"'
+  Exemple 3 : Year;"CompetitionsAnalysed";"ApprovedEntriesAllCountries";"UniqueAthletesAllCountries";"ApprovedFrenchEntries";"UniqueFrenchAthletes";"FrenchSharePercent";"MeanCompetitionsPerFrenchAthlete";"MedianCompetitionsPerFrenchAthlete";"AthletesOneCompetition";"ShareOneCompetitionPercent";"AthletesTwoCompetitions";"AthletesThreeOrMore";"ShareThreeOrMorePercent";"AthletesFiveOrMore";"Top10Entries";"Top10SharePercent";"Top20Entries";"Top20SharePercent"='2025;"29";"827";"351";"541";"198";"65.4";"2.73";"2.0";"76";"38.4";"42";"80";"40.4";"36";"87";"16.1";"152";"28.1"'
+
+[CSV] data\processed\ems_comparaison_saisons_2024_2026.csv
+  Lignes : 3
+  Colonnes : Year;"CompetitionsAnalysed";"ApprovedEntriesAllCountries";"UniqueAthletesAllCountries";"ApprovedFrenchEntries";"UniqueFrenchAthletes";"FrenchSharePercent";"MeanCompetitionsPerFrenchAthlete";"MedianCompetitionsPerFrenchAthlete";"AthletesOneCompetition";"ShareOneCompetitionPercent";"AthletesTwoCompetitions";"AthletesThreeOrMore";"ShareThreeOrMorePercent";"AthletesFiveOrMore";"Top10Entries";"Top10SharePercent";"Top20Entries";"Top20SharePercent"
+  Exemple 1 : Year;"CompetitionsAnalysed";"ApprovedEntriesAllCountries";"UniqueAthletesAllCountries";"ApprovedFrenchEntries";"UniqueFrenchAthletes";"FrenchSharePercent";"MeanCompetitionsPerFrenchAthlete";"MedianCompetitionsPerFrenchAthlete";"AthletesOneCompetition";"ShareOneCompetitionPercent";"AthletesTwoCompetitions";"AthletesThreeOrMore";"ShareThreeOrMorePercent";"AthletesFiveOrMore";"Top10Entries";"Top10SharePercent";"Top20Entries";"Top20SharePercent"='2024;"30";"807";"343";"547";"191";"67.8";"2.86";"2";"66";"34.6";"42";"83";"43.5";"38";"89";"16.3";"150";"27.4"'
+  Exemple 2 : Year;"CompetitionsAnalysed";"ApprovedEntriesAllCountries";"UniqueAthletesAllCountries";"ApprovedFrenchEntries";"UniqueFrenchAthletes";"FrenchSharePercent";"MeanCompetitionsPerFrenchAthlete";"MedianCompetitionsPerFrenchAthlete";"AthletesOneCompetition";"ShareOneCompetitionPercent";"AthletesTwoCompetitions";"AthletesThreeOrMore";"ShareThreeOrMorePercent";"AthletesFiveOrMore";"Top10Entries";"Top10SharePercent";"Top20Entries";"Top20SharePercent"='2025;"29";"827";"351";"541";"198";"65.4";"2.73";"2.0";"76";"38.4";"42";"80";"40.4";"36";"87";"16.1";"152";"28.1"'
+  Exemple 3 : Year;"CompetitionsAnalysed";"ApprovedEntriesAllCountries";"UniqueAthletesAllCountries";"ApprovedFrenchEntries";"UniqueFrenchAthletes";"FrenchSharePercent";"MeanCompetitionsPerFrenchAthlete";"MedianCompetitionsPerFrenchAthlete";"AthletesOneCompetition";"ShareOneCompetitionPercent";"AthletesTwoCompetitions";"AthletesThreeOrMore";"ShareThreeOrMorePercent";"AthletesFiveOrMore";"Top10Entries";"Top10SharePercent";"Top20Entries";"Top20SharePercent"='2026;"36";"541";"269";"322";"140";"59.5";"2.3";"2.0";"53";"37.9";"40";"47";"33.6";"13";"58";"18.0";"101";"31.4"'
+
+[CSV] data\processed\ems_comparaison_saisons_2025_2026.csv
+  Lignes : 2
+  Colonnes : Year;"CompetitionsAnalysed";"ApprovedEntriesAllCountries";"UniqueAthletesAllCountries";"ApprovedFrenchEntries";"UniqueFrenchAthletes";"FrenchSharePercent";"MeanCompetitionsPerFrenchAthlete";"MedianCompetitionsPerFrenchAthlete";"AthletesOneCompetition";"ShareOneCompetitionPercent";"AthletesTwoCompetitions";"AthletesThreeOrMore";"ShareThreeOrMorePercent";"AthletesFiveOrMore";"Top10Entries";"Top10SharePercent";"Top20Entries";"Top20SharePercent"
+  Exemple 1 : Year;"CompetitionsAnalysed";"ApprovedEntriesAllCountries";"UniqueAthletesAllCountries";"ApprovedFrenchEntries";"UniqueFrenchAthletes";"FrenchSharePercent";"MeanCompetitionsPerFrenchAthlete";"MedianCompetitionsPerFrenchAthlete";"AthletesOneCompetition";"ShareOneCompetitionPercent";"AthletesTwoCompetitions";"AthletesThreeOrMore";"ShareThreeOrMorePercent";"AthletesFiveOrMore";"Top10Entries";"Top10SharePercent";"Top20Entries";"Top20SharePercent"='2025;"29";"827";"351";"541";"198";"65.4";"2.73";"2.0";"76";"38.4";"42";"80";"40.4";"36";"87";"16.1";"152";"28.1"'
+  Exemple 2 : Year;"CompetitionsAnalysed";"ApprovedEntriesAllCountries";"UniqueAthletesAllCountries";"ApprovedFrenchEntries";"UniqueFrenchAthletes";"FrenchSharePercent";"MeanCompetitionsPerFrenchAthlete";"MedianCompetitionsPerFrenchAthlete";"AthletesOneCompetition";"ShareOneCompetitionPercent";"AthletesTwoCompetitions";"AthletesThreeOrMore";"ShareThreeOrMorePercent";"AthletesFiveOrMore";"Top10Entries";"Top10SharePercent";"Top20Entries";"Top20SharePercent"='2026;"36";"541";"269";"322";"140";"59.5";"2.3";"2.0";"53";"37.9";"40";"47";"33.6";"13";"58";"18.0";"101";"31.4"'
+
+[CSV] data\processed\ems_competiteurs_2024_disciplines_retention_2025.csv
+  Lignes : 191
+  Colonnes : AthleteKey;Name;Sex;AgeBand;CohortStatus2024;Competitions2024;IntensityBand;PhysicalDisciplineCount;DisciplineProfile;PhysicalDisciplineEntries;Present2025
+  Exemple 1 : AthleteKey;Name;Sex;AgeBand;CohortStatus2024;Competitions2024;IntensityBand;PhysicalDisciplineCount;DisciplineProfile;PhysicalDisciplineEntries;Present2025='FRA|1994|BISCHOFBERGER OSCAR;BISCHOFBERGER Oscar;M;OPEN;ALREADY_PRESENT_2023;13;5_PLUS_COMPETITIONS;3;SLALOM+FIGURES...
+  Exemple 2 : AthleteKey;Name;Sex;AgeBand;CohortStatus2024;Competitions2024;IntensityBand;PhysicalDisciplineCount;DisciplineProfile;PhysicalDisciplineEntries;Present2025='FRA|1991|MARTINI MARIE;MARTINI Marie;F;OPEN;ALREADY_PRESENT_2023;13;5_PLUS_COMPETITIONS;3;SLALOM+FIGURES+SAUT;23;1'
+  Exemple 3 : AthleteKey;Name;Sex;AgeBand;CohortStatus2024;Competitions2024;IntensityBand;PhysicalDisciplineCount;DisciplineProfile;PhysicalDisciplineEntries;Present2025='FRA|1985|DELACOUR ARNAUD;DELACOUR Arnaud;M;SENIOR;ALREADY_PRESENT_2023;8;5_PLUS_COMPETITIONS;3;SLALOM+FIGURES+SAUT;1...
+
+[CSV] data\processed\ems_competiteurs_annee_sexe_age_2023_2025.csv
+  Lignes : 595
+  Colonnes : Year;AthleteKey;Name;Country;YOB;Age;Sex;AgeBand;RegisteredPopulations;Categories;Competitions;PopulationAgreement
+  Exemple 1 : Year;AthleteKey;Name;Country;YOB;Age;Sex;AgeBand;RegisteredPopulations;Categories;Competitions;PopulationAgreement='2023;FRA|2014|BALLON TIA;BALLON Tia;FRA;2014;9;F;RELEVES;RELEVES;-10 F (9);1;1'
+  Exemple 2 : Year;AthleteKey;Name;Country;YOB;Age;Sex;AgeBand;RegisteredPopulations;Categories;Competitions;PopulationAgreement='2023;FRA|2014|BRUZAUT ALEXIA;BRUZAUT Alexia;FRA;2014;9;F;RELEVES;RELEVES;-10 F (9);1;1'
+  Exemple 3 : Year;AthleteKey;Name;Country;YOB;Age;Sex;AgeBand;RegisteredPopulations;Categories;Competitions;PopulationAgreement='2023;FRA|2011|CORTES LILOU;CORTES Lilou;FRA;2011;12;F;RELEVES;RELEVES;-12 F (12);2;1'
+
+[CSV] data\processed\ems_competitions_france_waterski_2021_2026.csv
+  Lignes : 205
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"H1";"Site";"EMS Code";"Nat. Code"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"H1";"Site";"EMS Code";"Nat. Code"='12-13 Jun 2021;"Waterski";"INTER";"L";"FRA";"TROPHEE DES JOLIES FILLES";"";"Club Arc Dijon...";"21FRA004";""'
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"H1";"Site";"EMS Code";"Nat. Code"='5-6 Jun 2021;"Waterski";"INTER";"L";"FRA";"Ski Caraibes Albertville SLALOM CUP";"";"Ski Caraibes A...";"21FRA005";""'
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"H1";"Site";"EMS Code";"Nat. Code"='19-21 Jun 2021;"Waterski";"INTER";"L";"FRA";"Ski Caraibes Albertville 3D";"";"Ski Caraibes A...";"21FRA006";""'
+
+[CSV] data\processed\ems_competitions_france_waterski_2021_avec_urls.csv
+  Lignes : 35
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='12-13 Jun 2021;"Waterski";"INTER";"L";"FRA";"TROPHEE DES JOLIES FILLES";"";"Club Arc Dijon...";"21FRA004";"";"https:...
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='5-6 Jun 2021;"Waterski";"INTER";"L";"FRA";"Ski Caraibes Albertville SLALOM CUP";"";"Ski Caraibes A...";"21FRA005";""...
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='19-21 Jun 2021;"Waterski";"INTER";"L";"FRA";"Ski Caraibes Albertville 3D";"";"Ski Caraibes A...";"21FRA006";"";"http...
+
+[CSV] data\processed\ems_competitions_france_waterski_2022_avec_urls.csv
+  Lignes : 29
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='18-19 Jun 2022;"Waterski";"INTER";"R";"FRA";"THE FUNGLISS PRO AM";"";"FUNGLISS DOMMA...";"22FRA001";"";"https://ems....
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='8-10 Jul 2022;"Waterski";"INTER";"R";"FRA";"Malibu Open LACANAU proam 2022";"";"Lacanau Ski Cl...";"22FRA002";"";"ht...
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='11-12 Jun 2022;"Waterski";"INTER";"L";"FRA";"TROPHEE DES JOLIES FILLES";"";"Club Arc Dijon...";"22FRA003";"";"https:...
+
+[CSV] data\processed\ems_competitions_france_waterski_2023_avec_urls.csv
+  Lignes : 30
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='30 Jun - 2 Jul 2023;"Waterski";"INTER";"R";"FRA";"MALIBU OPEN LACANAU";"";"Lacanau Ski Cl...";"23FRA001";"";"https:/...
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='1-2 Jul 2023;"Waterski";"INTER";"L";"FRA";"LE PLAN D\'EAU 3D JUILLET";"";"Club Omnisport...";"23FRA002";"";"https://...
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='24-25 Jun 2023;"Waterski";"INTER";"L";"FRA";"Ski Caraibes Slalom CUP 2023";"";"Ski Caraibes A...";"23FRA003";"";"htt...
+
+[CSV] data\processed\ems_competitions_france_waterski_2024_avec_urls.csv
+  Lignes : 33
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='22-23 Jun 2024;"Waterski";"INTER";"R";"FRA";"The Fungliss Pro Am";"";"FUNGLISS DOMMA...";"24FRA001";"";"https://ems....
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='14-15 Sep 2024;"Waterski";"INTER";"L";"FRA";"Viry Lake\'s challenge #6";"";"Club Nautique ...";"24FRA002";"";"https:...
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='26-27 Oct 2024;"Waterski";"INTER";"L";"FRA";"Frozen Magic JG";"";"Nemours Grez/l...";"24FRA003";"";"https://ems.iwwf...
+
+[CSV] data\processed\ems_competitions_france_waterski_2025_avec_urls.csv
+  Lignes : 33
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='21-22 Jun 2025;"Waterski";"INTER";"R";"FRA";"THE FUNGLISS PRO AM";"";"FUNGLISS DOMMA...";"25FRA001";"";"https://ems....
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='20-21 Sep 2025;"Waterski";"INTER";"L";"FRA";"Viry Lake\'s challenge #7";"";"Club Nautique ...";"25FRA002";"";"https:...
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='5-6 Jul 2025;"Waterski";"INTER";"L";"FRA";"MALIBU OPEN";"";"Lacanau Ski Cl...";"25FRA005";"";"https://ems.iwwf.sport...
+
+[CSV] data\processed\ems_competitions_france_waterski_2026_avec_urls.csv
+  Lignes : 39
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='24-25 Oct 2026;"Waterski";"INTER";"L";"FRA";"Frozen Magic JG";"";"Nemours Grez/l...";"26FRA001";"";"https://ems.iwwf...
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='20-21 Jun 2026;"Waterski";"INTER";"R";"FRA";"THE FUNGLISS PRO AM";"";"FUNGLISS DOMMA...";"26FRA002";"";"https://ems....
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='16-17 May 2026;"Waterski";"INTER";"L";"FRA";"Magic Cup 2026";"";"Nemours Grez/l...";"26FRA003";"";"https://ems.iwwf....
+
+[CSV] data\processed\ems_concentration_activite_2023_2025.csv
+  Lignes : 6
+  Colonnes : Indicator;Athletes;AthleteSharePercent;CompetitionParticipations;ActivitySharePercent;MeanCompetitionsPerAthlete
+  Exemple 1 : Indicator;Athletes;AthleteSharePercent;CompetitionParticipations;ActivitySharePercent;MeanCompetitionsPerAthlete='TOP_10_ATHLETES;10;3.3;241;14.6;24.1'
+  Exemple 2 : Indicator;Athletes;AthleteSharePercent;CompetitionParticipations;ActivitySharePercent;MeanCompetitionsPerAthlete='TOP_20_ATHLETES;20;6.6;406;24.6;20.3'
+  Exemple 3 : Indicator;Athletes;AthleteSharePercent;CompetitionParticipations;ActivitySharePercent;MeanCompetitionsPerAthlete='TOP_50_ATHLETES;50;16.6;773;46.8;15.46'
+
+[CSV] data\processed\ems_courbe_lorenz_activite_2023_2025.csv
+  Lignes : 303
+  Colonnes : AthleteRankAscending;AthletePopulationPercent;CumulativeActivity;CumulativeActivityPercent
+  Exemple 1 : AthleteRankAscending;AthletePopulationPercent;CumulativeActivity;CumulativeActivityPercent='0;0.0;0;0.0'
+  Exemple 2 : AthleteRankAscending;AthletePopulationPercent;CumulativeActivity;CumulativeActivityPercent='1;0.33;1;0.06'
+  Exemple 3 : AthleteRankAscending;AthletePopulationPercent;CumulativeActivity;CumulativeActivityPercent='2;0.66;2;0.12'
+
+[CSV] data\processed\ems_distribution_frequence_francais_2022.csv
+  Lignes : 4
+  Colonnes : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries
+  Exemple 1 : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries='2022;1;86;71.7;86'
+  Exemple 2 : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries='2022;2;22;18.3;44'
+  Exemple 3 : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries='2022;3;9;7.5;27'
+
+[CSV] data\processed\ems_distribution_frequence_francais_2023.csv
+  Lignes : 10
+  Colonnes : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries
+  Exemple 1 : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries='2023;1;57;27.7;57'
+  Exemple 2 : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries='2023;2;66;32.0;132'
+  Exemple 3 : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries='2023;3;29;14.1;87'
+
+[CSV] data\processed\ems_distribution_frequence_francais_2024.csv
+  Lignes : 10
+  Colonnes : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries
+  Exemple 1 : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries='2024;1;66;34.6;66'
+  Exemple 2 : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries='2024;2;42;22.0;84'
+  Exemple 3 : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries='2024;3;23;12.0;69'
+
+[CSV] data\processed\ems_distribution_frequence_francais_2025.csv
+  Lignes : 10
+  Colonnes : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries
+  Exemple 1 : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries='2025;1;76;38.4;76'
+  Exemple 2 : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries='2025;2;42;21.2;84'
+  Exemple 3 : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries='2025;3;27;13.6;81'
+
+[CSV] data\processed\ems_distribution_frequence_francais_2026.csv
+  Lignes : 8
+  Colonnes : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries
+  Exemple 1 : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries='2026;1;53;37.9;53'
+  Exemple 2 : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries='2026;2;40;28.6;80'
+  Exemple 3 : Year;CompetitionsPerAthlete;Athletes;SharePercent;ApprovedEntries='2026;3;20;14.3;60'
+
+[CSV] data\processed\ems_fidelisation_multidisciplinarite_2024_2025.csv
+  Lignes : 38
+  Colonnes : Dimension;Group;Athletes2024;Present2025;Absent2025;RetentionRatePercent;MeanCompetitions2024;MeanDisciplineCount
+  Exemple 1 : Dimension;Group;Athletes2024;Present2025;Absent2025;RetentionRatePercent;MeanCompetitions2024;MeanDisciplineCount='COHORT;ALREADY_PRESENT_2023;140;115;25;82.1;3.29;1.59'
+  Exemple 2 : Dimension;Group;Athletes2024;Present2025;Absent2025;RetentionRatePercent;MeanCompetitions2024;MeanDisciplineCount='COHORT;NEW_IN_2024_WINDOW;51;23;28;45.1;1.69;1.37'
+  Exemple 3 : Dimension;Group;Athletes2024;Present2025;Absent2025;RetentionRatePercent;MeanCompetitions2024;MeanDisciplineCount='DISCIPLINE_COUNT;1;130;88;42;67.7;2.49;1.0'
+
+[CSV] data\processed\ems_fidelisation_par_intensite_2023_2025.csv
+  Lignes : 19
+  Colonnes : FidelityProfile;IntensityProfile;Athletes;ShareWithinFidelityProfilePercent;ShareOfTotalPoolPercent
+  Exemple 1 : FidelityProfile;IntensityProfile;Athletes;ShareWithinFidelityProfilePercent;ShareOfTotalPoolPercent='CORE_3_YEARS;OCCASIONAL;26;22.6;8.6'
+  Exemple 2 : FidelityProfile;IntensityProfile;Athletes;ShareWithinFidelityProfilePercent;ShareOfTotalPoolPercent='CORE_3_YEARS;REGULAR;51;44.3;16.9'
+  Exemple 3 : FidelityProfile;IntensityProfile;Athletes;ShareWithinFidelityProfilePercent;ShareOfTotalPoolPercent='CORE_3_YEARS;HIGHLY_ACTIVE;38;33.0;12.6'
+
+[CSV] data\processed\ems_frequence_competiteurs_francais_2022.csv
+  Lignes : 120
+  Colonnes : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries
+  Exemple 1 : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries='2022;FRA|2002|CONSTANS BASTIEN;CONSTANS Bastien;2002;-21 M (20);4;4;2;1;1'
+  Exemple 2 : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries='2022;FRA|2004|NEYRAC ALBAN;NEYRAC Alban;2004;-21 M (18);4;4;0;3;0'
+  Exemple 3 : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries='2022;FRA|2009|NEYRAC QUENTIN;NEYRAC Quentin;2009;-14 M (13);4;4;3;3;3'
+
+[CSV] data\processed\ems_frequence_competiteurs_francais_2023.csv
+  Lignes : 206
+  Colonnes : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries
+  Exemple 1 : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries='2023;FRA|1994|BISCHOFBERGER OSCAR;BISCHOFBERGER Oscar;1994;Open M (29);11;11;5;5;4'
+  Exemple 2 : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries='2023;FRA|1991|MARTINI MARIE;MARTINI Marie;1991;Open F (32);11;11;4;5;4'
+  Exemple 3 : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries='2023;FRA|1963|NGUYEN NAM;NGUYEN Nam;1963;55+ M (60);10;10;0;0;0'
+
+[CSV] data\processed\ems_frequence_competiteurs_francais_2024.csv
+  Lignes : 191
+  Colonnes : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries
+  Exemple 1 : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries='2024;FRA|1994|BISCHOFBERGER OSCAR;BISCHOFBERGER Oscar;1994;Open M (30);13;13;2;6;2'
+  Exemple 2 : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries='2024;FRA|1991|MARTINI MARIE;MARTINI Marie;1991;Open F (33);13;13;4;6;4'
+  Exemple 3 : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries='2024;FRA|1959|GUYAMIER PATRICK;GUYAMIER Patrick;1959;55+ M (65);9;9;0;0;0'
+
+[CSV] data\processed\ems_frequence_competiteurs_francais_2025.csv
+  Lignes : 198
+  Colonnes : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries
+  Exemple 1 : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries='2025;FRA|1959|BERGER ALAIN;BERGER Alain;1959;65+ M (66);11;11;0;0;0'
+  Exemple 2 : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries='2025;FRA|1994|BISCHOFBERGER OSCAR;BISCHOFBERGER Oscar;1994;Open M (31);9;9;2;6;2'
+  Exemple 3 : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries='2025;FRA|1985|DELACOUR ARNAUD;DELACOUR Arnaud;1985;35+ M (40);9;9;3;2;2'
+
+[CSV] data\processed\ems_frequence_competiteurs_francais_2026.csv
+  Lignes : 140
+  Colonnes : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries
+  Exemple 1 : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries='2026;FRA|2001|ROUSSELOT NICOLAS;ROUSSELOT Nicolas;2001;Open M (25);9;9;0;0;0'
+  Exemple 2 : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries='2026;FRA|1969|DRAUX PHILIPPE;DRAUX Philippe;1969;55+ M (57);7;7;0;0;0'
+  Exemple 3 : Year;AthleteKey;Name;YOB;Category;Competitions;SlalomEntries;TricksEntries;JumpEntries;OverallEntries='2026;FRA|1985|DELACOUR ARNAUD;DELACOUR Arnaud;1985;35+ M (41);6;6;1;1;1'
+
+[CSV] data\processed\ems_inventaire_categories_2023_2025.csv
+  Lignes : 222
+  Colonnes : Category;"Rows";"Athletes"
+  Exemple 1 : Category;"Rows";"Athletes"='-10 F (10);"6";"3"'
+  Exemple 2 : Category;"Rows";"Athletes"='-10 F (10) Div 1;"1";"1"'
+  Exemple 3 : Category;"Rows";"Athletes"='-10 F (9);"4";"4"'
+
+[CSV] data\processed\ems_inventaire_championnats_2023_2025.csv
+  Lignes : 28
+  Colonnes : Year;"CompetitionCode";"CompetitionName"
+  Exemple 1 : Year;"CompetitionCode";"CompetitionName"='2023;"23FRA001";"MALIBU OPEN LACANAU"'
+  Exemple 2 : Year;"CompetitionCode";"CompetitionName"='2023;"23FRA004";"Ski Caraibes 3D- Championnats de Ligue AURA 2023"'
+  Exemple 3 : Year;"CompetitionCode";"CompetitionName"='2023;"23FRA017";"Championnat de France RELEVE 2023"'
+
+[CSV] data\processed\ems_matrice_transitions_age_2023_2025.csv
+  Lignes : 80
+  Colonnes : FromYear;ToYear;Sex;OriginAgeBand;DestinationAgeBand;Athletes;OriginAthletes;ShareOfOriginPercent
+  Exemple 1 : FromYear;ToYear;Sex;OriginAgeBand;DestinationAgeBand;Athletes;OriginAthletes;ShareOfOriginPercent='2023;2024;ALL;RELEVES;RELEVES;15;30;50.0'
+  Exemple 2 : FromYear;ToYear;Sex;OriginAgeBand;DestinationAgeBand;Athletes;OriginAthletes;ShareOfOriginPercent='2023;2024;ALL;RELEVES;JUNIOR;4;30;13.3'
+  Exemple 3 : FromYear;ToYear;Sex;OriginAgeBand;DestinationAgeBand;Athletes;OriginAthletes;ShareOfOriginPercent='2023;2024;ALL;RELEVES;EXIT;11;30;36.7'
+
+[CSV] data\processed\ems_panel_competiteurs_francais_2023_2025.csv
+  Lignes : 302
+  Colonnes : AthleteKey;Name;Country;YOB;Present2023;Present2024;Present2025;Competitions2023;Competitions2024;Competitions2025;ActiveSeasons;ActiveYears;TotalCompetitions;MeanCompetitionsPerActiveSeason;FidelityProfile;IntensityProfile
+  Exemple 1 : AthleteKey;Name;Country;YOB;Present2023;Present2024;Present2025;Competitions2023;Competitions2024;Competitions2025;ActiveSeasons;ActiveYears;TotalCompetitions;MeanCompetitionsPerActiveSeason;FidelityProfile;IntensityProfile='FRA|1934|GUEURY JEAN;GUEURY Jean;FRA;1934;0;1;0;0;1;0;1;2024;1;1.0;ONE_SEASON_2024;OCCASIONAL'
+  Exemple 2 : AthleteKey;Name;Country;YOB;Present2023;Present2024;Present2025;Competitions2023;Competitions2024;Competitions2025;ActiveSeasons;ActiveYears;TotalCompetitions;MeanCompetitionsPerActiveSeason;FidelityProfile;IntensityProfile='FRA|1946|FOX JEAN PIERRE;FOX Jean Pierre;FRA;1946;1;1;1;4;2;1;3;2023 | 2024 | 2025;7;2.33;CORE_3_YEARS;REGULAR'
+  Exemple 3 : AthleteKey;Name;Country;YOB;Present2023;Present2024;Present2025;Competitions2023;Competitions2024;Competitions2025;ActiveSeasons;ActiveYears;TotalCompetitions;MeanCompetitionsPerActiveSeason;FidelityProfile;IntensityProfile='FRA|1947|PARPETTE JEAN YVES;PARPETTE Jean-Yves;FRA;1947;1;1;1;5;6;4;3;2023 | 2024 | 2025;15;5.0;CORE_3_YEARS;HIGHLY_...
+
+[CSV] data\processed\ems_participants_26FRA003.csv
+  Lignes : 19
+  Colonnes : CompetitionCode;"AthleteKey";"Name";"NormalizedName";"Country";"IsFrench";"Category";"YOB";"Slalom";"Tricks";"Jump";"Overall"
+  Exemple 1 : CompetitionCode;"AthleteKey";"Name";"NormalizedName";"Country";"IsFrench";"Category";"YOB";"Slalom";"Tricks";"Jump";"Overall"='26FRA003;"FRA|1996|BISCHOFBERGER ILLANA";"BISCHOFBERGER Illana";"BISCHOFBERGER ILLANA";"FRA";"True";"Open F (30)";"1...
+  Exemple 2 : CompetitionCode;"AthleteKey";"Name";"NormalizedName";"Country";"IsFrench";"Category";"YOB";"Slalom";"Tricks";"Jump";"Overall"='26FRA003;"NED|1970|BOEKEE BELINDA";"BOEKEE Belinda";"BOEKEE BELINDA";"NED";"False";"55+ F (56)";"1970";"1";"0";"0";"0"'
+  Exemple 3 : CompetitionCode;"AthleteKey";"Name";"NormalizedName";"Country";"IsFrench";"Category";"YOB";"Slalom";"Tricks";"Jump";"Overall"='26FRA003;"BEL|2004|DE CORT MANU";"DE CORT Manu";"DE CORT MANU";"BEL";"False";"Open M (22)";"2004";"1";"0";"0";"0"'
+
+[CSV] data\processed\ems_participations_france_waterski_2021.csv
+  Lignes : 34
+  Colonnes : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall
+  Exemple 1 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2021;21FRA004;12-13 Jun 2021;TROPHEE DES JOLIES FILLES;INTER;L;Club Arc Dijon...;https://ems.iwwf.sport/Competitions...
+  Exemple 2 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2021;21FRA005;5-6 Jun 2021;Ski Caraibes Albertville SLALOM CUP;INTER;L;Ski Caraibes A...;https://ems.iwwf.sport/Comp...
+  Exemple 3 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2021;21FRA006;19-21 Jun 2021;Ski Caraibes Albertville 3D;INTER;L;Ski Caraibes A...;https://ems.iwwf.sport/Competitio...
+
+[CSV] data\processed\ems_participations_france_waterski_2022.csv
+  Lignes : 264
+  Colonnes : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall
+  Exemple 1 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2022;22FRA001;18-19 Jun 2022;THE FUNGLISS PRO AM;INTER;R;FUNGLISS DOMMA...;https://ems.iwwf.sport/Competitions/Detai...
+  Exemple 2 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2022;22FRA002;8-10 Jul 2022;Malibu Open LACANAU proam 2022;INTER;R;Lacanau Ski Cl...;https://ems.iwwf.sport/Competit...
+  Exemple 3 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2022;22FRA003;11-12 Jun 2022;TROPHEE DES JOLIES FILLES;INTER;L;Club Arc Dijon...;https://ems.iwwf.sport/Competitions...
+
+[CSV] data\processed\ems_participations_france_waterski_2023.csv
+  Lignes : 854
+  Colonnes : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall
+  Exemple 1 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2023;23FRA001;30 Jun - 2 Jul 2023;MALIBU OPEN LACANAU;INTER;R;Lacanau Ski Cl...;https://ems.iwwf.sport/Competitions/...
+  Exemple 2 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2023;23FRA001;30 Jun - 2 Jul 2023;MALIBU OPEN LACANAU;INTER;R;Lacanau Ski Cl...;https://ems.iwwf.sport/Competitions/...
+  Exemple 3 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2023;23FRA001;30 Jun - 2 Jul 2023;MALIBU OPEN LACANAU;INTER;R;Lacanau Ski Cl...;https://ems.iwwf.sport/Competitions/...
+
+[CSV] data\processed\ems_participations_france_waterski_2024.csv
+  Lignes : 807
+  Colonnes : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall
+  Exemple 1 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2024;24FRA001;22-23 Jun 2024;The Fungliss Pro Am;INTER;R;FUNGLISS DOMMA...;https://ems.iwwf.sport/Competitions/Detai...
+  Exemple 2 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2024;24FRA001;22-23 Jun 2024;The Fungliss Pro Am;INTER;R;FUNGLISS DOMMA...;https://ems.iwwf.sport/Competitions/Detai...
+  Exemple 3 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2024;24FRA001;22-23 Jun 2024;The Fungliss Pro Am;INTER;R;FUNGLISS DOMMA...;https://ems.iwwf.sport/Competitions/Detai...
+
+[CSV] data\processed\ems_participations_france_waterski_2025.csv
+  Lignes : 827
+  Colonnes : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall
+  Exemple 1 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2025;25FRA001;21-22 Jun 2025;THE FUNGLISS PRO AM;INTER;R;FUNGLISS DOMMA...;https://ems.iwwf.sport/Competitions/Detai...
+  Exemple 2 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2025;25FRA001;21-22 Jun 2025;THE FUNGLISS PRO AM;INTER;R;FUNGLISS DOMMA...;https://ems.iwwf.sport/Competitions/Detai...
+  Exemple 3 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2025;25FRA001;21-22 Jun 2025;THE FUNGLISS PRO AM;INTER;R;FUNGLISS DOMMA...;https://ems.iwwf.sport/Competitions/Detai...
+
+[CSV] data\processed\ems_participations_france_waterski_2026.csv
+  Lignes : 541
+  Colonnes : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall
+  Exemple 1 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2026;26FRA001;24-25 Oct 2026;Frozen Magic JG;INTER;L;Nemours Grez/l...;https://ems.iwwf.sport/Competitions/Details?I...
+  Exemple 2 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2026;26FRA001;24-25 Oct 2026;Frozen Magic JG;INTER;L;Nemours Grez/l...;https://ems.iwwf.sport/Competitions/Details?I...
+  Exemple 3 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;Homologation;Site;CompetitionUrl;AthleteKey;Name;NormalizedName;Country;IsFrench;Category;YOB;Slalom;Tricks;Jump;Overall='2026;26FRA001;24-25 Oct 2026;Frozen Magic JG;INTER;L;Nemours Grez/l...;https://ems.iwwf.sport/Competitions/Details?I...
+
+[CSV] data\processed\ems_poids_profils_fidelisation_2023_2025.csv
+  Lignes : 7
+  Colonnes : FidelityProfile;Athletes;AthleteSharePercent;CompetitionParticipations;CompetitionSharePercent;MeanCompetitionsPerAthlete;MedianCompetitionsPerAthlete;MeanCompetitionsPerActiveSeason;AthletesWithOneCompetitionTotal;AthletesWithFiveOrMoreCompetitions;AthletesWithTenOrMoreCompetitions
+  Exemple 1 : FidelityProfile;Athletes;AthleteSharePercent;CompetitionParticipations;CompetitionSharePercent;MeanCompetitionsPerAthlete;MedianCompetitionsPerAthlete;MeanCompetitionsPerActiveSeason;AthletesWithOneCompetitionTotal;AthletesWithFiveOrMoreCompetitions;AthletesWithTenOrMoreCompetitions='CORE_3_YEARS;115;38.1;1186;71.8;10.31;9;3.44;0;104;53'
+  Exemple 2 : FidelityProfile;Athletes;AthleteSharePercent;CompetitionParticipations;CompetitionSharePercent;MeanCompetitionsPerAthlete;MedianCompetitionsPerAthlete;MeanCompetitionsPerActiveSeason;AthletesWithOneCompetitionTotal;AthletesWithFiveOrMoreCompetitions;AthletesWithTenOrMoreCompetitions='TWO_YEARS_2023_2024;25;8.3;114;6.9;4.56;4;2.28;0;11;1'
+  Exemple 3 : FidelityProfile;Athletes;AthleteSharePercent;CompetitionParticipations;CompetitionSharePercent;MeanCompetitionsPerAthlete;MedianCompetitionsPerAthlete;MeanCompetitionsPerActiveSeason;AthletesWithOneCompetitionTotal;AthletesWithFiveOrMoreCompetitions;AthletesWithTenOrMoreCompetitions='TWO_YEARS_2024_2025;23;7.6;110;6.7;4.78;3;2.39;0;9;3'
+
+[CSV] data\processed\ems_poids_profils_par_annee_2023_2025.csv
+  Lignes : 12
+  Colonnes : Year;FidelityProfile;ActiveAthletes;ShareOfAnnualAthletesPercent;CompetitionParticipations;ShareOfAnnualCompetitionsPercent;MeanCompetitionsPerActiveAthlete
+  Exemple 1 : Year;FidelityProfile;ActiveAthletes;ShareOfAnnualAthletesPercent;CompetitionParticipations;ShareOfAnnualCompetitionsPercent;MeanCompetitionsPerActiveAthlete='2023;CORE_3_YEARS;115;55.8;384;68.2;3.34'
+  Exemple 2 : Year;FidelityProfile;ActiveAthletes;ShareOfAnnualAthletesPercent;CompetitionParticipations;ShareOfAnnualCompetitionsPercent;MeanCompetitionsPerActiveAthlete='2023;TWO_YEARS_2023_2024;25;12.1;63;11.2;2.52'
+  Exemple 3 : Year;FidelityProfile;ActiveAthletes;ShareOfAnnualAthletesPercent;CompetitionParticipations;ShareOfAnnualCompetitionsPercent;MeanCompetitionsPerActiveAthlete='2023;RETURN_AFTER_GAP;15;7.3;27;4.8;1.8'
+
+[CSV] data\processed\ems_profils_fidelisation_2023_2025.csv
+  Lignes : 7
+  Colonnes : FidelityProfile;Athletes;ShareOfThreeYearPoolPercent
+  Exemple 1 : FidelityProfile;Athletes;ShareOfThreeYearPoolPercent='CORE_3_YEARS;115;38.1'
+  Exemple 2 : FidelityProfile;Athletes;ShareOfThreeYearPoolPercent='ONE_SEASON_2023;51;16.9'
+  Exemple 3 : FidelityProfile;Athletes;ShareOfThreeYearPoolPercent='ONE_SEASON_2024;28;9.3'
+
+[CSV] data\processed\ems_profils_fidelisation_sexe_age_2023_2025.csv
+  Lignes : 117
+  Colonnes : Dimension;EntryGroup;FidelityProfile;Athletes;ShareWithinEntryGroupPercent;EntryGroupTotal
+  Exemple 1 : Dimension;EntryGroup;FidelityProfile;Athletes;ShareWithinEntryGroupPercent;EntryGroupTotal='ALL;ALL;CORE_3_YEARS;115;38.1;302'
+  Exemple 2 : Dimension;EntryGroup;FidelityProfile;Athletes;ShareWithinEntryGroupPercent;EntryGroupTotal='ALL;ALL;TWO_YEARS_2023_2024;25;8.3;302'
+  Exemple 3 : Dimension;EntryGroup;FidelityProfile;Athletes;ShareWithinEntryGroupPercent;EntryGroupTotal='ALL;ALL;TWO_YEARS_2024_2025;23;7.6;302'
+
+[CSV] data\processed\ems_prolongement_profils_2026_provisoire.csv
+  Lignes : 7
+  Colonnes : ExtractionDate;FidelityProfile;Athletes2023To2025;Present2026Provisional;ObservedContinuationPercent
+  Exemple 1 : ExtractionDate;FidelityProfile;Athletes2023To2025;Present2026Provisional;ObservedContinuationPercent='2026-07-23;CORE_3_YEARS;115;72;62.6'
+  Exemple 2 : ExtractionDate;FidelityProfile;Athletes2023To2025;Present2026Provisional;ObservedContinuationPercent='2026-07-23;TWO_YEARS_2023_2024;25;4;16.0'
+  Exemple 3 : ExtractionDate;FidelityProfile;Athletes2023To2025;Present2026Provisional;ObservedContinuationPercent='2026-07-23;TWO_YEARS_2024_2025;23;11;47.8'
+
+[CSV] data\processed\ems_qualite_donnees_2021_2022.csv
+  Lignes : 2
+  Colonnes : Year;"CompetitionsInScope";"OneVisibleEntry";"OneVisibleEntryPercent";"FrenchAthletesUsable";"FrequencyAnalysisUsable";"CoverageStatus";"Note"
+  Exemple 1 : Year;"CompetitionsInScope";"OneVisibleEntry";"OneVisibleEntryPercent";"FrenchAthletesUsable";"FrequencyAnalysisUsable";"CoverageStatus";"Note"='2021;"34";"34";"100";"False";"False";"UNUSABLE";"Toutes les compétitions non annulées ne conservent qu\'un participa...
+  Exemple 2 : Year;"CompetitionsInScope";"OneVisibleEntry";"OneVisibleEntryPercent";"FrenchAthletesUsable";"FrequencyAnalysisUsable";"CoverageStatus";"Note"='2022;"28";"20";"71'
+
+[CSV] data\processed\ems_qualite_donnees_2022.csv
+  Lignes : 1
+  Colonnes : Year;"CompetitionsInScope";"CompetitionsOneVisibleEntry";"ShareOneVisibleEntryPercent";"CompetitionsTwentyOrMore";"CoverageStatus";"UsableForAnnualAthleteCount";"UsableForFrequencyAnalysis";"Note"
+  Exemple 1 : Year;"CompetitionsInScope";"CompetitionsOneVisibleEntry";"ShareOneVisibleEntryPercent";"CompetitionsTwentyOrMore";"CoverageStatus";"UsableForAnnualAthleteCount";"UsableForFrequencyAnalysis";"Note"='2022;"28";"20";"71'
+
+[CSV] data\processed\ems_qualite_sexe_age_2023_2025.csv
+  Lignes : 39
+  Colonnes : Year;AthleteKey;Name;Sex;Age;AgeBand;RegisteredPopulations;Categories;Issue
+  Exemple 1 : Year;AthleteKey;Name;Sex;Age;AgeBand;RegisteredPopulations;Categories;Issue='2023;FRA|1983|BEAUFILS JULIEN;BEAUFILS Julien;M;40;SENIOR;OPEN;Open M (40) | Open M (40) Div 1;AGE_CATEGORY_DIFFERENCE'
+  Exemple 2 : Year;AthleteKey;Name;Sex;Age;AgeBand;RegisteredPopulations;Categories;Issue='2023;FRA|2007|DUPLAN FRIBOURG TRISTAN;DUPLAN FRIBOURG Tristan;M;16;JUNIOR;JUNIOR | U21;-17 M (16) | -17 M (16) Div 1...
+  Exemple 3 : Year;AthleteKey;Name;Sex;Age;AgeBand;RegisteredPopulations;Categories;Issue='2023;FRA|2008|GEORGES MATTEO;GEORGES Matteo;M;15;JUNIOR;JUNIOR | U21;-17 M (15) | -17 M (15) Div 1 | -21 M (15);MULT...
+
+[CSV] data\processed\ems_retention_entrants_2024_vers_2025.csv
+  Lignes : 2
+  Colonnes : Status2024;Athletes2024;Retained2025;Exited2025;RetentionRatePercent;MeanCompetitions2024;MeanCompetitionsRetained;MeanCompetitionsExited
+  Exemple 1 : Status2024;Athletes2024;Retained2025;Exited2025;RetentionRatePercent;MeanCompetitions2024;MeanCompetitionsRetained;MeanCompetitionsExited='ALREADY_PRESENT_2023;140;115;25;82.1;3.29;3.57;2.04'
+  Exemple 2 : Status2024;Athletes2024;Retained2025;Exited2025;RetentionRatePercent;MeanCompetitions2024;MeanCompetitionsRetained;MeanCompetitionsExited='NEW_IN_2024_WINDOW;51;23;28;45.1;1.69;2.26;1.21'
+
+[CSV] data\processed\ems_retention_selon_intensite_2023_2025.csv
+  Lignes : 47
+  Colonnes : FromYear;ToYear;Population;IntensityBand;OriginAthletes;RetainedAthletes;ExitedAthletes;RetentionRatePercent
+  Exemple 1 : FromYear;ToYear;Population;IntensityBand;OriginAthletes;RetainedAthletes;ExitedAthletes;RetentionRatePercent='2023;2024;ALL;1_COMPETITION;57;23;34;40.4'
+  Exemple 2 : FromYear;ToYear;Population;IntensityBand;OriginAthletes;RetainedAthletes;ExitedAthletes;RetentionRatePercent='2023;2024;ALL;2_COMPETITIONS;66;45;21;68.2'
+  Exemple 3 : FromYear;ToYear;Population;IntensityBand;OriginAthletes;RetainedAthletes;ExitedAthletes;RetentionRatePercent='2023;2024;ALL;3_4_COMPETITIONS;52;42;10;80.8'
+
+[CSV] data\processed\ems_retention_sexe_age_2023_2025.csv
+  Lignes : 36
+  Colonnes : FromYear;ToYear;Dimension;Group;PreviousAthletes;RetainedAthletes;ExitedAthletes;RetentionRatePercent;CurrentAthletes;EntrantAthletes;EntrantShareOfCurrentPercent
+  Exemple 1 : FromYear;ToYear;Dimension;Group;PreviousAthletes;RetainedAthletes;ExitedAthletes;RetentionRatePercent;CurrentAthletes;EntrantAthletes;EntrantShareOfCurrentPercent='2023;2024;ALL;ALL;206;140;66;68.0;191;51;26.7'
+  Exemple 2 : FromYear;ToYear;Dimension;Group;PreviousAthletes;RetainedAthletes;ExitedAthletes;RetentionRatePercent;CurrentAthletes;EntrantAthletes;EntrantShareOfCurrentPercent='2023;2024;SEX;F;58;40;18;69.0;52;12;23.1'
+  Exemple 3 : FromYear;ToYear;Dimension;Group;PreviousAthletes;RetainedAthletes;ExitedAthletes;RetentionRatePercent;CurrentAthletes;EntrantAthletes;EntrantShareOfCurrentPercent='2023;2024;SEX;M;148;100;48;67.6;139;39;28.1'
+
+[CSV] data\processed\ems_sportifs_2025_presence_2026_provisoire.csv
+  Lignes : 198
+  Colonnes : ExtractionDate;AthleteKey;Name;FidelityProfile;Competitions2025;Present2026Provisional
+  Exemple 1 : ExtractionDate;AthleteKey;Name;FidelityProfile;Competitions2025;Present2026Provisional='2026-07-23;FRA|1966|ALVISET SERGE;ALVISET Serge;CORE_3_YEARS;3;1'
+  Exemple 2 : ExtractionDate;AthleteKey;Name;FidelityProfile;Competitions2025;Present2026Provisional='2026-07-23;FRA|2002|ANGUENOT INES;ANGUENOT Inès;CORE_3_YEARS;2;1'
+  Exemple 3 : ExtractionDate;AthleteKey;Name;FidelityProfile;Competitions2025;Present2026Provisional='2026-07-23;FRA|1959|BERGER ALAIN;BERGER Alain;CORE_3_YEARS;11;1'
+
+[CSV] data\processed\ems_synthese_competitions_2021_2026.csv
+  Lignes : 6
+  Colonnes : Annee;"CompetitionsInscrites";"CompetitionsAnnulees";"NonAnnulees"
+  Exemple 1 : Annee;"CompetitionsInscrites";"CompetitionsAnnulees";"NonAnnulees"='2021;"36";"2";"34"'
+  Exemple 2 : Annee;"CompetitionsInscrites";"CompetitionsAnnulees";"NonAnnulees"='2022;"30";;"30"'
+  Exemple 3 : Annee;"CompetitionsInscrites";"CompetitionsAnnulees";"NonAnnulees"='2023;"32";"4";"28"'
+
+[CSV] data\processed\ems_synthese_competitions_2022.csv
+  Lignes : 28
+  Colonnes : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench
+  Exemple 1 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench="2022;22FRA012;10-11 Sep 2022;PARIS - Viry Lake's challenge;INTER;1;0;1;0.0;1;0"
+  Exemple 2 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench='2022;22FRA018;10-11 Sep 2022;Lacanau ski classic;INTER;48;30;18;62.5;48;30'
+  Exemple 3 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench='2022;22FRA003;11-12 Jun 2022;TROPHEE DES JOLIES FILLES;INTER;1;0;1;0.0;1;0'
+
+[CSV] data\processed\ems_synthese_competitions_2023.csv
+  Lignes : 26
+  Colonnes : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench
+  Exemple 1 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench="2023;23FRA002;1-2 Jul 2023;LE PLAN D'EAU 3D JUILLET;INTER;43;25;18;58.1;43;25"
+  Exemple 2 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench='2023;23FRA012;14-15 Oct 2023;Freezing Magic Cup;INTER;24;19;5;79.2;24;19'
+  Exemple 3 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench='2023;23FRA017;14-16 Jul 2023;Championnat de France RELEVE 2023;NatCH;30;23;7;76.7;30;23'
+
+[CSV] data\processed\ems_synthese_competitions_2024.csv
+  Lignes : 30
+  Colonnes : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench
+  Exemple 1 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench="2024;24FRA028;1-2 Jun 2024;Ezylake's cup;INTER;19;14;5;73.7;19;14"
+  Exemple 2 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench='2024;24FRA004;11-12 May 2024;Magic Cup;INTER;17;5;12;29.4;17;5'
+  Exemple 3 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench='2024;24FRA010;12-13 Oct 2024;BAURECH CLASSIC;INTER;42;24;18;57.1;42;24'
+
+[CSV] data\processed\ems_synthese_competitions_2025.csv
+  Lignes : 29
+  Colonnes : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench
+  Exemple 1 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench='2025;25FRA016;10-11 Jul 2025;Championnat de France RELEVES 2025;NatCH;23;22;1;95.7;23;22'
+  Exemple 2 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench='2025;25FRA032;11-12 Oct 2025;BAURECH SLALOM SERIES 4RD;INTER;37;18;19;48.6;37;18'
+  Exemple 3 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench='2025;25FRA206;12-13 Jul 2025;Championnat de France U21 + OPEN;NatCH;28;27;1;96.4;28;27'
+
+[CSV] data\processed\ems_synthese_competitions_2026.csv
+  Lignes : 36
+  Colonnes : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench
+  Exemple 1 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench='2026;26FRA023;1-2 Aug 2026;Championnats de Ligue BFC;INTER;15;13;2;86.7;15;13'
+  Exemple 2 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench='2026;26FRA027;1-2 Aug 2026;BAURECH SLALOM CUP 2026;INTER;33;18;15;54.5;33;18'
+  Exemple 3 : Year;CompetitionCode;CompetitionDate;CompetitionName;CompetitionType;TotalApproved;FrenchApproved;ForeignApproved;FrenchSharePercent;UniqueAthletes;UniqueFrench="2026;26FRA039;1-2 Aug 2026;Biggie's International;INTER;14;8;6;57.1;14;8"
+
+[CSV] data\processed\ems_synthese_saison_2022.csv
+  Lignes : 1
+  Colonnes : Year;CompetitionsAnalysed;ApprovedEntriesAllCountries;UniqueAthletesAllCountries;ApprovedFrenchEntries;UniqueFrenchAthletes;FrenchSharePercent;MeanCompetitionsPerFrenchAthlete;MedianCompetitionsPerFrenchAthlete;AthletesOneCompetition;ShareOneCompetitionPercent;AthletesTwoCompetitions;AthletesThreeOrMore;ShareThreeOrMorePercent;AthletesFiveOrMore;Top10Entries;Top10SharePercent;Top20Entries;Top20SharePercent
+  Exemple 1 : Year;CompetitionsAnalysed;ApprovedEntriesAllCountries;UniqueAthletesAllCountries;ApprovedFrenchEntries;UniqueFrenchAthletes;FrenchSharePercent;MeanCompetitionsPerFrenchAthlete;MedianCompetitionsPerFrenchAthlete;AthletesOneCompetition;ShareOneCompetitionPercent;AthletesTwoCompetitions;AthletesThreeOrMore;ShareThreeOrMorePercent;AthletesFiveOrMore;Top10Entries;Top10SharePercent;Top20Entries;Top20SharePercent='2022;28;264;183;169;120;64.0;1.41;1.0;86;71.7;22;12;10.0;0;33;19.5;55;32.5'
+
+[CSV] data\processed\ems_synthese_saison_2023.csv
+  Lignes : 1
+  Colonnes : Year;CompetitionsAnalysed;ApprovedEntriesAllCountries;UniqueAthletesAllCountries;ApprovedFrenchEntries;UniqueFrenchAthletes;FrenchSharePercent;MeanCompetitionsPerFrenchAthlete;MedianCompetitionsPerFrenchAthlete;AthletesOneCompetition;ShareOneCompetitionPercent;AthletesTwoCompetitions;AthletesThreeOrMore;ShareThreeOrMorePercent;AthletesFiveOrMore;Top10Entries;Top10SharePercent;Top20Entries;Top20SharePercent
+  Exemple 1 : Year;CompetitionsAnalysed;ApprovedEntriesAllCountries;UniqueAthletesAllCountries;ApprovedFrenchEntries;UniqueFrenchAthletes;FrenchSharePercent;MeanCompetitionsPerFrenchAthlete;MedianCompetitionsPerFrenchAthlete;AthletesOneCompetition;ShareOneCompetitionPercent;AthletesTwoCompetitions;AthletesThreeOrMore;ShareThreeOrMorePercent;AthletesFiveOrMore;Top10Entries;Top10SharePercent;Top20Entries;Top20SharePercent='2023;26;854;380;563;206;65.9;2.73;2.0;57;27.7;66;83;40.3;31;83;14.7;140;24.9'
+
+[CSV] data\processed\ems_synthese_saison_2024.csv
+  Lignes : 1
+  Colonnes : Year;CompetitionsAnalysed;ApprovedEntriesAllCountries;UniqueAthletesAllCountries;ApprovedFrenchEntries;UniqueFrenchAthletes;FrenchSharePercent;MeanCompetitionsPerFrenchAthlete;MedianCompetitionsPerFrenchAthlete;AthletesOneCompetition;ShareOneCompetitionPercent;AthletesTwoCompetitions;AthletesThreeOrMore;ShareThreeOrMorePercent;AthletesFiveOrMore;Top10Entries;Top10SharePercent;Top20Entries;Top20SharePercent
+  Exemple 1 : Year;CompetitionsAnalysed;ApprovedEntriesAllCountries;UniqueAthletesAllCountries;ApprovedFrenchEntries;UniqueFrenchAthletes;FrenchSharePercent;MeanCompetitionsPerFrenchAthlete;MedianCompetitionsPerFrenchAthlete;AthletesOneCompetition;ShareOneCompetitionPercent;AthletesTwoCompetitions;AthletesThreeOrMore;ShareThreeOrMorePercent;AthletesFiveOrMore;Top10Entries;Top10SharePercent;Top20Entries;Top20SharePercent='2024;30;807;343;547;191;67.8;2.86;2;66;34.6;42;83;43.5;38;89;16.3;150;27.4'
+
+[CSV] data\processed\ems_synthese_saison_2025.csv
+  Lignes : 1
+  Colonnes : Year;CompetitionsAnalysed;ApprovedEntriesAllCountries;UniqueAthletesAllCountries;ApprovedFrenchEntries;UniqueFrenchAthletes;FrenchSharePercent;MeanCompetitionsPerFrenchAthlete;MedianCompetitionsPerFrenchAthlete;AthletesOneCompetition;ShareOneCompetitionPercent;AthletesTwoCompetitions;AthletesThreeOrMore;ShareThreeOrMorePercent;AthletesFiveOrMore;Top10Entries;Top10SharePercent;Top20Entries;Top20SharePercent
+  Exemple 1 : Year;CompetitionsAnalysed;ApprovedEntriesAllCountries;UniqueAthletesAllCountries;ApprovedFrenchEntries;UniqueFrenchAthletes;FrenchSharePercent;MeanCompetitionsPerFrenchAthlete;MedianCompetitionsPerFrenchAthlete;AthletesOneCompetition;ShareOneCompetitionPercent;AthletesTwoCompetitions;AthletesThreeOrMore;ShareThreeOrMorePercent;AthletesFiveOrMore;Top10Entries;Top10SharePercent;Top20Entries;Top20SharePercent='2025;29;827;351;541;198;65.4;2.73;2.0;76;38.4;42;80;40.4;36;87;16.1;152;28.1'
+
+[CSV] data\processed\ems_synthese_saison_2026.csv
+  Lignes : 1
+  Colonnes : Year;CompetitionsAnalysed;ApprovedEntriesAllCountries;UniqueAthletesAllCountries;ApprovedFrenchEntries;UniqueFrenchAthletes;FrenchSharePercent;MeanCompetitionsPerFrenchAthlete;MedianCompetitionsPerFrenchAthlete;AthletesOneCompetition;ShareOneCompetitionPercent;AthletesTwoCompetitions;AthletesThreeOrMore;ShareThreeOrMorePercent;AthletesFiveOrMore;Top10Entries;Top10SharePercent;Top20Entries;Top20SharePercent
+  Exemple 1 : Year;CompetitionsAnalysed;ApprovedEntriesAllCountries;UniqueAthletesAllCountries;ApprovedFrenchEntries;UniqueFrenchAthletes;FrenchSharePercent;MeanCompetitionsPerFrenchAthlete;MedianCompetitionsPerFrenchAthlete;AthletesOneCompetition;ShareOneCompetitionPercent;AthletesTwoCompetitions;AthletesThreeOrMore;ShareThreeOrMorePercent;AthletesFiveOrMore;Top10Entries;Top10SharePercent;Top20Entries;Top20SharePercent='2026;36;541;269;322;140;59.5;2.3;2.0;53;37.9;40;47;33.6;13;58;18.0;101;31.4'
+
+[CSV] data\processed\ems_transitions_competiteurs_2023_2025.csv
+  Lignes : 2
+  Colonnes : FromYear;ToYear;PreviousAthletes;CurrentAthletes;RetainedAthletes;ExitedAthletes;EntrantAthletes;RetentionRatePercent;ExitRatePercent;EntrantShareOfCurrentPercent;NetChangeAthletes
+  Exemple 1 : FromYear;ToYear;PreviousAthletes;CurrentAthletes;RetainedAthletes;ExitedAthletes;EntrantAthletes;RetentionRatePercent;ExitRatePercent;EntrantShareOfCurrentPercent;NetChangeAthletes='2023;2024;206;191;140;66;51;68.0;32.0;26.7;-15'
+  Exemple 2 : FromYear;ToYear;PreviousAthletes;CurrentAthletes;RetainedAthletes;ExitedAthletes;EntrantAthletes;RetentionRatePercent;ExitRatePercent;EntrantShareOfCurrentPercent;NetChangeAthletes='2024;2025;191;198;138;53;60;72.3;27.7;30.3;7'
+
+[CSV] data\processed\resultats_classes_anomalies_2023_2026.csv
+  Lignes : 0
+  Colonnes : CompetitionCode;RiderId;Name;Category;Sex;DisciplineRaw;AnomalyType
+
+[CSV] data\processed\resultats_classes_champs_2023_2026.csv
+  Lignes : 246
+  Colonnes : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;Sex;Event;ClassifiedAll;ClassifiedFrench;ClassifiedForeign
+  Exemple 1 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;Sex;Event;ClassifiedAll;ClassifiedFrench;ClassifiedForeign='2023;23FRA017;Championnat de France RELEVE 2023;RELEVES;1;RELEVES;U10;F;SLALOM;1;1;0'
+  Exemple 2 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;Sex;Event;ClassifiedAll;ClassifiedFrench;ClassifiedForeign='2023;23FRA017;Championnat de France RELEVE 2023;RELEVES;1;RELEVES;U10;M;FIGURES;2;2;0'
+  Exemple 3 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;Sex;Event;ClassifiedAll;ClassifiedFrench;ClassifiedForeign='2023;23FRA017;Championnat de France RELEVE 2023;RELEVES;1;RELEVES;U10;M;SLALOM;2;2;0'
+
+[CSV] data\processed\resultats_classes_individuels_2023_2026.csv
+  Lignes : 728
+  Colonnes : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;Sex;Event;RiderId;RiderIwwfId;EmsAthleteId;AthleteKey;Name;NormalizedName;Country;IsFrench;YOB;ResultRows;ResultIds;Tours;Scores;Classifications;Ranks;SourceFiles
+  Exemple 1 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;Sex;Event;RiderId;RiderIwwfId;EmsAthleteId;AthleteKey;Name;NormalizedName;Country;IsFrench;YOB;ResultRows;ResultIds;Tours;Scores;Classifications;Ranks;SourceFiles='2023;23FRA017;Championnat de France RELEVE 2023;RELEVES;1;RELEVES;U10;F;SLALOM;763;FRA982023672;;FRA|2013|LACARRAU J...
+  Exemple 2 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;Sex;Event;RiderId;RiderIwwfId;EmsAthleteId;AthleteKey;Name;NormalizedName;Country;IsFrench;YOB;ResultRows;ResultIds;Tours;Scores;Classifications;Ranks;SourceFiles='2023;23FRA017;Championnat de France RELEVE 2023;RELEVES;1;RELEVES;U10;M;FIGURES;762;FRA982024832;;FRA|2014|GILG MART...
+  Exemple 3 : Year;CompetitionCode;CompetitionName;ChampionshipBlock;TitleEligible;PopulationGroup;Category;Sex;Event;RiderId;RiderIwwfId;EmsAthleteId;AthleteKey;Name;NormalizedName;Country;IsFrench;YOB;ResultRows;ResultIds;Tours;Scores;Classifications;Ranks;SourceFiles='2023;23FRA017;Championnat de France RELEVE 2023;RELEVES;1;RELEVES;U10;M;FIGURES;656;FRA982023670;;FRA|2013|MAUMY EMI...
+
+[CSV] data\exports\diagnostic_annuel_champs_2017_2026.csv
+  Lignes : 10
+  Colonnes : annee;participants_distincts;femmes_distinctes;hommes_distincts;champs_possibles;champs_effectifs;champs_vides;taux_occupation_pct;champs_1_participant;champs_2_participants;champs_3_participants;champs_1_a_3_participants;part_champs_1_a_3_parmi_effectifs_pct;champs_4_a_5_participants;champs_6_a_9_participants;champs_10_participants_ou_plus;participations_dans_les_champs;moyenne_par_champ_possible;moyenne_par_champ_effectif;mediane_par_champ_effectif;effectif_maximal_d_un_champ;places_de_podium_couvertes;part_des_participations_couverte_pct
+  Exemple 1 : annee;participants_distincts;femmes_distinctes;hommes_distincts;champs_possibles;champs_effectifs;champs_vides;taux_occupation_pct;champs_1_participant;champs_2_participants;champs_3_participants;champs_1_a_3_participants;part_champs_1_a_3_parmi_effectifs_pct;champs_4_a_5_participants;champs_6_a_9_participants;champs_10_participants_ou_plus;participations_dans_les_champs;moyenne_par_champ_possible;moyenne_par_champ_effectif;mediane_par_champ_effectif;effectif_maximal_d_un_champ;places_de_podium_couvertes;part_des_participations_couverte_pct='2017;103;32;71;104;59;45;56.7;11;9;8;28;47.5;14;14;3;256;2.5;4.3;4.0;15;146;57.0'
+  Exemple 2 : annee;participants_distincts;femmes_distinctes;hommes_distincts;champs_possibles;champs_effectifs;champs_vides;taux_occupation_pct;champs_1_participant;champs_2_participants;champs_3_participants;champs_1_a_3_participants;part_champs_1_a_3_parmi_effectifs_pct;champs_4_a_5_participants;champs_6_a_9_participants;champs_10_participants_ou_plus;participations_dans_les_champs;moyenne_par_champ_possible;moyenne_par_champ_effectif;mediane_par_champ_effectif;effectif_maximal_d_un_champ;places_de_podium_couvertes;part_des_participations_couverte_pct='2018;101;32;69;104;66;38;63.5;11;17;15;43;65.2;16;6;1;224;2.2;3.4;3.0;17;159;71.0'
+  Exemple 3 : annee;participants_distincts;femmes_distinctes;hommes_distincts;champs_possibles;champs_effectifs;champs_vides;taux_occupation_pct;champs_1_participant;champs_2_participants;champs_3_participants;champs_1_a_3_participants;part_champs_1_a_3_parmi_effectifs_pct;champs_4_a_5_participants;champs_6_a_9_participants;champs_10_participants_ou_plus;participations_dans_les_champs;moyenne_par_champ_possible;moyenne_par_champ_effectif;mediane_par_champ_effectif;effectif_maximal_d_un_champ;places_de_podium_couvertes;part_des_participations_couverte_pct='2019;99;31;68;104;67;37;64.4;14;14;14;42;62.7;13;10;2;229;2.2;3.4;3.0;13;159;69.4'
+
+[CSV] data\exports\diagnostic_annuel_par_axes_2017_2026.csv
+  Lignes : 90
+  Colonnes : annee;axe;groupe;champs_possibles;champs_effectifs;champs_vides;taux_occupation_pct;champs_amps_effectifs;champs_1_a_3_participants;part_champs_1_a_3_parmi_effectifs_pct;participations_dans_les_champs;moyenne_par_champ_effectif;mediane_par_champ_effectif;effectif_maximal_d_un_champ;places_de_podium_couvertes;part_des_participations_couverte_pct
+  Exemple 1 : annee;axe;groupe;champs_possibles;champs_effectifs;champs_vides;taux_occupation_pct;champs_amps_effectifs;champs_1_a_3_participants;part_champs_1_a_3_parmi_effectifs_pct;participations_dans_les_champs;moyenne_par_champ_effectif;mediane_par_champ_effectif;effectif_maximal_d_un_champ;places_de_podium_couvertes;part_des_participations_couverte_pct='2017;POPULATION;RELEVE;40;28;12;70.0;28;9;32.1;134;4.8;5.0;15;76;56.7'
+  Exemple 2 : annee;axe;groupe;champs_possibles;champs_effectifs;champs_vides;taux_occupation_pct;champs_amps_effectifs;champs_1_a_3_participants;part_champs_1_a_3_parmi_effectifs_pct;participations_dans_les_champs;moyenne_par_champ_effectif;mediane_par_champ_effectif;effectif_maximal_d_un_champ;places_de_podium_couvertes;part_des_participations_couverte_pct='2017;POPULATION;U21_OPEN;16;8;8;50.0;8;0;0.0;62;7.8;6.5;13;24;38.7'
+  Exemple 3 : annee;axe;groupe;champs_possibles;champs_effectifs;champs_vides;taux_occupation_pct;champs_amps_effectifs;champs_1_a_3_participants;part_champs_1_a_3_parmi_effectifs_pct;participations_dans_les_champs;moyenne_par_champ_effectif;mediane_par_champ_effectif;effectif_maximal_d_un_champ;places_de_podium_couvertes;part_des_participations_couverte_pct='2017;POPULATION;SENIORS;48;23;25;47.9;23;19;82.6;60;2.6;2.0;9;46;76.7'
+
+[CSV] data\exports\entonnoir_u17_u21_open_2017_2020.csv
+  Lignes : 32
+  Colonnes : rider_id_canonique;prenom;nom;sexe;derniere_annee_u17;premiere_annee_u21;premiere_annee_open;issue
+  Exemple 1 : rider_id_canonique;prenom;nom;sexe;derniere_annee_u17;premiere_annee_u21;premiere_annee_open;issue='1527;Jean;Barenghi;M;2017;;;sans_passage_u21'
+  Exemple 2 : rider_id_canonique;prenom;nom;sexe;derniere_annee_u17;premiere_annee_u21;premiere_annee_open;issue='1528;Mara;Bürge;F;2017;;;sans_passage_u21'
+  Exemple 3 : rider_id_canonique;prenom;nom;sexe;derniere_annee_u17;premiere_annee_u21;premiere_annee_open;issue='1529;Joan;Cambray;M;2017;;;sans_passage_u21'
+
+[CSV] data\exports\participation_annuelle_2017_2026.csv
+  Lignes : 41
+  Colonnes : annee;population;participants;femmes;hommes;sexe_non_renseigne;taux_femmes_pct;inscriptions;nouveaux_dans_base;nouveaux_dans_population;presents_annee_precedente;participants_annee_precedente;taux_fidelisation_pct
+  Exemple 1 : annee;population;participants;femmes;hommes;sexe_non_renseigne;taux_femmes_pct;inscriptions;nouveaux_dans_base;nouveaux_dans_population;presents_annee_precedente;participants_annee_precedente;taux_fidelisation_pct='2017;Jeunes/U21;48;15;33;0;31.2;48;48;48;0;0;'
+  Exemple 2 : annee;population;participants;femmes;hommes;sexe_non_renseigne;taux_femmes_pct;inscriptions;nouveaux_dans_base;nouveaux_dans_population;presents_annee_precedente;participants_annee_precedente;taux_fidelisation_pct='2017;Open;28;14;14;0;50.0;28;28;28;0;0;'
+  Exemple 3 : annee;population;participants;femmes;hommes;sexe_non_renseigne;taux_femmes_pct;inscriptions;nouveaux_dans_base;nouveaux_dans_population;presents_annee_precedente;participants_annee_precedente;taux_fidelisation_pct='2017;Seniors;31;5;26;0;16.1;32;31;31;0;0;'
+
+[CSV] data\exports\participation_categories_2017_2026.csv
+  Lignes : 110
+  Colonnes : annee;population;categorie;participants;femmes;hommes;taux_femmes_pct
+  Exemple 1 : annee;population;categorie;participants;femmes;hommes;taux_femmes_pct='2017;Jeunes/U21;U10;8;1;7;12.5'
+  Exemple 2 : annee;population;categorie;participants;femmes;hommes;taux_femmes_pct='2017;Jeunes/U21;U12;6;2;4;33.3'
+  Exemple 3 : annee;population;categorie;participants;femmes;hommes;taux_femmes_pct='2017;Jeunes/U21;U14;13;6;7;46.2'
+
+[CSV] data\exports\persistance_participation_2017_2026.csv
+  Lignes : 289
+  Colonnes : rider_id_canonique;prenom;nom;sexe;premiere_annee;derniere_annee;nombre_annees;plus_longue_sequence_consecutive;nombre_competitions;annees;categories
+  Exemple 1 : rider_id_canonique;prenom;nom;sexe;premiere_annee;derniere_annee;nombre_annees;plus_longue_sequence_consecutive;nombre_competitions;annees;categories='614;Patrick;GUYAMIER'
+  Exemple 2 : rider_id_canonique;prenom;nom;sexe;premiere_annee;derniere_annee;nombre_annees;plus_longue_sequence_consecutive;nombre_competitions;annees;categories='21;Perrine;Sonier;F;2017;2026;10;10;12;2017'
+  Exemple 3 : rider_id_canonique;prenom;nom;sexe;premiere_annee;derniere_annee;nombre_annees;plus_longue_sequence_consecutive;nombre_competitions;annees;categories='22;Benjamin;Souci;M;2017;2026;10;10;10;2017'
+
+[CSV] data\exports\podiums_groupes_releve_u21_open_seniors_2017_2026.csv
+  Lignes : 360
+  Colonnes : annee;population;sexe;epreuve;participations;champs_possibles;champs_effectifs;champs_de_1_a_3_participants;participants_moyens_par_champ_effectif;places_de_podium_couvertes;part_du_champ_couverte_pct
+  Exemple 1 : annee;population;sexe;epreuve;participations;champs_possibles;champs_effectifs;champs_de_1_a_3_participants;participants_moyens_par_champ_effectif;places_de_podium_couvertes;part_du_champ_couverte_pct='2017;Relève;F;Slalom;15;5;4;2;3.8;9;60.0'
+  Exemple 2 : annee;population;sexe;epreuve;participations;champs_possibles;champs_effectifs;champs_de_1_a_3_participants;participants_moyens_par_champ_effectif;places_de_podium_couvertes;part_du_champ_couverte_pct='2017;Relève;F;Figures;12;5;4;2;3.0;9;75.0'
+  Exemple 3 : annee;population;sexe;epreuve;participations;champs_possibles;champs_effectifs;champs_de_1_a_3_participants;participants_moyens_par_champ_effectif;places_de_podium_couvertes;part_du_champ_couverte_pct='2017;Relève;F;Saut;7;5;2;1;3.5;6;85.7'
+
+[CSV] data\exports\podiums_par_categorie_sexe_epreuve_2017_2026.csv
+  Lignes : 1040
+  Colonnes : annee;categorie;sexe;epreuve;participants;part_theorique_podium_pct
+  Exemple 1 : annee;categorie;sexe;epreuve;participants;part_theorique_podium_pct='2017;U8;Femmes;Slalom;0;'
+  Exemple 2 : annee;categorie;sexe;epreuve;participants;part_theorique_podium_pct='2017;U8;Femmes;Figures;0;'
+  Exemple 3 : annee;categorie;sexe;epreuve;participants;part_theorique_podium_pct='2017;U8;Femmes;Saut;0;'
+
+[CSV] data\exports\profondeur_epreuves_categories_2017_2026.csv
+  Lignes : 330
+  Colonnes : annee;categorie;discipline;participants;femmes;hommes;poids_une_personne_pct
+  Exemple 1 : annee;categorie;discipline;participants;femmes;hommes;poids_une_personne_pct='2017;U10;slalom;8;1;7;12.5'
+  Exemple 2 : annee;categorie;discipline;participants;femmes;hommes;poids_une_personne_pct='2017;U10;tricks;7;1;6;14.3'
+  Exemple 3 : annee;categorie;discipline;participants;femmes;hommes;poids_une_personne_pct='2017;U10;jump;5;0;5;20.0'
+
+[CSV] data\exports\taille_categories_2017_2026.csv
+  Lignes : 13
+  Colonnes : categorie;annees_observees;effectif_median;effectif_moyen;effectif_minimum;effectif_maximum;participants_2026;poids_une_personne_2026_pct;annees_sous_10;annees_sous_20;annees_sous_30;niveau_structurel
+  Exemple 1 : categorie;annees_observees;effectif_median;effectif_moyen;effectif_minimum;effectif_maximum;participants_2026;poids_une_personne_2026_pct;annees_sous_10;annees_sous_20;annees_sous_30;niveau_structurel='U8;1;1.0;1.0;1;1;1;100.0;1;1;1;moins_de_10'
+  Exemple 2 : categorie;annees_observees;effectif_median;effectif_moyen;effectif_minimum;effectif_maximum;participants_2026;poids_une_personne_2026_pct;annees_sous_10;annees_sous_20;annees_sous_30;niveau_structurel='U10;10;3.0;3.5;1;8;6;16.7;10;10;10;moins_de_10'
+  Exemple 3 : categorie;annees_observees;effectif_median;effectif_moyen;effectif_minimum;effectif_maximum;participants_2026;poids_une_personne_2026_pct;annees_sous_10;annees_sous_20;annees_sous_30;niveau_structurel='U12;10;6.0;6.0;3;9;9;11.1;10;10;10;moins_de_10'
+
+[CSV] data\exports\trajectoires_jeunes_open_2017_2023.csv
+  Lignes : 71
+  Colonnes : rider_id_canonique;prenom;nom;sexe;derniere_annee_jeune;derniere_categorie_jeune;premiere_annee_open;delai_vers_open;issue_sous_trois_ans
+  Exemple 1 : rider_id_canonique;prenom;nom;sexe;derniere_annee_jeune;derniere_categorie_jeune;premiere_annee_open;delai_vers_open;issue_sous_trois_ans='1562;Emilien;Rocard;M;2017;U10;;;disparition_observee'
+  Exemple 2 : rider_id_canonique;prenom;nom;sexe;derniere_annee_jeune;derniere_categorie_jeune;premiere_annee_open;delai_vers_open;issue_sous_trois_ans='1568;Tim;Wild;M;2017;U10;;;disparition_observee'
+  Exemple 3 : rider_id_canonique;prenom;nom;sexe;derniere_annee_jeune;derniere_categorie_jeune;premiere_annee_open;delai_vers_open;issue_sous_trois_ans='1561;Albert;Rocard;M;2017;U12;;;disparition_observee'
+
+[CSV] data\exports\trajectoires_u17_u21_2017_2023.csv
+  Lignes : 54
+  Colonnes : rider_id_canonique;prenom;nom;sexe;derniere_annee_u17;premiere_annee_u21;delai_vers_u21;issue_sous_trois_ans
+  Exemple 1 : rider_id_canonique;prenom;nom;sexe;derniere_annee_u17;premiere_annee_u21;delai_vers_u21;issue_sous_trois_ans='1527;Jean;Barenghi;M;2017;;;disparition_observee'
+  Exemple 2 : rider_id_canonique;prenom;nom;sexe;derniere_annee_u17;premiere_annee_u21;delai_vers_u21;issue_sous_trois_ans='1528;Mara;Bürge;F;2017;;;disparition_observee'
+  Exemple 3 : rider_id_canonique;prenom;nom;sexe;derniere_annee_u17;premiere_annee_u21;delai_vers_u21;issue_sous_trois_ans='1529;Joan;Cambray;M;2017;;;autre_continuite'
+
+[CSV] data\reference\championship_country_overrides.csv
+  Lignes : 3
+  Colonnes : CompetitionCode;RiderId;Country;Reason
+  Exemple 1 : CompetitionCode;RiderId;Country;Reason='23FRA017;567;MAR;Nationalité EMS de la participation 2023'
+  Exemple 2 : CompetitionCode;RiderId;Country;Reason='24FRA026;567;MAR;Nationalité EMS de la participation 2024'
+  Exemple 3 : CompetitionCode;RiderId;Country;Reason='25FRA016;567;MAR;Nationalité EMS de la participation 2025'
+
+[CSV] data\reference\ems_result_identity_aliases.csv
+  Lignes : 17
+  Colonnes : ResultAthleteKey;CanonicalAthleteKey;EmsName;ResultName;Confidence;NameScore;Occurrences
+  Exemple 1 : ResultAthleteKey;CanonicalAthleteKey;EmsName;ResultName;Confidence;NameScore;Occurrences='FRA|2007|DUVERGER MARIE LOU;FRA|2007|DUVERGER MARIE-LOU;DUVERGER Marie-Lou;Duverger Marie-Lou;AUTO_EXACT_NAME;100.0;8'
+  Exemple 2 : ResultAthleteKey;CanonicalAthleteKey;EmsName;ResultName;Confidence;NameScore;Occurrences='FRA|1999|MOULANIER MARIE LOU;FRA|1999|MOULANIER MARIE-LOU;MOULANIER Marie-Lou;Moulanier Marie-Lou;AUTO_EXACT_NAME;10...
+  Exemple 3 : ResultAthleteKey;CanonicalAthleteKey;EmsName;ResultName;Confidence;NameScore;Occurrences='FRA|1947|PARPETTE JEAN YVES;FRA|1947|PARPETTE JEAN-YVES;PARPETTE Jean-Yves;Parpette Jean-Yves;AUTO_EXACT_NAME;100.0;3'
+
+[CSV] data\reference\rider_identity_aliases.csv
+  Lignes : 114
+  Colonnes : alias_rider_id;canonical_rider_id;alias_iwwf_id;canonical_iwwf_id;nom;prenom;sexe;regle
+  Exemple 1 : alias_rider_id;canonical_rider_id;alias_iwwf_id;canonical_iwwf_id;nom;prenom;sexe;regle='1728;349;16110;FRA092016110;Amblard;Arthur;M;identifiant_court_suffixe_identifiant_officiel'
+  Exemple 2 : alias_rider_id;canonical_rider_id;alias_iwwf_id;canonical_iwwf_id;nom;prenom;sexe;regle='1713;544;19882;FRA422019882;Amblard;Charlotte;F;identifiant_court_suffixe_identifiant_officiel'
+  Exemple 3 : alias_rider_id;canonical_rider_id;alias_iwwf_id;canonical_iwwf_id;nom;prenom;sexe;regle='1462;1;15508;FRA692015508;Anguenot;Ins;F;identifiant_court_suffixe_identifiant_officiel'
+
+[CSV] data\reference\rider_identity_map.csv
+  Lignes : 117
+  Colonnes : alias_rider_id;canonical_rider_id;alias_iwwf_id;canonical_iwwf_id;nom;prenom;sexe;regle
+  Exemple 1 : alias_rider_id;canonical_rider_id;alias_iwwf_id;canonical_iwwf_id;nom;prenom;sexe;regle='1728;349;16110;FRA092016110;Amblard;Arthur;M;identifiant_court_suffixe_identifiant_officiel'
+  Exemple 2 : alias_rider_id;canonical_rider_id;alias_iwwf_id;canonical_iwwf_id;nom;prenom;sexe;regle='1713;544;19882;FRA422019882;Amblard;Charlotte;F;identifiant_court_suffixe_identifiant_officiel'
+  Exemple 3 : alias_rider_id;canonical_rider_id;alias_iwwf_id;canonical_iwwf_id;nom;prenom;sexe;regle='1462;1;15508;FRA692015508;Anguenot;Ins;F;identifiant_court_suffixe_identifiant_officiel'
+
+[CSV] data\reference\rider_identity_review.csv
+  Lignes : 3
+  Colonnes : nom_normalise;prenom_normalise;sexe;rider_ids;iwwf_ids;annees;motif
+  Exemple 1 : nom_normalise;prenom_normalise;sexe;rider_ids;iwwf_ids;annees;motif='EMMETT;KARINE;F;604'
+  Exemple 2 : nom_normalise;prenom_normalise;sexe;rider_ids;iwwf_ids;annees;motif='GILG;GASPARD;M;10'
+  Exemple 3 : nom_normalise;prenom_normalise;sexe;rider_ids;iwwf_ids;annees;motif='VERHAEGHEPELLICER;JOSHUA;M;583'
+
+[CSV] data\raw\ems\calendrier_france_waterski_2021_2026.csv
+  Lignes : 100
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"='5-6 Jun 2021;"Waterski";"INTER";"L";"FRA";"Ski Caraibes Albertville SLALOM CUP";"";"Ski Caraibes A...";"21FRA005";""'
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"='12-13 Jun 2021;"Waterski";"INTER";"L";"FRA";"Championnats de Ligue Ile de France";"";"Nemours Grez/l...";"21FRA036";""'
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"='12-13 Jun 2021;"Waterski";"INTER";"L";"FRA";"Bordeaux Slalom Cup";"";"Ski Nautique C...";"21FRA021";""'
+
+[CSV] data\raw\ems\calendrier_france_waterski_2021_avec_urls.csv
+  Lignes : 35
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='12-13 Jun 2021;"Waterski";"INTER";"L";"FRA";"TROPHEE DES JOLIES FILLES";"";"Club Arc Dijon...";"21FRA004";"";"https:...
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='5-6 Jun 2021;"Waterski";"INTER";"L";"FRA";"Ski Caraibes Albertville SLALOM CUP";"";"Ski Caraibes A...";"21FRA005";""...
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='19-21 Jun 2021;"Waterski";"INTER";"L";"FRA";"Ski Caraibes Albertville 3D";"";"Ski Caraibes A...";"21FRA006";"";"http...
+
+[CSV] data\raw\ems\calendrier_france_waterski_2022_avec_urls.csv
+  Lignes : 29
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='18-19 Jun 2022;"Waterski";"INTER";"R";"FRA";"THE FUNGLISS PRO AM";"";"FUNGLISS DOMMA...";"22FRA001";"";"https://ems....
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='8-10 Jul 2022;"Waterski";"INTER";"R";"FRA";"Malibu Open LACANAU proam 2022";"";"Lacanau Ski Cl...";"22FRA002";"";"ht...
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='11-12 Jun 2022;"Waterski";"INTER";"L";"FRA";"TROPHEE DES JOLIES FILLES";"";"Club Arc Dijon...";"22FRA003";"";"https:...
+
+[CSV] data\raw\ems\calendrier_france_waterski_2023_avec_urls.csv
+  Lignes : 30
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='30 Jun - 2 Jul 2023;"Waterski";"INTER";"R";"FRA";"MALIBU OPEN LACANAU";"";"Lacanau Ski Cl...";"23FRA001";"";"https:/...
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='1-2 Jul 2023;"Waterski";"INTER";"L";"FRA";"LE PLAN D\'EAU 3D JUILLET";"";"Club Omnisport...";"23FRA002";"";"https://...
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='24-25 Jun 2023;"Waterski";"INTER";"L";"FRA";"Ski Caraibes Slalom CUP 2023";"";"Ski Caraibes A...";"23FRA003";"";"htt...
+
+[CSV] data\raw\ems\calendrier_france_waterski_2024.csv
+  Lignes : 35
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"='11-12 May 2024;"Waterski";"INTER";"L";"FRA";"Magic Cup";"";"Nemours Grez/l...";"24FRA004";""'
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"='1-2 Jun 2024;"Waterski";"INTER";"L";"FRA";"Ezylake\'s cup";"";"Ezylake";"24FRA028";""'
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"='2 Jun 2024;"Waterski";"INTER";"L";"FRA";"PITROT 1 DAY";"";"Lacanau Ski Cl...";"24FRA019";""'
+
+[CSV] data\raw\ems\calendrier_france_waterski_2024_avec_urls.csv
+  Lignes : 33
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='22-23 Jun 2024;"Waterski";"INTER";"R";"FRA";"The Fungliss Pro Am";"";"FUNGLISS DOMMA...";"24FRA001";"";"https://ems....
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='14-15 Sep 2024;"Waterski";"INTER";"L";"FRA";"Viry Lake\'s challenge #6";"";"Club Nautique ...";"24FRA002";"";"https:...
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='26-27 Oct 2024;"Waterski";"INTER";"L";"FRA";"Frozen Magic JG";"";"Nemours Grez/l...";"24FRA003";"";"https://ems.iwwf...
+
+[CSV] data\raw\ems\calendrier_france_waterski_2025.csv
+  Lignes : 33
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"='31 May - 1 Jun 2025;"Waterski";"INTER";"L";"FRA";"Magic Cup";"";"Nemours Grez/l...";"25FRA008";""'
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"='7-8 Jun 2025;"Waterski";"INTER";"L";"FRA";"Ezylake\'s cup";"";"Ezylake";"25FRA021";""'
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"='14-15 Jun 2025;"Waterski";"INTER";"L";"FRA";"Tours 3D Event - Championnat de ligue CVL";"";"Touraine Ski ...";"25FRA...
+
+[CSV] data\raw\ems\calendrier_france_waterski_2025_avec_urls.csv
+  Lignes : 33
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='21-22 Jun 2025;"Waterski";"INTER";"R";"FRA";"THE FUNGLISS PRO AM";"";"FUNGLISS DOMMA...";"25FRA001";"";"https://ems....
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='20-21 Sep 2025;"Waterski";"INTER";"L";"FRA";"Viry Lake\'s challenge #7";"";"Club Nautique ...";"25FRA002";"";"https:...
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='5-6 Jul 2025;"Waterski";"INTER";"L";"FRA";"MALIBU OPEN";"";"Lacanau Ski Cl...";"25FRA005";"";"https://ems.iwwf.sport...
+
+[CSV] data\raw\ems\calendrier_france_waterski_2026.csv
+  Lignes : 39
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"='16-17 May 2026;"Waterski";"INTER";"L";"FRA";"Magic Cup 2026";"";"Nemours Grez/l...";"26FRA003";""'
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"='30-31 May 2026;"Waterski";"INTER";"L";"FRA";"Trick Tours Contest";"";"Touraine Ski ...";"26FRA032";""'
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"";"Site";"EMS Code";"Nat. Code"='6-7 Jun 2026;"Waterski";"INTER";"L";"FRA";"BEACH SKI ACADEMY CUP - Meuzac";"";"BEACH SKI ACAD...";"26FRA012";""'
+
+[CSV] data\raw\ems\calendrier_france_waterski_2026_avec_urls.csv
+  Lignes : 20
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='16-17 May 2026;"Waterski";"INTER";"L";"FRA";"Magic Cup 2026";"";"Nemours Grez/l...";"26FRA003";"";"https://ems.iwwf....
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='30-31 May 2026;"Waterski";"INTER";"L";"FRA";"Trick Tours Contest";"";"Touraine Ski ...";"26FRA032";"";"https://ems.i...
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='6-7 Jun 2026;"Waterski";"INTER";"L";"FRA";"BEACH SKI ACADEMY CUP - Meuzac";"";"BEACH SKI ACAD...";"26FRA012";"";"htt...
+
+[CSV] data\raw\ems\calendrier_france_waterski_2026_avec_urls_page2.csv
+  Lignes : 39
+  Colonnes : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"
+  Exemple 1 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='16-17 May 2026;"Waterski";"INTER";"L";"FRA";"Magic Cup 2026";"";"Nemours Grez/l...";"26FRA003";"";"https://ems.iwwf....
+  Exemple 2 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='30-31 May 2026;"Waterski";"INTER";"L";"FRA";"Trick Tours Contest";"";"Touraine Ski ...";"26FRA032";"";"https://ems.i...
+  Exemple 3 : Date;"Discipline";"Type";"Homol.";"Country";"Name";"Colonne_7";"Site";"EMS Code";"Nat. Code";"CompetitionUrl"='6-7 Jun 2026;"Waterski";"INTER";"L";"FRA";"BEACH SKI ACADEMY CUP - Meuzac";"";"BEACH SKI ACAD...";"26FRA012";"";"htt...
+
+[CSV] data\raw\ems\participants\participants_26FRA003.csv
+  Lignes : 19
+  Colonnes : CompetitionCode;"AthleteId";"AthleteUrl";"Name";"Country";"Categ.";"YOB";"Slalom";"Tricks";"Jump";"Overall"
+  Exemple 1 : CompetitionCode;"AthleteId";"AthleteUrl";"Name";"Country";"Categ.";"YOB";"Slalom";"Tricks";"Jump";"Overall"='26FRA003;"";"https://ems.iwwf.sport/Athletes/Profile/deabbaad-4072-4ef2-8cbe-e1ca06c8244f";"BISCHOFBERGER Illana";"F...
+  Exemple 2 : CompetitionCode;"AthleteId";"AthleteUrl";"Name";"Country";"Categ.";"YOB";"Slalom";"Tricks";"Jump";"Overall"='26FRA003;"";"https://ems.iwwf.sport/Athletes/Profile/55c3330e-7346-43b7-9fe3-438da2207f4d";"BOEKEE Belinda";"NED";"5...
+  Exemple 3 : CompetitionCode;"AthleteId";"AthleteUrl";"Name";"Country";"Categ.";"YOB";"Slalom";"Tricks";"Jump";"Overall"='26FRA003;"";"https://ems.iwwf.sport/Athletes/Profile/ff30d7ba-a67a-4303-82d6-bea210ffa7f5";"DE CORT Manu";"BEL";"Ope...
+
+Nombre de CSV pertinents inventoriés : 119
+
+FIN DE L'INVENTAIRE

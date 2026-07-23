@@ -1,0 +1,18 @@
+﻿Year;CompetitionCode;CompetitionName;Level;RawFolderExists;HtmlFilesScanned;U21Entries;U21RawHtml;SourceStatus;FilesScanned
+2017;17FRA002;Championnats de France Open Senior Handi 2017;championnat_france;1;1;0;0;AUCUN_U21;data\raw\iwwf\17FRA002\all_skiers_list.html
+2017;17FRA005;Championnat de France Relève 2017;;1;0;0;0;AUCUN_U21;
+2018;18FRA001;OPEN French Nationals 2018;championnat_france;1;1;0;0;AUCUN_U21;data\raw\iwwf\18FRA001\all_skiers_list.html
+2018;18FRA010;Championnats de France Relèves 2018;;1;6;10;10;DB_ET_HTML;data\raw\iwwf\18FRA010\all_skiers_list.html | data\raw\iwwf\18FRA010\21_f_slalom_results.html | data\raw\iwwf\18FRA010\21_jump_results.html | data\raw\iwwf\18FRA010\21_m_slalom_results.html | data\raw\iwwf\18FRA010\21_overall_results.html | data\raw\iwwf\18FRA010\21_tricks_results.html
+2018;18FRA030;Championnats de France Seniors;;1;1;0;0;AUCUN_U21;data\raw\iwwf\18FRA030\all_skiers_list.html
+2019;19FRA001;French OPEN National Championships & OPEN de FRANCE;championnat_france;1;1;0;0;AUCUN_U21;data\raw\iwwf\19FRA001\all_skiers_list.html
+2019;19FRA002;Championnats de France FFSNW Ski Nautique Relèves Espoirs Para;;1;9;11;11;DB_ET_HTML;data\raw\iwwf\19FRA002\all_skiers_list.html | data\raw\iwwf\19FRA002\21_f_jump_results.html | data\raw\iwwf\19FRA002\21_f_overall_results.html | data\raw\iwwf\19FRA002\21_f_slalom_results.html | data\raw\iwwf\19FRA002\21_f_tricks_results.html | data\raw\iwwf\19FRA002\21_m_jump_results.html | data\raw\iwwf\19FRA002\21_m_overall_results.html | data\raw\iwwf\19FRA002\21_m_slalom_results.html | data\raw\iwwf\19FRA002\21_m_tricks_results.html
+2019;19FRA03;Championnats de France Séniors;;1;1;0;0;AUCUN_U21;data\raw\iwwf\19FRA03\all_skiers_list.html
+2020;20FRA029;CHAMPIONNATS DE FRANCE RELEVE 2020;;1;10;15;15;DB_ET_HTML;data\raw\iwwf\20FRA029\all_skiers_list.html | data\raw\iwwf\20FRA029\21_f_jump_results.html | data\raw\iwwf\20FRA029\21_f_overall_results.html | data\raw\iwwf\20FRA029\21_f_slalom_results.html | data\raw\iwwf\20FRA029\21_f_tricks_results.html | data\raw\iwwf\20FRA029\21_m_jump_results.html | data\raw\iwwf\20FRA029\21_m_overall_results.html | data\raw\iwwf\20FRA029\21_m_slalom_finales_results.html | data\raw\iwwf\20FRA029\21_m_slalom_results.html | data\raw\iwwf\20FRA029\21_m_tricks_results.html
+2020;20FRA030;Championnats de France OPEN 2020;championnat_france;1;1;0;0;AUCUN_U21;data\raw\iwwf\20FRA030\all_skiers_list.html
+2020;20FRA031;CHAMPIONNATS DE FRANCE SENIORS 2020;;1;1;0;0;AUCUN_U21;data\raw\iwwf\20FRA031\all_skiers_list.html
+2021;21FRA044;Championnats de France SENIORS 2021;;1;1;0;0;AUCUN_U21;data\raw\iwwf\21FRA044\all_skiers_list.html
+2021;21FRA045;Championnats de France RELEVES 2021;;1;7;12;12;DB_ET_HTML;data\raw\iwwf\21FRA045\all_skiers_list.html | data\raw\iwwf\21FRA045\21_f_jump_results.html | data\raw\iwwf\21FRA045\21_f_slalom_results.html | data\raw\iwwf\21FRA045\21_m_jump_results.html | data\raw\iwwf\21FRA045\21_m_slalom_results.html | data\raw\iwwf\21FRA045\21_overall_results.html | data\raw\iwwf\21FRA045\21_tricks_results.html
+2021;21FRA046;Championnat de France OPEN 2021;championnat_france;1;1;0;0;AUCUN_U21;data\raw\iwwf\21FRA046\all_skiers_list.html
+2022;22FRA029;Championnats de France SENIOR;;1;1;0;0;AUCUN_U21;data\raw\iwwf\22FRA029\all_skiers_list.html
+2022;22FRA030;Championnats de France RELEVES U10 to U17 - Championnat de Ligue BFC;;1;1;1;1;DB_ET_HTML;data\raw\iwwf\22FRA030\all_skiers_list.html
+2022;22FRA031;Championnat de France OPEN U21;championnat_france;1;1;0;0;AUCUN_U21;data\raw\iwwf\22FRA031\all_skiers_list.html
